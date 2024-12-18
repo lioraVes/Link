@@ -1,0 +1,14 @@
+{
+  "guides": {
+    "guide_ransomware": {
+      "title": "סחיטה מינית",
+      "short-content": "מדריך קצר",
+      "link": "www.מדריך ארוך.com"
+    },
+    "guide_other_extortion": {
+      "title": "סחיטה מינית",
+      "short-content": "מדריך קצר",
+      "link": "www.מדריך ארוך.com"
+    }
+  }
+}
