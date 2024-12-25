@@ -10,7 +10,7 @@
     "info": "next info"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.0.10",
+    "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.39.1",
     "next": "^14.0.4",
     "nodemailer": "^6.9.5",
