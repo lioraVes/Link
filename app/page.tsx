@@ -4,8 +4,9 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main>
-      <Link href="/news"> חדשות</Link>:
-            
+      <Link href="/news"> חדשות</Link> <br/>
+      <Link href="/newsDynamicTry"> חדשות דינמי</Link><br/>
+
       {/* <div>
         <h2>Welcome to the Product Jam Starter Kit</h2>
         <p>

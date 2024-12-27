@@ -1,0 +1,35 @@
+/* page.module.css */
+
+  .scrollableContainer {
+    max-height: 500px; /* Set your desired height for the scrollable container */
+    overflow-y: auto;  /* Enables vertical scrolling */
+    border: 1px solid #ddd; /* Optional: to visually define the scrollable area */
+    padding: 10px;
+    background-color: #f9f9f9; /* Optional: background color for the content */
+  }
+  
+  .newsItem {
+    margin-bottom: 20px; /* Space between each news item */
+    padding: 15px; /* Padding inside each news item */
+    border: 1px solid #ccc; /* Subtle border for each item */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    background-color: #ffffff; /* White background for each item */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for a floating effect */
+  }
+  
+  .newsDate {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 10px;
+  }
+  
+  .newsContent {
+    white-space: pre-line;
+    line-height: 1.6;
+  }
+  
+  .newsImage {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
+  }
