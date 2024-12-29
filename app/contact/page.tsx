@@ -1,9 +1,10 @@
 // @ts-nocheck
 "use client";
 
-import React, { useState } from "react";
-import styles from "./page.module.css"; // Add CSS module for styling
+import React, { useState, useEffect } from "react";
+import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 export default function Contact() {
   const router = useRouter();
@@ -12,6 +13,16 @@ export default function Contact() {
   const [isAgree, setIsAgree] = useState(false);
   const [additionalInput, setAdditionalInput] = useState("");
   const [selectedRating, setSelectedRating] = useState("");
+  const searchParams = useSearchParams(); // Retrieve query parameters
+  const [answers, setAnswers] = useState({});
+
+  // Extract answers from query parameters when the component mounts
+  useEffect(() => {
+    const params = Object.fromEntries(searchParams.entries());
+    setAnswers(params); // Save the parameters to state
+  }, [searchParams]);
+
+  console.log("Received Answers:", answers);
 
   const handlePhoneInputChange = (event) => {
     setPhoneNumber(event.target.value);
@@ -42,16 +53,19 @@ export default function Contact() {
   };
 
   const handleSubmit = async () => {
+    const userInfo = {
+      subject: answers,
+      phoneNumber: phoneNumber,
+      additionalInput: additionalInput,
+    };
+
     try {
       const response = await fetch("/api/sendEmail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          additionalInput,
-          selectedRating,
-        }),
+        body: JSON.stringify(userInfo),
       });
 
       if (response.ok) {

@@ -13,8 +13,8 @@ export default function Wizard() {
   const [selectedChoice, setSelectedChoice] = useState(""); // Track user's choice
   const router = useRouter(); // Initialize the router
 
-  const handleClick = () => {
-    router.push("/contact");
+  const handleClick = (subject: string) => {
+    router.push(`/contact?${subject}`);
   };
 
   const handleBack = () => {
@@ -93,7 +93,10 @@ export default function Wizard() {
               <p key={index}>{line.trim()}</p>
             ))}
           </div>
-          <button className={styles.continueButton} onClick={handleClick}>
+          <button
+            className={styles.continueButton}
+            onClick={handleClick(currentStep["subject"])}
+          >
             המשך
           </button>
         </div>
