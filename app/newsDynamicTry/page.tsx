@@ -8,7 +8,7 @@ interface NewsItem {
   title: string;
   date: string;
   content: string;
-  image: string; // check how to add image
+  image: string; 
 }
 
 export default function News() {
@@ -58,16 +58,23 @@ export default function News() {
 
   return (
     <main>
-      <div>
-        <h1>חדשות</h1>
+      <div className={styles.mainContainer}>
+        <div className={styles.aboutUs}>
+          מי אנחנו?
+        </div>
+        <div  className={styles.newsPageTitle}>
+        דף חדשות
+        </div> 
+ 
         {error && <p className="error">{error}</p>}
+
         <div className={styles.scrollableContainer}>
           {newsData.map(({ title, date, content, image }: NewsItem, i: number) => (
             <div key={i} className={styles.newsItem}>
-              <h2>{title}</h2>
+              <div className={styles.newsTitle}>{title}</div>
               <p className={styles.newsDate}>{date}</p>
+              {image && <img src={image} alt={title} className={styles.newsImage} loading="lazy" />} 
               <p className={styles.newsContent}>{content}</p>
-              {image && <img src={image} alt={title} className={styles.newsImage} loading="lazy" />} {/* Display image */}
             </div>
           ))}
         </div>
