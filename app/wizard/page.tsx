@@ -1,98 +1,95 @@
 // @ts-nocheck
 "use client";
+
 import React, { useState } from "react";
-import guidesData from "../../lib/data/guides.json";
 import wizardData from "../../lib/data/wizard.json";
-import "./page.css"; // Import CSS file for styling
+import guidesData from "../../lib/data/guides.json";
+import styles from "./page.module.css";
+import { useRouter } from "next/navigation";
 
 export default function Wizard() {
-  const [currentQuestion, setCurrentQuestion] = useState(
-    wizardData.wizard.main_question
-  ); // Start with the main question
-  const [calmingMsg, setCalmingMsg] = useState("");
-  const [path, setPath] = useState([]); // Track user progress
+  const [currentStep, setCurrentStep] = useState(wizardData.wizard.q1); // Start with Q1
+  const [calmingMsg, setCalmingMsg] = useState(""); // Display calming messages
+  const [selectedChoice, setSelectedChoice] = useState(""); // Track user's choice
+  const router = useRouter(); // Initialize the router
+
+  const handleClick = () => {
+    router.push("/contact");
+  };
+
+  const handleBack = () => {
+    router.back(); // Navigate to the previous page
+  };
 
   const handleAnswer = (answerKey) => {
-    const nextStep = currentQuestion.answers[answerKey];
+    const nextStepKey = currentStep.answers[answerKey];
 
-    if (nextStep.questions) {
-      // If the answer leads to more questions
-      const nextQuestionKey = Object.keys(nextStep.questions)[0]; // Get the first question in the new branch
-      const nextQuestion = nextStep.questions[nextQuestionKey];
-      setPath([
-        ...path,
-        { question: currentQuestion.question, answer: answerKey },
-      ]);
-      setCalmingMsg(nextQuestion["calming-msg"] || "");
-      setCurrentQuestion(nextQuestion);
-    } else if (nextStep.startsWith("guide")) {
-      // If the answer leads to a guide
-      setPath([
-        ...path,
-        { question: currentQuestion.question, answer: answerKey },
-      ]);
-      setCurrentQuestion(guidesData.guides[nextStep]);
-    } else {
+    if (!nextStepKey) {
       console.error("No valid next step found.");
+      return;
+    }
+
+    // Store the selected choice
+    setSelectedChoice(answerKey);
+
+    // Check if the next step is a question or a message
+    if (wizardData.wizard[nextStepKey]) {
+      const nextStep = wizardData.wizard[nextStepKey];
+      if (nextStep.message) {
+        setCalmingMsg(nextStep.message); // Set the calming message
+      } else {
+        setCalmingMsg("");
+      }
+      setCurrentStep(nextStep);
+    } else if (guidesData.guides[nextStepKey]) {
+      // If the next step is a guide, show the guide
+      setCurrentStep(guidesData.guides[nextStepKey]);
+    } else {
+      console.error("Unknown step type.");
     }
   };
 
-  const renderQuestion = () => {
-    if (currentQuestion.type === "choice") {
+  const renderStep = () => {
+    if (currentStep.type === "choice") {
+      // Render a question with multiple choices
       return (
-        <div className="question-container">
-          <h3 className="question-text">{currentQuestion.question}</h3>
-          <div className="button-group">
-            {Object.keys(currentQuestion.answers).map((key) => (
+        <div className={styles.questionContainer}>
+          <h3 className={styles.questionText}>{currentStep.question}</h3>
+          <div className={styles.buttonGroup}>
+            {Object.keys(currentStep.answers).map((answerKey) => (
               <button
-                key={key}
-                className="answer-button"
-                onClick={() => handleAnswer(key)}
+                key={answerKey}
+                className={styles.answerButton}
+                onClick={() => handleAnswer(answerKey)}
               >
-                {key}
+                {answerKey}
               </button>
             ))}
           </div>
         </div>
       );
-    } else if (currentQuestion.type === "yes_no") {
+    } else if (currentStep.message) {
       return (
-        <div className="question-container">
-          <h3 className="question-text">{currentQuestion.question}</h3>
-          <div className="button-group">
-            <button
-              className="answer-button"
-              onClick={() => handleAnswer("yes")}
-            >
-              Yes
-            </button>
-            <button
-              className="answer-button"
-              onClick={() => handleAnswer("no")}
-            >
-              No
-            </button>
+        <div className={styles.messageContainer}>
+          <div className={styles.selectedChoice}>{selectedChoice}</div>
+          <div className={styles.messageBox}>
+            <p className={styles.messageText}>{calmingMsg}</p>
           </div>
+          <button
+            className={styles.continueButton}
+            onClick={() => setCurrentStep(wizardData.wizard[currentStep.next])}
+          >
+            המשך
+          </button>
         </div>
       );
-    } else if (currentQuestion.title) {
+    } else if (currentStep.title) {
       return (
-        <div className="guide-container">
-          <h3 className="guide-title">{currentQuestion.title}</h3>
-          <p className="guide-content">{currentQuestion["short-content"]}</p>
-          <a
-            className="guide-link"
-            href={currentQuestion.link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read More
-          </a>
-          <button
-            className="restart-button"
-            onClick={() => setCurrentQuestion(wizardData.wizard.main_question)}
-          >
-            Restart Wizard
+        <div className={styles.guideContainer}>
+          <h3 className={styles.guideTitle}>{currentStep.title}</h3>
+          <p className={styles.guideContent}>{currentStep["short-content"]}</p>
+          <button className={styles.continueButton} onClick={handleClick}>
+            המשך
           </button>
         </div>
       );
@@ -100,14 +97,22 @@ export default function Wizard() {
   };
 
   return (
-    <div className="wizard-container">
-      <h1 className="wizard-title">Wizard</h1>
-      {calmingMsg && (
-        <p className="calming-message">
-          <em>{calmingMsg}</em>
-        </p>
-      )}
-      {renderQuestion()}
+    <div className={styles.wizardContainer}>
+      {/* Header */}
+      <div className={styles.header}>
+        <button className={styles.backButton} onClick={handleBack}>
+          חזרה
+        </button>
+        <div className={styles.progressIndicator}>
+          <span className={styles.activeDot}></span>
+          <span className={styles.inactiveDot}></span>
+        </div>
+      </div>
+
+      {/* Graphic Section */}
+      <div className={styles.graphicPlaceholder}>גיף</div>
+
+      {renderStep()}
     </div>
   );
 }

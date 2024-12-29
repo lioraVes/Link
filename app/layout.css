@@ -71,6 +71,11 @@ button {
   font-weight: 400; /* Adjust weight as needed */
   color: inherit; /* Ensure it inherits text color */
   background-color: transparent; /* Optional: Customize button background */
-  border: none; /* Optional: Customize border */
-  cursor: pointer; /* Ensure buttons have a pointer cursor */
+  border: none;
+  cursor: pointer;
+}
+
+textarea {
+  font-family: "SimplerProAlte", sans-serif;
+  font-weight: 400; /* Adjust weight as needed */
 }

@@ -1,0 +1,149 @@
+/* General container */
+.contactFlowContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #ffffff;
+  font-family: "SimplerProAlte", sans-serif;
+  color: #2b2d42;
+}
+
+/* Header */
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.backButton {
+  font-size: 16px;
+  color: #535bf2;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.progressIndicator {
+  display: flex;
+  gap: 5px;
+}
+
+.activeDot,
+.inactiveDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.activeDot {
+  background-color: #535bf2;
+}
+
+.inactiveDot {
+  background-color: #d0d0d0;
+}
+
+/* Graphic placeholder */
+.graphicPlaceholder {
+  width: 200px;
+  height: 150px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Content Section */
+.content {
+  width: 100%;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.text {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.inputBox {
+  text-align: center;
+  width: 95%;
+  margin-bottom: 10px;
+  height: 24px;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 16px;
+  color: #2b2d42;
+}
+
+.textarea {
+  text-align: center;
+  width: 95%;
+  margin-bottom: 10px;
+  height: 70px;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 16px;
+  color: #2b2d42;
+  line-height: 1;
+}
+
+/* Rating Section */
+.ratingSection {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.ratingButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #2b2d42;
+  background-color: #f5f7ff;
+  border: 1px solid #d0d7ff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ratingButton:hover {
+  background-color: #e2e8ff;
+}
+
+.selected {
+  background-color: #535bf2;
+  color: white;
+}
+
+/* Footer */
+.footer {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #535bf2;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #4148c9;
+}

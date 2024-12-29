@@ -9,7 +9,7 @@ export const metadata = {
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <html lang="en" dir="rtl">
+    <html lang="he" dir="rtl">
       <body>
         <div className="app-container">
           <main className="content">{children}</main>
