@@ -1,23 +1,23 @@
-import "@/styles/global.css";
-
-import type { Metadata } from "next";
-import type { ReactNode } from "react";
-
-export const metadata: Metadata = {
-  title: "Digital Product Jam Starter Kit",
-  description:
-    "A starter kit for wiritng code in the Digital Product Jam course.",
+import "./layout.css";
+import React from "react";
+import Link from "next/link";
+import BottomNav from "../lib/components/BottomNav";
+export const metadata = {
+  title: "My App",
+  description: "Description of the app",
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <html dir="rtl">
-      <head>
-        <link rel="icon" />
-      </head>
+    <html lang="en" dir="rtl">
       <body>
-        <div>{children}</div>
+        <div className="app-container">
+          <main className="content">{children}</main>
+          <BottomNav />
+        </div>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

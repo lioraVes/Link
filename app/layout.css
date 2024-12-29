@@ -1,0 +1,76 @@
+/* Font-face declarations for custom fonts */
+@font-face {
+  font-family: "SimplerProAlte";
+  src: url("/fonts/SimplerPro_Alte-Regular.otf") format("opentype");
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SimplerProAlte";
+  src: url("/fonts/SimplerPro_Alte-SemiBold.otf") format("opentype");
+  font-weight: 600; /* SemiBold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SimplerProAlte";
+  src: url("/fonts/SimplerPro_Alte-Bold.otf") format("opentype");
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SimplerProAlte";
+  src: url("/fonts/SimplerPro_Alte-Black.otf") format("opentype");
+  font-weight: 900; /* Black */
+  font-style: normal;
+}
+
+/* Layout styling */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "SimplerProAlte", sans-serif; /* Apply the custom font here */
+}
+
+.content {
+  flex: 1;
+  padding-bottom: 60px; /* Reserve space for the bottom nav */
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #ffffff; /* White background */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #ddd; /* Optional: Top border for separation */
+}
+
+.nav-item {
+  font-size: 16px;
+  color: #333; /* Neutral text color */
+  text-decoration: none;
+  text-align: center;
+  font-family: "SimplerProAlte", sans-serif; /* Use the custom font for nav items */
+}
+
+.nav-item:hover {
+  color: #0070f3; /* Optional: Change color on hover */
+}
+
+/* Apply custom font to buttons */
+button {
+  font-family: "SimplerProAlte", sans-serif;
+  font-weight: 400; /* Adjust weight as needed */
+  color: inherit; /* Ensure it inherits text color */
+  background-color: transparent; /* Optional: Customize button background */
+  border: none; /* Optional: Customize border */
+  cursor: pointer; /* Ensure buttons have a pointer cursor */
+}
