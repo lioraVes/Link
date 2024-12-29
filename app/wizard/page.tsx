@@ -87,7 +87,12 @@ export default function Wizard() {
       return (
         <div className={styles.guideContainer}>
           <h3 className={styles.guideTitle}>{currentStep.title}</h3>
-          <p className={styles.guideContent}>{currentStep["short-content"]}</p>
+          <div className={styles.guideContent}>
+            {/* Split the text by "\n" and render each line */}
+            {currentStep["short-content"].split("\n").map((line, index) => (
+              <p key={index}>{line.trim()}</p>
+            ))}
+          </div>
           <button className={styles.continueButton} onClick={handleClick}>
             המשך
           </button>
