@@ -12,14 +12,14 @@ export function getEmailTransport() {
   return transport;
 }
 
-export async function sendEmail(data: Record<string, string>) {
+export async function sendEmail(msg: string) {
   const transport = getEmailTransport();
   const message = {
     from: EMAIL_ADDRESS,
-    to: data.email,
-    subject: "Digital Product Jam Contact Form Message",
-    text: data.message,
-    html: `<p>${data.message}</p>`,
+    to: EMAIL_ADDRESS,
+    subject: "פניית פגיעה ברשת לטיפול",
+    text: msg,
+    html: `<p>${msg}</p>`,
   };
   // default to false and only set true if the email is sent successfully
   let success = false;

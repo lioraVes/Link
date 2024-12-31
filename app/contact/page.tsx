@@ -60,7 +60,7 @@ export default function Contact() {
     };
 
     try {
-      const response = await fetch("/api/sendEmail", {
+      const response = await fetch("/api", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
