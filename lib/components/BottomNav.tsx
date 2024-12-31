@@ -10,7 +10,7 @@ const BottomNav: React.FC = () => {
       <Link href="/wizard" className="nav-item">
         שיחה
       </Link>
-      <Link href="/support" className="nav-item">
+      <Link href="/report" className="nav-item">
         דיווח
       </Link>
     </nav>
