@@ -15,14 +15,13 @@ export default function Contact() {
   const [selectedRating, setSelectedRating] = useState("");
   const searchParams = useSearchParams(); // Retrieve query parameters
   const [answers, setAnswers] = useState({});
+  const [showPopup, setShowPopup] = useState(false);
 
   // Extract answers from query parameters when the component mounts
   useEffect(() => {
     const params = Object.fromEntries(searchParams.entries());
     setAnswers(params); // Save the parameters to state
   }, [searchParams]);
-
-  console.log("Received Answers:", answers);
 
   const handlePhoneInputChange = (event) => {
     setPhoneNumber(event.target.value);
@@ -54,7 +53,7 @@ export default function Contact() {
 
   const handleSubmit = async () => {
     const userInfo = {
-      subject: answers,
+      subject: Object.keys(answers)[0] == "extortion" ? "סחיטה" : "",
       phoneNumber: phoneNumber,
       additionalInput: additionalInput,
     };
@@ -69,8 +68,7 @@ export default function Contact() {
       });
 
       if (response.ok) {
-        alert("Feedback submitted and email sent!");
-        router.push("/wizard"); // Redirect to the wizard
+        setShowPopup(true);
       } else {
         const error = await response.json();
         alert("Failed to send email: " + error.message);
@@ -99,7 +97,7 @@ export default function Contact() {
         </div>
 
         {/* Graphic Section */}
-        <div className={styles.graphicPlaceholder}>גיף</div>
+        <div className={styles.graphicPlaceholder}>אייקון</div>
 
         {/* Content Section */}
         <div className={styles.content}>
@@ -158,7 +156,7 @@ export default function Contact() {
       </div>
 
       {/* Graphic Section */}
-      <div className={styles.graphicPlaceholder}>גיף</div>
+      <div className={styles.graphicPlaceholder}>אייקון</div>
 
       {/* Content Section */}
       <div className={styles.content}>
@@ -207,6 +205,28 @@ export default function Contact() {
           סיום
         </button>
       </div>
+      {showPopup && (
+        <div className={styles.popupOverlay}>
+          <div className={styles.popup}>
+            <p>העברנו את הפניה שלך!</p>
+            <p>תרצה לדווח על המקרה? בעזרת דיווח נוכל לעזור לעוד אנשים</p>
+            <div className={styles.popupButtons}>
+              <button
+                className={styles.yesButton}
+                onClick={() => router.push("/report")}
+              >
+                אשמח לעזור
+              </button>
+              <button
+                className={styles.noButton}
+                onClick={() => router.push("/wizard")}
+              >
+                לא תודה
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

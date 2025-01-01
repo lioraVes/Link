@@ -118,7 +118,7 @@ export default function Wizard() {
       </div>
 
       {/* Graphic Section */}
-      <div className={styles.graphicPlaceholder}>גיף</div>
+      <div className={styles.graphicPlaceholder}>אייקון</div>
 
       {renderStep()}
     </div>

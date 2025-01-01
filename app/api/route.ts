@@ -3,7 +3,9 @@ import { type NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
   const { subject, phoneNumber, additionalInput } = await request.json();
-  const fullMessage = `Subject: ${JSON.stringify(subject)}\nPhone Number: ${phoneNumber}\nAdditional Input: ${additionalInput}`;
+  const fullMessage = `Subject: ${JSON.stringify(
+    subject
+  )}\nPhone Number: ${phoneNumber}\nAdditional Input: ${additionalInput}`;
 
   const success = await sendEmail(fullMessage);
 

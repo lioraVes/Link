@@ -13,18 +13,16 @@ export default function HomePage() {
     <div className={styles.container}>
       {/* Image/Graphic Section */}
       <div className={styles.graphicArea}>
-        <div className={styles.graphicPlaceholder}>גיף</div>
+        <div className={styles.graphicPlaceholder}>אייקון</div>
       </div>
 
       {/* Text Section */}
       <div className={styles.textArea}>
+        <p>היי, אני לינק אני כאן לעזור לך בכל מה שקשור לפגיעות ברשת.</p>
         <p>
-          שלום גיבור/ה! אני הנסיך ואני כאן כדי לשמור עליך ולעזור לך לנצח את
-          הרעים ברשת.
-        </p>
-        <p>
-          תוכל להתעדכן בלשונית “חדשות” בכל מה שחשוב עכשיו כדי להיות צעד אחד לפני
-          כולם.
+          תחשוב לי להגיד שאני לא אדם אמיתי, אז אין מה לחשוש מביקורת. יש לי כמה
+          שאלות קצרות, ואחרי זה אדאג לחבר אותך למידע הנכון ולאנשים הנכונים
+          שיעזרו לך.
         </p>
       </div>
 

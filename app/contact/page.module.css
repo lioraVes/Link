@@ -59,6 +59,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  font-size: 18px;
 }
 
 /* Content Section */
@@ -146,4 +147,50 @@
 
 .submitButton:hover {
   background-color: #4148c9;
+}
+
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.popupButtons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.yesButton,
+.noButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.yesButton {
+  background: #7b61ff;
+  color: white;
+}
+
+.noButton {
+  background: gray;
+  color: white;
 }
