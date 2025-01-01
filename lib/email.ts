@@ -5,8 +5,8 @@ export function getEmailTransport() {
   const transport = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: EMAIL_ADDRESS,
-      pass: EMAIL_PASSWORD,
+      user:  process.env.EMAIL_ADDRESS,
+      pass: process.env.EMAIL_PASSWORD,
     },
   } as TransportOptions);
   return transport;
@@ -15,8 +15,8 @@ export function getEmailTransport() {
 export async function sendEmail(msg: string) {
   const transport = getEmailTransport();
   const message = {
-    from: EMAIL_ADDRESS,
-    to: EMAIL_ADDRESS,
+    from: process.env.EMAIL_ADDRESS,
+    to: process.env.EMAIL_ADDRESS,
     subject: "פניית פגיעה ברשת לטיפול",
     text: msg,
     html: `<p>${msg}</p>`,
@@ -34,8 +34,8 @@ export async function sendEmail(msg: string) {
 export async function sendEmailWithAttachment(msg: string, attachment: File | null) {
   const transport = getEmailTransport();
   const message = {
-    from: EMAIL_ADDRESS,
-    to: EMAIL_ADDRESS,
+    from: process.env.EMAIL_ADDRESS,
+    to: process.env.EMAIL_ADDRESS,
     subject: "פניית פגיעה ברשת לטיפול",
     text: msg,
     html: `<p>${msg}</p>`,
