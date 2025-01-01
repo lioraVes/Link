@@ -5,8 +5,11 @@ export function getEmailTransport() {
   const transport = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user:  process.env.EMAIL_ADDRESS,
-      pass: process.env.EMAIL_PASSWORD,
+      user:  EMAIL_ADDRESS,
+      pass: EMAIL_PASSWORD,
+    },
+    tls: {
+      rejectUnauthorized: false, // Add this line to ignore self-signed certificates
     },
   } as TransportOptions);
   return transport;
@@ -15,8 +18,8 @@ export function getEmailTransport() {
 export async function sendEmail(msg: string) {
   const transport = getEmailTransport();
   const message = {
-    from: process.env.EMAIL_ADDRESS,
-    to: process.env.EMAIL_ADDRESS,
+    from: EMAIL_ADDRESS,
+    to: EMAIL_ADDRESS,
     subject: "פניית פגיעה ברשת לטיפול",
     text: msg,
     html: `<p>${msg}</p>`,
@@ -34,8 +37,8 @@ export async function sendEmail(msg: string) {
 export async function sendEmailWithAttachment(msg: string, attachment: File | null) {
   const transport = getEmailTransport();
   const message = {
-    from: process.env.EMAIL_ADDRESS,
-    to: process.env.EMAIL_ADDRESS,
+    from: EMAIL_ADDRESS,
+    to: EMAIL_ADDRESS,
     subject: "פניית פגיעה ברשת לטיפול",
     text: msg,
     html: `<p>${msg}</p>`,
