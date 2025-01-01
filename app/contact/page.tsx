@@ -4,7 +4,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation";
 
 export default function Contact() {
   const router = useRouter();
@@ -13,15 +12,18 @@ export default function Contact() {
   const [isAgree, setIsAgree] = useState(false);
   const [additionalInput, setAdditionalInput] = useState("");
   const [selectedRating, setSelectedRating] = useState("");
-  const searchParams = useSearchParams(); // Retrieve query parameters
   const [answers, setAnswers] = useState({});
   const [showPopup, setShowPopup] = useState(false);
 
   // Extract answers from query parameters when the component mounts
   useEffect(() => {
-    const params = Object.fromEntries(searchParams.entries());
-    setAnswers(params); // Save the parameters to state
-  }, [searchParams]);
+    const params = new URLSearchParams(window.location.search);
+    const paramsObject = {};
+    for (const [key, value] of params.entries()) {
+      paramsObject[key] = value;
+    }
+    setAnswers(paramsObject); // Save the parameters to state
+  }, []);
 
   const handlePhoneInputChange = (event) => {
     setPhoneNumber(event.target.value);
