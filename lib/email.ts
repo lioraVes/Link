@@ -8,9 +8,9 @@ export function getEmailTransport() {
       user:  EMAIL_ADDRESS,
       pass: EMAIL_PASSWORD,
     },
-    tls: {
-      rejectUnauthorized: false, // Add this line to ignore self-signed certificates
-    },
+    // tls: {
+    //   rejectUnauthorized: false, // Add this line to ignore self-signed certificates
+    // },
   } as TransportOptions);
   return transport;
 }
