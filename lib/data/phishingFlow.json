@@ -1,0 +1,69 @@
+{
+    "phishing": {
+      "q1": {
+        "question": "מה בדיוק קרה?",
+        "type": "choice",
+        "answers": {
+          "לחצתי על קישור": "link_clicked",
+          "מסרתי פרטי כרטיס אשראי": "credit_card_given",
+          "הורדתי קובץ": "file_downloaded"
+        }
+      },
+      "link_clicked": {
+        "question": "האם מסרת פרטי שם משתמש וסיסמא ?",
+        "type": "choice",
+        "answers": {
+          "כן": "username_password_given",
+          "לא": "username_password_not_given"
+        }
+      },
+      "username_password_given": {
+        "message": "החליפו באופן מיידי את שם המשתמש והסיסמא של השירות אליו חשבתם שנכנסתם. אם שם המשתמש והסיסמא הללו משמשים אתכם גם לשירותים נוספים – בצעו את השינוי גם בהם. אם עדיין לא הגדרתם אימות דו-שלבי (Two Factor Authentication), עכשיו זה הזמן."
+      },
+      "username_password_not_given": {
+        "message": "אתם כמעט בוודאות בטוחים! בכל מקרה, אנו ממליצים להתקין מוצר אבטחה איכותי במחשב ובסמארטפון, ולא יזיק להריץ סריקה לאחר שנכנסתם ללינק."
+      },
+      "credit_card_given": {
+       "message": "בטלו את כרטיס האשראי באופן מיידי, וכן וודאו שלא נעשה בו שימוש."
+      },
+      "file_downloaded": {
+        "question": "האם פתחת את הקובץ?",
+        "type": "choice",
+        "answers": {
+          "כן": "file_opened",
+          "לא": "file_not_opened"
+        }
+      },
+      "file_not_opened":{
+        "message":"תמחקו את הקובץ ואתם בסדר!"
+      },
+      "file_opened": {
+        "question": "האם אתם חושדים שהתקנתם נוזקה/כופרה?",
+        "type": "choice",	
+        "answers": {
+          "כן": "malware_ransomware_installed",
+          "לא": "no_malware_ransomware"
+        }
+      },
+      "no_malware_ransomware": {
+        "message": "נתקו את המחשב מהאינטרנט. הריצו סריקה של האנטי-וירוס."
+      },
+      "malware_ransomware_installed":{
+        "question": "מה הותקן",
+        "type": "choice",	
+        "answers": {
+          "נוזקה": "malware_installed",
+          "כופרה": "ransomware_attack"
+        }
+      },
+      "malware_installed": {
+        "question": " על איזה מכשיר אתם?",
+        "type": "choice",	
+        "answers": {
+          "מחשב": "malware_computer",
+          "סמארטפון": " malware_phone"
+        }
+      }     
+    }
+  }
+  
