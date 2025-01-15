@@ -25,8 +25,8 @@
 }
 
 .textArea {
-  margin-bottom: 20px;
-  font-size: 20px;
+  margin-top: 20px;
+  font-size: 18px;
   color: #4e538a;
   line-height: 1;
   direction: rtl;
@@ -38,7 +38,7 @@
 }
 
 .startButton {
-  background-color: #ff7f11;
+  background-color: #fe5068;
   color: #fff;
   font-size: 25px;
   padding: 10px 20px;
@@ -48,6 +48,29 @@
   transition: background-color 0.3s ease;
 }
 
+.multipleChoiseButton {
+  width: 300px;
+  background-color: #fe5068;
+  color: #fff;
+  font-size: 17px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.title {
+  color: #4e538a;
+  text-align: center;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  width: 220px;
+}
+
 .startButton:hover {
-  background-color: #e66f0a;
+  background-color: #fe5068;
 }

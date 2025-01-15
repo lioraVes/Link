@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from "react";
-import wizardData from "../../lib/data/wizard.json";
+import wizardData from "../../lib/data/extortion.json";
 import guidesData from "../../lib/data/guides.json";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
@@ -107,19 +107,8 @@ export default function Wizard() {
   return (
     <div className={styles.wizardContainer}>
       {/* Header */}
-      <div className={styles.header}>
-        <button className={styles.backButton} onClick={handleBack}>
-          חזרה
-        </button>
-        <div className={styles.progressIndicator}>
-          <span className={styles.activeDot}></span>
-          <span className={styles.inactiveDot}></span>
-        </div>
-      </div>
-
       {/* Graphic Section */}
       <div className={styles.graphicPlaceholder}>אייקון</div>
-
       {renderStep()}
     </div>
   );
