@@ -5,10 +5,10 @@ const BottomNav: React.FC = () => {
   return (
     <nav className="bottom-nav">
       <Link href="/newsDynamicTry" className="nav-item">
-        חדשות
+        עדכונים
       </Link>
       <Link href="/wizard" className="nav-item">
-        שיחה
+        עזרה ראשונה
       </Link>
       <Link href="/report" className="nav-item">
         דיווח
