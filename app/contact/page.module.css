@@ -1,3 +1,92 @@
+.step1_container{
+  display: flex;
+  flex-direction: column; /* Arrange items vertically */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  height: 100vh; /* Make the container fill the full viewport height */
+  text-align: center; /* Ensure text stays centered */
+  padding: 20px; /* Optional: Add padding for responsiveness */
+  box-sizing: border-box; /* Include padding in width/height calculation */
+}
+/* Header styling */
+.header_step_1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 76px;
+}
+
+/* Subheader styling */
+.subHeader_step_1 {
+  color: #4E538A;
+  text-align: center;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 19px; /* 90.476% */
+  margin-bottom: 30px;
+}
+
+/* Paragraph styling */
+.paragraph_step_1 {
+  width: 299px;
+  height: 116px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+
+  color: #4E538A;
+  text-align: center;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px; /* 123.529% */
+  margin-bottom: 119px;
+}
+/* Button styling */
+.button_step_1 {
+  display: flex;
+  width: 300px;
+  height: 45px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #FE5068;
+  color: #F6FBFF;
+
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom:11px; /* Default margin after the button */
+
+}
+
+.step2_container{ /*todo: this is the same as before */
+  display: flex;
+  flex-direction: column; /* Arrange items vertically */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  height: 100vh; /* Make the container fill the full viewport height */
+  text-align: center; /* Ensure text stays centered */
+  padding: 20px; /* Optional: Add padding for responsiveness */
+  box-sizing: border-box; /* Include padding in width/height calculation */
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* General container */
 .contactFlowContainer {
   display: flex;
