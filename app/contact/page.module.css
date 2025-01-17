@@ -283,3 +283,24 @@
   background: gray;
   color: white;
 }
+
+
+.step3_container{
+  background-color: #FE5068;
+
+}
+.button_step_3{
+  color: #FE5068;
+  background-color: #F6FBFF;}
+
+.step3_text_color{
+  color: #F6FBFF;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  justify-content: center; /* Center the button horizontally */
+  align-items: center; /* Center the button vertically */
+  margin-top: 20px; /* Optional: Add margin for spacing */
+}
