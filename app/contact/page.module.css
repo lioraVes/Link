@@ -1,58 +1,48 @@
-.step1_container{
+/* STEP 1 STYLES */
+.step1Container{
   display: flex;
   flex-direction: column; /* Arrange items vertically */
   justify-content: center; /* Center items vertically */
   align-items: center; /* Center items horizontally */
-  height: 100vh; /* Make the container fill the full viewport height */
   text-align: center; /* Ensure text stays centered */
-  padding: 20px; /* Optional: Add padding for responsiveness */
+  padding: 44px; /* Optional: Add padding for responsiveness */
   box-sizing: border-box; /* Include padding in width/height calculation */
+  margin-top: 60px;
 }
-/* Header styling */
-.header_step_1 {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+ 
+.logoStep1 {
   margin-bottom: 76px;
 }
 
-/* Subheader styling */
-.subHeader_step_1 {
+.headerStep1 {
   color: #4E538A;
-  text-align: center;
   font-size: 21px;
   font-style: normal;
   font-weight: 600;
-  line-height: 19px; /* 90.476% */
+  line-height: 19px; 
   margin-bottom: 30px;
 }
 
-/* Paragraph styling */
-.paragraph_step_1 {
+ .paragraphStep1 {
   width: 299px;
   height: 116px;
-  flex-direction: column;
-  justify-content: center;
   flex-shrink: 0;
 
   color: #4E538A;
-  text-align: center;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
   line-height: 21px; /* 123.529% */
   margin-bottom: 119px;
 }
-/* Button styling */
-.button_step_1 {
-  display: flex;
+
+.buttonStep1 {
   width: 300px;
   height: 45px;
   padding: 10px;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
   flex-shrink: 0;
+
   border-radius: 8px;
   background: #FE5068;
   color: #F6FBFF;
@@ -61,23 +51,132 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  margin-bottom:11px; /* Default margin after the button */
-
+  margin-bottom:11px; 
 }
 
-.step2_container{ /*todo: this is the same as before */
+/* STEP 2 STYLES */
+
+.step2Container{ /*todo: this is the same as before */
   display: flex;
   flex-direction: column; /* Arrange items vertically */
   justify-content: center; /* Center items vertically */
   align-items: center; /* Center items horizontally */
-  height: 100vh; /* Make the container fill the full viewport height */
   text-align: center; /* Ensure text stays centered */
-  padding: 20px; /* Optional: Add padding for responsiveness */
+  padding: 44px; /* Optional: Add padding for responsiveness */
   box-sizing: border-box; /* Include padding in width/height calculation */
+  margin-bottom: 44px;
 }
 
+.logoStep2 {
+  margin-top: 80px;
+  margin-bottom: 102px;
+}
 
+.headerStep2{
+  color: #4E538A;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 19px; 
+  margin-bottom: 50px;
+}
 
+.formContainer {
+  width: 300px;
+}
+
+.formText {
+  color: #4E538A;
+  text-align: right;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 23px; 
+}
+
+.formInput {
+  width: 301px;
+  height: 39px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  border: 2px solid #FE5068;
+
+  background: #FFF;
+  margin-bottom: 15px;
+  -moz-appearance: textfield; /* Firefox */
+  -webkit-appearance: none; /* Chrome, Safari */
+  appearance: none; /* Standard */
+}
+
+.formInput::-webkit-outer-spin-button,
+.formInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.formTextArea {
+  width: 301px;
+  height: 71px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  border: 2px solid #FE5068;
+  background: #FFF;
+  margin-bottom: 16px;
+}
+
+.formCheckboxContainer {
+  display: flex;
+  align-items: right;
+}
+
+.formCheckBox {
+  width: 23px;
+  height: 23px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  border: 2px solid #FE5068 !important;
+  background: #FFF;
+  cursor: pointer;
+  appearance: none;
+}
+.formCheckBox:checked {
+  background-color: #FE5068; /* Pink background when checked */
+}
+
+.checkboxText {
+  width: 249px;
+  height: 66px;
+  flex-shrink: 0;
+
+  color: #4E538A;
+  text-align: right;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+
+  margin-right:11px;
+}
+
+.buttonStep2{
+  display: flex;
+width: 300px;
+height: 45px;
+padding: 10px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+flex-shrink: 0;
+
+border-radius: 8px;
+background: #FE5068;
+color: #F6FBFF;
+font-size: 17px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+
+}
 
 
 

@@ -10,6 +10,12 @@ export const metadata = {
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <html lang="he" dir="rtl">
+      
+       <head>
+       <title>Link</title>
+        <link rel="icon" href="/images/LinkLogo.svg"  />
+      </head>
+
       <body>
         <div className="app-container">
           <TopBar />

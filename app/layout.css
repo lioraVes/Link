@@ -33,6 +33,8 @@
   flex-direction: column;
   min-height: 100vh;
   font-family: "SimplerProAlte", sans-serif; /* Apply the custom font here */
+  background-color: #F6FBFF;
+  
 }
 
 .content {
