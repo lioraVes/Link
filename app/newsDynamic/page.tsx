@@ -36,6 +36,15 @@ export default function News() {
             content: row[2] || "",
             image: row[3] || "", 
           }));
+          formattedData.sort((a: NewsItem, b: NewsItem) => {
+            const [dayA, monthA, yearA] = a.date.split("-").map(Number); // Split and parse the date
+            const [dayB, monthB, yearB] = b.date.split("-").map(Number);
+          
+            const dateA = new Date(yearA, monthA - 1, dayA).getTime(); // Create a Date object
+            const dateB = new Date(yearB, monthB - 1, dayB).getTime();
+          
+            return dateB - dateA; // Sort in descending order (newest first)
+          });
           setNewsData(formattedData);
         } else {
           throw new Error("No values found in the sheet");
