@@ -9,7 +9,7 @@ const BottomNav: React.FC = () => {
 
   return (
     <nav className="bottom-nav">
-      <Link href="/newsDynamicTry" className={`${"nav-item"} ${pathname === '/newsDynamicTry' ? "active" : ''}`}>
+      <Link href="/newsDynamic" className={`${"nav-item"} ${pathname === '/newsDynamic' ? "active" : ''}`}>
         עדכונים
       </Link>
       <Link href="/wizard" className={`${"nav-item"} ${pathname === '/wizard' ? "active" : ''}`}>

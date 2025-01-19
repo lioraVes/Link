@@ -31,11 +31,10 @@ export default function News() {
 
         if (data.values) {
           const formattedData = data.values.slice(1).map((row: string[]) => ({
-            id: row[0] || "",
-            title: row[1] || "",
-            date: row[2] || "",
-            content: row[3] || "",
-            image: row[4] || "", 
+            title: row[0] || "",
+            date: row[1] || "",
+            content: row[2] || "",
+            image: row[3] || "", 
           }));
           setNewsData(formattedData);
         } else {
