@@ -57,12 +57,17 @@
 
 .nav-item {
   font-size: 16px;
-  color: #333; /* Neutral text color */
+  color: #4E538A; 
   text-decoration: none;
   text-align: center;
   font-family: "SimplerProAlte", sans-serif; /* Use the custom font for nav items */
+  font-size: 21px;
+  font-weight: 400;
 }
 
+.nav-item.active {
+  font-weight: 900;
+}
 .nav-item:hover {
   color: #0070f3; /* Optional: Change color on hover */
 }
