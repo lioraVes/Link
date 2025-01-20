@@ -1,248 +1,117 @@
-/* General container for the wizard */
-.wizardContainer {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  height: 80vh;
+  padding: 30px;
   text-align: center;
-  padding: 20px;
-  min-height: 100vh;
-  background-color: #ffffff;
-  font-family: "SimplerProAlte", sans-serif;
-  color: #2b2d42;
 }
 
-/* Placeholder for the gif or graphic area */
+.graphicArea {
+  margin-bottom: 30px;
+}
+
 .graphicPlaceholder {
-  width: 200px;
-  height: 150px;
+  width: 150px;
+  height: 100px;
   background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
-  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
   color: #333;
-  margin-bottom: 20px;
-}
-
-/* Calming message styling */
-.calmingMessage {
-  margin-top: 10px;
-  font-size: 16px;
-  color: #2b2d42;
-  background-color: #f7f7fc;
-  border: 1px solid #e0e0e0;
-  padding: 10px 15px;
   border-radius: 8px;
-  text-align: right;
 }
 
-/* Question container */
-.questionContainer {
+.textArea {
   margin-top: 20px;
-  width: 100%;
-}
-
-.questionText {
   font-size: 18px;
-  margin-bottom: 20px;
-  color: #2b2d42;
-  text-align: right; /* Align text to the right for Hebrew */
-}
-
-/* Buttons container */
-.buttonGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
-  width: 100%;
-}
-
-.answerButton {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #2b2d42;
-  background-color: #f5f7ff; /* Light blue background */
-  border: 1px solid #d0d7ff;
-  border-radius: 8px;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.answerButton:hover {
-  background-color: #e2e8ff; /* Slightly darker on hover */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.continueButton {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #ffffff;
-  background-color: #535bf2; /* Primary blue */
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.continueButton:hover {
-  background-color: #4148c9; /* Darker blue on hover */
-}
-
-/* Guide container */
-.guideContainer {
-  margin-top: 20px;
-  width: 100%;
-}
-
-.guideTitle {
-  font-size: 22px;
-  margin-bottom: 10px;
-  color: #2b2d42;
-  text-align: right;
-}
-
-.guideContent {
-  font-size: 20px;
-  margin-bottom: 15px;
-  color: #333;
-  text-align: right;
-}
-
-.guideLink {
-  color: #0070f3;
-  text-decoration: none;
-  font-weight: bold;
-  text-align: right;
-}
-
-.guideLink:hover {
-  text-decoration: underline;
-}
-
-/* Restart button */
-.restartButton {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #ffffff;
-  background-color: #535bf2; /* Primary blue */
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.restartButton:hover {
-  background-color: #4148c9; /* Darker blue on hover */
-}
-
-.wizardContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background-color: #ffffff;
-  min-height: 100vh;
+  color: #4e538a;
+  line-height: 1;
   direction: rtl;
-}
-
-.header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.backButton {
-  font-size: 16px;
-  color: #535bf2;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.progressIndicator {
-  display: flex;
-  gap: 5px;
-}
-
-.activeDot,
-.inactiveDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
-
-.activeDot {
-  background-color: #535bf2;
-}
-
-.inactiveDot {
-  background-color: #d0d0d0;
-}
-
-.graphicPlaceholder {
-  width: 200px;
-  height: 150px;
-  background: #e0e0e0;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  font-size: 18px;
-}
-
-.selectedChoice {
-  font-size: 18px;
-  font-weight: bold;
-  color: #535bf2;
-  margin-bottom: 10px;
-}
-
-.messageContainer {
   text-align: center;
+}
+
+.buttonArea {
   margin-top: 20px;
 }
 
-.messageBox {
-  background-color: #ffe5e5;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 20px;
-  text-align: left;
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-}
-
-.messageIcon {
-  font-size: 18px;
-  color: #ff0000;
-}
-
-.messageText {
-  font-size: 16px;
-  line-height: 1.5;
-  color: #2b2d42;
-  text-align: start;
-}
-
-.continueButton {
-  background-color: #535bf2;
-  color: #ffffff;
-  border: none;
+.startButton {
+  background-color: #fe5068;
+  color: #fff;
+  font-size: 25px;
   padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.continueButton:hover {
-  background-color: #434ae0;
+.multipleChoiceButton {
+  width: 300px;
+  background-color: #fe5068;
+  color: #fff;
+  font-size: 17px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.title {
+  color: #4e538a;
+  text-align: center;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.startButton:hover {
+  background-color: #fe5068;
+}
+
+.infoTitle {
+  color: white;
+  text-align: center;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.info {
+  margin-top: 20px;
+  font-size: 18px;
+  color: white;
+  line-height: 1;
+  direction: rtl;
+  text-align: center;
+}
+
+.infoButton {
+  width: 300px;
+  background-color: white;
+  color: #fe5068;
+  font-size: 17px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  padding: 30px;
+  text-align: center;
+  background-color: #fe5068;
 }

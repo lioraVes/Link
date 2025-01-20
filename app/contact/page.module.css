@@ -1,34 +1,33 @@
 /* STEP 1 STYLES */
-.step1Container{
+.step1Container {
   display: flex;
   flex-direction: column; /* Arrange items vertically */
   justify-content: center; /* Center items vertically */
   align-items: center; /* Center items horizontally */
   text-align: center; /* Ensure text stays centered */
-  padding: 44px; /* Optional: Add padding for responsiveness */
   box-sizing: border-box; /* Include padding in width/height calculation */
   margin-top: 60px;
 }
- 
+
 .logoStep1 {
   margin-bottom: 76px;
 }
 
 .headerStep1 {
-  color: #4E538A;
+  color: #4e538a;
   font-size: 21px;
   font-style: normal;
   font-weight: 600;
-  line-height: 19px; 
+  line-height: 19px;
   margin-bottom: 30px;
 }
 
- .paragraphStep1 {
+.paragraphStep1 {
   width: 299px;
   height: 116px;
   flex-shrink: 0;
 
-  color: #4E538A;
+  color: #4e538a;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
@@ -44,25 +43,25 @@
   flex-shrink: 0;
 
   border-radius: 8px;
-  background: #FE5068;
-  color: #F6FBFF;
+  background: #fe5068;
+  color: #f6fbff;
 
   font-size: 17px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  margin-bottom:11px; 
+  margin-bottom: 11px;
 }
 
 /* STEP 2 STYLES */
 
-.step2Container{ /*todo: this is the same as before */
+.step2Container {
+  /*todo: this is the same as before */
   display: flex;
   flex-direction: column; /* Arrange items vertically */
   justify-content: center; /* Center items vertically */
   align-items: center; /* Center items horizontally */
   text-align: center; /* Ensure text stays centered */
-  padding: 44px; /* Optional: Add padding for responsiveness */
   box-sizing: border-box; /* Include padding in width/height calculation */
   margin-bottom: 44px;
 }
@@ -72,12 +71,12 @@
   margin-bottom: 102px;
 }
 
-.headerStep2{
-  color: #4E538A;
+.headerStep2 {
+  color: #4e538a;
   font-size: 21px;
   font-style: normal;
   font-weight: 600;
-  line-height: 19px; 
+  line-height: 19px;
   margin-bottom: 50px;
 }
 
@@ -86,12 +85,12 @@
 }
 
 .formText {
-  color: #4E538A;
+  color: #4e538a;
   text-align: right;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
-  line-height: 23px; 
+  line-height: 23px;
 }
 
 .formInput {
@@ -99,9 +98,9 @@
   height: 39px;
   flex-shrink: 0;
   border-radius: 9px;
-  border: 2px solid #FE5068;
+  border: 2px solid #fe5068;
 
-  background: #FFF;
+  background: #fff;
   margin-bottom: 15px;
   -moz-appearance: textfield; /* Firefox */
   -webkit-appearance: none; /* Chrome, Safari */
@@ -119,8 +118,8 @@
   height: 71px;
   flex-shrink: 0;
   border-radius: 9px;
-  border: 2px solid #FE5068;
-  background: #FFF;
+  border: 2px solid #fe5068;
+  background: #fff;
   margin-bottom: 16px;
 }
 
@@ -134,13 +133,13 @@
   height: 23px;
   flex-shrink: 0;
   border-radius: 9px;
-  border: 2px solid #FE5068 !important;
-  background: #FFF;
+  border: 2px solid #fe5068 !important;
+  background: #fff;
   cursor: pointer;
   appearance: none;
 }
 .formCheckBox:checked {
-  background-color: #FE5068; /* Pink background when checked */
+  background-color: #fe5068; /* Pink background when checked */
 }
 
 .checkboxText {
@@ -148,43 +147,34 @@
   height: 66px;
   flex-shrink: 0;
 
-  color: #4E538A;
+  color: #4e538a;
   text-align: right;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
   line-height: 21px;
 
-  margin-right:11px;
+  margin-right: 11px;
 }
 
-.buttonStep2{
+.buttonStep2 {
   display: flex;
-width: 300px;
-height: 45px;
-padding: 10px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-flex-shrink: 0;
+  width: 300px;
+  height: 45px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
 
-border-radius: 8px;
-background: #FE5068;
-color: #F6FBFF;
-font-size: 17px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-
+  border-radius: 8px;
+  background: #fe5068;
+  color: #f6fbff;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
-
-
-
-
-
-
-
-
 
 /* General container */
 .contactFlowContainer {
@@ -383,17 +373,16 @@ line-height: normal;
   color: white;
 }
 
-
-.step3_container{
-  background-color: #FE5068;
-
+.step3_container {
+  background-color: #fe5068;
 }
-.button_step_3{
-  color: #FE5068;
-  background-color: #F6FBFF;}
+.button_step_3 {
+  color: #fe5068;
+  background-color: #f6fbff;
+}
 
-.step3_text_color{
-  color: #F6FBFF;
+.step3_text_color {
+  color: #f6fbff;
 }
 
 .buttonContainer {

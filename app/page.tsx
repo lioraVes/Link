@@ -90,9 +90,18 @@ interface WizardStartProps {
 }
 
 const WizardStart: React.FC<WizardStartProps> = ({ router }) => {
-  const handleWizardStartClick = (): void => {
-    router.push("/wizard");
+  const handleWizardStartClick = (id: number): void => {
+    if (id === 0) router.push("/wizard");
   };
+
+  const questions = [
+    "שלחו לי הודעה מטרידה",
+    "אני חושב שסוחטים אותי",
+    "גנבו לי כסף באשראי",
+    "מאיימים עליי",
+    "פרצו לי לחשבון",
+    "ראיתי חשבון שתומך בטרור",
+  ];
 
   return (
     <div className={styles.container}>
@@ -105,7 +114,7 @@ const WizardStart: React.FC<WizardStartProps> = ({ router }) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g clip-path="url(#clip0_1125_96)">
+            <g clipPath="url(#clip0_1125_96)">
               <path
                 d="M9.73001 23.61L0.960007 23.1L2.22001 1.55L7.14001 2.49C13.53 3.71 20.04 3.9 26.48 3.07L27.62 11.78C21.9 12.53 16.14 12.56 10.42 11.88L9.73001 23.6V23.61Z"
                 fill="#FE5068"
@@ -153,42 +162,15 @@ const WizardStart: React.FC<WizardStartProps> = ({ router }) => {
 
         <div style={{ height: "25px" }} />
         <div className={styles.buttonArea}>
-          <button
-            className={styles.multipleChoiseButton}
-            onClick={handleWizardStartClick}
-          >
-            שלחו לי הודעה מטרידה{" "}
-          </button>
-          <button
-            className={styles.multipleChoiseButton}
-            onClick={handleWizardStartClick}
-          >
-            אני חושב שסוחטים אותי{" "}
-          </button>
-          <button
-            className={styles.multipleChoiseButton}
-            onClick={handleWizardStartClick}
-          >
-            גנבו לי כסף באשראי{" "}
-          </button>
-          <button
-            className={styles.multipleChoiseButton}
-            onClick={handleWizardStartClick}
-          >
-            מאיימים עליי{" "}
-          </button>
-          <button
-            className={styles.multipleChoiseButton}
-            onClick={handleWizardStartClick}
-          >
-            פרצו לי לחשבון{" "}
-          </button>
-          <button
-            className={styles.multipleChoiseButton}
-            onClick={handleWizardStartClick}
-          >
-            ראיתי חשבון שתומך בטרור{" "}
-          </button>
+          {questions.map((question, index) => (
+            <button
+              key={index}
+              className={styles.multipleChoiceButton}
+              onClick={() => handleWizardStartClick(index)}
+            >
+              {question}
+            </button>
+          ))}
         </div>
       </div>
     </div>
