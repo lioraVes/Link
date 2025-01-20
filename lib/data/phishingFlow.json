@@ -1,69 +1,100 @@
 {
-    "phishing": {
-      "q1": {
-        "question": "מה בדיוק קרה?",
-        "type": "choice",
-        "answers": {
-          "לחצתי על קישור": "link_clicked",
-          "מסרתי פרטי כרטיס אשראי": "credit_card_given",
-          "הורדתי קובץ": "file_downloaded"
-        }
+  "phishing": {
+    "q1": {
+      "question": "האם הכנסת פרטים אישיים?",
+      "type": "choice",
+      "answers": {
+        "כן": "private_info_given",
+        "לא": "didnt_give_private_info"
+      }
+    },
+    "private_info_given": {
+      "question": "האם הכנסת פרטים כמו שם משתמש וסיסמה?",
+      "type": "choice",
+      "answers": {
+        "כן": "username_password_given",
+        "לא": "username_password_not_given"
+      }
+    },
+    "username_password_given":{
+      "question": "האם שם המשתמש והסיסמא שהזנת משמשים אותך גם לשירותים נוספים?",
+      "type": "choice",
+      "answers": {
+        "כן": "more_services",
+        "לא": "no_more_services"
       },
-      "link_clicked": {
-        "question": "האם מסרת פרטי שם משתמש וסיסמא ?",
-        "type": "choice",
-        "answers": {
-          "כן": "username_password_given",
-          "לא": "username_password_not_given"
-        }
+      "more_services":{
+      "title":"ריכזתי עבורך מידע שיעזור לך",
+      "content":"החליפו באופן מיידי את שם המשתמש והסיסמא של השירות אליו חשבתם שנכנסתם. שנו את שם המשתמש והסיסמה גם בשירותים הנוספים שבהם הפרטים משומשים.",
+      "button":"הבנתי, אפשר להמשיך",
+      "next":"tfa"
       },
-      "username_password_given": {
-        "message": "החליפו באופן מיידי את שם המשתמש והסיסמא של השירות אליו חשבתם שנכנסתם. אם שם המשתמש והסיסמא הללו משמשים אתכם גם לשירותים נוספים – בצעו את השינוי גם בהם. אם עדיין לא הגדרתם אימות דו-שלבי (Two Factor Authentication), עכשיו זה הזמן."
+      "tfa":{
+      "question":"האם הגדרתם אימות דו-שלבי (Two Factor Authentication)?",
+      "type":"choice",
+      "answers":{
+        "כן":"tfa_on",
+        "לא":"tfa_off"
       },
-      "username_password_not_given": {
-        "message": "אתם כמעט בוודאות בטוחים! בכל מקרה, אנו ממליצים להתקין מוצר אבטחה איכותי במחשב ובסמארטפון, ולא יזיק להריץ סריקה לאחר שנכנסתם ללינק."
+      "subheader":"מה זה?",
+      "pop-up":"אימות דו-שלבי הוא שיטה להגנה על חשבונות בכך שהוא דורש שני שלבים לאימות זהות: סיסמה (שאתה יודע) וקוד חד-פעמי (שנשלח למכשיר שלך)."
       },
-      "credit_card_given": {
-       "message": "בטלו את כרטיס האשראי באופן מיידי, וכן וודאו שלא נעשה בו שימוש."
+      "tfa_on":{
+      "question":"האם מסרת פרטים לתשלום?",
+      "type":"choice",
+      "answers":{
+        "מסרתי פרטי אשראי":"credit_card_info",
+        "הזנתי את פרטי הPayPal":"paypal_info",
+        "לא מסרתי פרטים לתשלום":"no_payment_info"
+      }
       },
-      "file_downloaded": {
-        "question": "האם פתחת את הקובץ?",
-        "type": "choice",
-        "answers": {
-          "כן": "file_opened",
-          "לא": "file_not_opened"
-        }
+      "credit_card_info":{
+      "title":"גם אם מסרת פרטים, יש מה לעשות עם זה",
+      "content":"ע”פ החוק אתה רשאי לקבל החזר. ההמלצה היא לבטל את כרטיס האשראי באופן מיידי, ולוודא שלא נעשה בו שימוש.",
+      "button":"הבנתי, אפשר להמשיך"
       },
-      "file_not_opened":{
-        "message":"תמחקו את הקובץ ואתם בסדר!"
+      "paypal_info":{
+      "title":"פייפאל מציעה תוכנית שתוכל להגן עליך",
+      "content":{
+        "firstHeader":"Buyer Protection היא תוכנית שמבטיחה לך החזר כספי במקרה שהמוצר שקנית באינטרנט אינו תואם לתיאור המוכר או אם לא קיבלת אותו כלל.",
+        "secondHeader":"ניתן להפעיל את ההגנה אם לא קיבלת את המוצר שהזמנת, או שהמוצר שקיבלת שונה ממה שתואר (שבור, מזויף, או שונה במפרט)."
       },
-      "file_opened": {
-        "question": "האם אתם חושדים שהתקנתם נוזקה/כופרה?",
-        "type": "choice",	
-        "answers": {
-          "כן": "malware_ransomware_installed",
-          "לא": "no_malware_ransomware"
-        }
+      "button":"הבנתי, אפשר להמשיך",
+      "next":"paypal_next"
       },
-      "no_malware_ransomware": {
-        "message": "נתקו את המחשב מהאינטרנט. הריצו סריקה של האנטי-וירוס."
+      "paypal_next":{
+      "title":"איך זה עובד?",
+      "content":"במידה והתשלום בוצע דרך פייפאל, אתה יכול להגיש תלונה תוך 180 יום ממועד הרכישה. בתלונה תידרש לשתף מידע ומסמכים רלוונטיים (כמו התכתבות עם המוכר או הוכחות אחרות).",
+      "button":"הבנתי, איך מגישים תלונה?",
+      "next":"paypal_report"
       },
-      "malware_ransomware_installed":{
-        "question": "מה הותקן",
-        "type": "choice",	
-        "answers": {
-          "נוזקה": "malware_installed",
-          "כופרה": "ransomware_attack"
-        }
+      "paypal_report":{
+      "title":"איך מגישים תלונה?",
+      "content":{
+        "firstHeader":"ראשית התחבר לחשבון PayPal שלך, ועבור לקטגוריית “Resolution Center”.",
+        "image":"/images/paypal_report.png",
+        "secondHeader":"פתח תלונה על העסקה הבעייתית ועקוב אחרי ההנחיות עד לסיום התהליך."
       },
-      "malware_installed": {
-        "question": " על איזה מכשיר אתם?",
-        "type": "choice",	
-        "answers": {
-          "מחשב": "malware_computer",
-          "סמארטפון": " malware_phone"
-        }
-      }     
-    }
+      "button":"הבנתי, אפשר להמשיך הלאה",
+      "next":"file_question"
+      },
+      "file_question":{
+      "question":"הורדתם קובץ כלשהו מהאתר?",
+      "type":"choice",
+      "answers":{
+        "כן":"downloaded_file",
+        "לא":"didnt_download_file"
+      }
+      },
+      "downloaded_file":{
+      "question":"המלצתנו היא לא לפתוח את הקובץ, מחשש שמדובר בוירוס.",
+      "type":"choice",
+      "answers":{
+        "פתחתי את הקובץ":"opened_file",
+        "לא פתחתי את הקובץ":" "
+      }
+      }
+      }
   }
-  
+}
+
