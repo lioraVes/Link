@@ -3,7 +3,7 @@ import styles from "../page.module.css";
 
 interface InfoPageProps {
   title: string;
-  info: string;
+  info: string[];
   infoOnClick: () => void; // Fix: Correctly refer to the passed function
 }
 
@@ -38,7 +38,12 @@ const InfoPage: React.FC<InfoPageProps> = ({ title, info, infoOnClick }) => {
 
       <div style={{ height: "50px" }} />
       <div className={styles.infoTitle}>{title}</div>
-      <div className={styles.info}>{info}</div>
+
+      <div className={styles.info}>
+        {info.map((text, index) => (
+          <p key={index}>{text}</p> 
+        ))}
+      </div>
 
       <div style={{ height: "150px" }} />
       <div className={styles.buttonArea}>

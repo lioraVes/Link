@@ -4,9 +4,11 @@ import styles from "../page.module.css";
 interface ChoicePageProps {
   question: string;
   choices: { text: string; onClick: () => void }[];
+  explanation?: string; // optional
+
 }
 
-const ChoicePage: React.FC<ChoicePageProps> = ({ question, choices }) => {
+const ChoicePage: React.FC<ChoicePageProps> = ({ question, choices, explanation}) => {
   return (
     <div className={styles.container}>
       <div className={styles.graphicArea}>
@@ -55,6 +57,11 @@ const ChoicePage: React.FC<ChoicePageProps> = ({ question, choices }) => {
           </button>
         ))}
       </div>
+       {explanation && (
+        <div className={styles.explanation}>
+          <p>{explanation}</p>
+        </div>
+      )}
       <div style={{ height: "150px" }} />
     </div>
   );
