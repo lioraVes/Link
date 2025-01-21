@@ -1,70 +1,132 @@
-/* page.module.css */
-
-  .mainContainer {
-    background: linear-gradient(270deg, rgba(217, 217, 217, 0.2) 0%, rgba(103, 156, 205, 0.138) 100%);
-    border-radius: 10px; 
-    padding: 14px; 
+/* Main container */
+.mainContainer {
+  width: 100%;
+  min-height: 100vh;
+  background: #9162eb; /* Purple background */
+  font-family: Arial, sans-serif;
+  direction: rtl; /* Right-to-left layout */
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
 }
 
-.aboutUs{
-  color: rgba(188, 139, 204, 1);
+.newsHeader {
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px;
+  color: #ffffff;
+  text-align: right;
 }
 
-.newsPageTitle{
-  color: rgba(78, 83, 138, 1);
-  font-size: 40px;
-  font-weight: 400;
-  line-height: 27.55px;
+.newsPageTitle {
+  font-size: 36px; /* Adjust font size as needed */
+  font-weight: bold;
+  margin-bottom: 10px; /* Space between the title and the date */
+}
+
+.newsLink {
+  color: #ffffff; /* Link color */
+  text-decoration: none; /* Removes underline */
+  font-size: 16px; /* Ensures font size matches the date */
+  display: block; /* New line */
+}
+/* Feed container */
+.feedContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* More space between news cards */
+  width: 100%;
+  max-width: 100%; /* Ensure cards take full width on phones */
+  padding-right: 10px; /* Added spacing on the right side */
+}
+
+/* News card */
+.newsCard {
+  background: #fff; /* White background */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative; /* Allow positioning for the date */
+  margin-bottom: 15px; 
+}
+
+/* Date */
+.newsDate {
+  font-size: 12px;
+  color: #ff7e29; /* Orange color for the date */
+  font-weight: bold;
+  margin-bottom: 15px; /* Increased space below the date */
+  position: absolute; /* Absolute positioning for the date */
+  top: 15px;
+  left: 15px; /* Align to the left */
+}
+
+/* Title */
+.newsTitle {
+  font-size: 28px;
+  color: #2d2d2d; /* Dark gray */
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.4;
+  padding-top: 40px; /* Add space to avoid overlap with the date */
+}
+
+/* News content */
+.newsContent {
+  font-size: 18px;
+  color: #555; /* Gray text */
+  line-height: 1.6;
+  text-align: justify;
+  overflow: hidden;
+  display: inline; /* Ensures content is inline */
+}
+
+/* Action link (Read More / Show Less) */
+.readMore {
+  font-size: 18px;
+  color: #ff7e29; /* Orange color */
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline; /* Same line as the text */
+  margin-left: 5px; /* Space between text and the link */
+}
+
+
+/* Image */
+.newsImage {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  max-height: 150px; /* Limit height for mobile screens */
+  margin-top: 10px;
+}
+
+
+/* Header styling */
+.header {
+  background-color: #9162eb; /* Matches the background */
+  color: white;
   text-align: center;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  margin-bottom: 20px;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  width: 100%;
 }
 
-  .newsItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    margin-bottom: 20px;
-    padding: 15px;  
-    border: 1px solid #ccc; /* Subtle border for each item */
-    border-radius: 8px; /* Rounded corners for a softer look */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for a floating effect */
-  }
-  
-  .newsTitle{
-    color:rgba(78, 83, 138, 1);
+.newsLink a {
+  display: flex;
+  align-items: center; /* Centers the icon with the text vertically */
+  color: #ffffff; /* Link color */
+  text-decoration: none; /* No underline */
+}
 
-    font-size: 30px;
-    font-weight: 400;
-    line-height: 17.71px;
-    text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-  }
-  .newsDate {
-    font-size: 25px;
-    color: #777;
-    margin-bottom: 10px;
-  }
-  
-  .newsContent {
-    font-size: 20px;
-    white-space: pre-line;
-    line-height: 1.6;
-  }
-  
-  .newsImage {
-    width: 300px;
-    /* height: 135px;  */
-    object-fit: cover;
-    margin-bottom: 10px;
-  }
-
-  
-  .scrollableContainer {
-    max-height: 500px; /* Set your desired height for the scrollable container */
-    overflow-y: auto;  /* Enables vertical scrolling */
-    padding: 10px;
-    background-color: transparent; /* Make the background transparent */
-  }
+.newsLink svg {
+  width: 16px; /* Set the size of the SVG icon */
+  height: auto;
+  margin-left: 10px; /* Space between the icon and text */
+}
