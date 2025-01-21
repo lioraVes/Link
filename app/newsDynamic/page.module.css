@@ -118,13 +118,6 @@
   width: 100%;
 }
 
-.newsLink a {
-  display: flex;
-  align-items: center; /* Centers the icon with the text vertically */
-  color: #ffffff; /* Link color */
-  text-decoration: none; /* No underline */
-}
-
 .newsLink svg {
   width: 16px; /* Set the size of the SVG icon */
   height: auto;
