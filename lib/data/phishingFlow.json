@@ -72,7 +72,7 @@
         "title": "איך מגישים תלונה?",
         "content": [
            "ראשית התחבר לחשבון PayPal שלך, ועבור לקטגוריית “Resolution Center”.",
-           "/images/paypal_report.png",
+           "/images/paypalReport.png",
            "פתח תלונה על העסקה הבעייתית ועקוב אחרי ההנחיות עד לסיום התהליך."
         ],
         "type": "info",
@@ -83,7 +83,7 @@
         "type": "choice",
         "answers": {
           "כן": "downloaded_file",
-          "לא": "didnt_download_file"
+          "לא": "end"
         }
       },
       "downloaded_file": {
@@ -91,7 +91,21 @@
         "type": "choice",
         "answers": {
           "פתחתי את הקובץ": "opened_file",
-          "לא פתחתי את הקובץ": " "
+          "לא פתחתי את הקובץ": "end"
+        }
+      },
+      "opened_file":{
+        "type":"info",
+        "title":"גם אם פתחת את הקובץ, יש מה לעשות",
+        "content":["ראשית, נתקו את המחשב מהאינטרנט. לאחר מכן הריצו סריקה של אנטי-וירוס."],
+        "next":"malware_ransomware_question"
+      },
+      "malware_ransomware_question":{
+        "question": "האם אתם חושדים שהותקנה נוזקה/כופרה על המחשב/סמארטפון?",
+        "type": "choice",
+        "answers": {
+          "כן": " ",
+          "לא": "end"
         }
       }
     }
