@@ -15,12 +15,13 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <title>Link</title>
         <link rel="icon" href="/images/LinkLogo.svg" />
       </head>
-
+      <body>
       <div className="app-container">
         <TopNav />
         <main className="content">{children}</main>
         <BottomNav />
       </div>
+      </body>
     </html>
   );
 };

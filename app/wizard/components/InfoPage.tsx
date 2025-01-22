@@ -8,6 +8,16 @@ interface InfoPageProps {
 }
 
 const InfoPage: React.FC<InfoPageProps> = ({ title, info, infoOnClick }) => {
+  const renderContent = (content: string) => {
+    // Check if the content is an image path
+    if (content.match(/\.(jpeg|jpg|png|gif|svg)$/)) {
+      console.log(content);
+      return <img src={content} alt="Descriptive alt text" className={styles.image} />;
+    }
+    // Otherwise, render the content as a paragraph
+    return <p>{content}</p>;
+  };
+
   return (
     <div className={styles.infoContainer}>
       <div className={styles.graphicArea}>
@@ -18,7 +28,7 @@ const InfoPage: React.FC<InfoPageProps> = ({ title, info, infoOnClick }) => {
           viewBox="0 0 89 115"
           fill="none"
         >
-          <g clip-path="url(#clip0_1389_618)">
+          <g clipPath="url(#clip0_1389_618)">
             <path
               d="M79.43 61.6C78.4 81.92 72.19 87.21 58.59 98.8C56.2 100.83 53.54 103.1 50.69 105.64C41.18 104.64 31.81 99.49 24.74 91.3C18.12 83.63 13.39 73.2 11.07 61.13C8.99995 50.38 8.93996 39.38 9.28996 29.69C21.51 25.88 33.17 19.88 43.37 12.14C53.79 21.65 65.18 28.76 78.09 33.8L81.41 25.29C68.45 20.22 57.13 12.88 46.82 2.83999L43.9 -0.0100098L40.74 2.57999C29.94 11.44 17.11 18.1 3.64996 21.84L0.459955 22.73L0.309955 26.04C-0.190045 37.01 -0.370045 49.97 2.10996 62.87C4.72995 76.51 10.17 88.41 17.83 97.28C26.98 107.87 39.45 114.29 52.07 114.91L53.96 115L55.36 113.73C58.66 110.74 61.77 108.09 64.52 105.75C78.74 93.63 87.33 86.31 88.56 62.06L79.44 61.6H79.43Z"
               fill="#F6FBFF"
@@ -38,10 +48,10 @@ const InfoPage: React.FC<InfoPageProps> = ({ title, info, infoOnClick }) => {
 
       <div style={{ height: "50px" }} />
       <div className={styles.infoTitle}>{title}</div>
-
+      
       <div className={styles.info}>
         {info.map((text, index) => (
-          <p key={index}>{text}</p> 
+          <React.Fragment key={index}>{renderContent(text)}</React.Fragment>
         ))}
       </div>
 
