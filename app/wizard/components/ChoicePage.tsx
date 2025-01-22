@@ -67,7 +67,7 @@ const ChoicePage: React.FC<ChoicePageProps> = ({
         {choices.map((choice, index) => (
           <button
             key={index}
-            className={styles.multipleChoiceButton}
+            className={`${styles.multipleChoiceButton} ${styles.fadeIn}`}
             onClick={choice.onClick}
           >
             {choice.text}
