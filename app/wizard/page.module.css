@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   height: 80vh;
-  padding: 30px;
   text-align: center;
 }
 
@@ -67,6 +66,7 @@
 
 .title {
   width: 299px;
+  height: 75px;
   color: #4e538a;
   text-align: center;
   font-size: 21px;
@@ -90,7 +90,6 @@
 }
 
 .info {
-
   margin-top: 20px;
   font-size: 18px;
   color: white;
@@ -114,7 +113,7 @@
 .infoContainer {
   width: auto;
   margin: 0 auto; /* Centers the container horizontally */
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -125,18 +124,15 @@
   background-color: #fe5068;
 }
 
-.explanation{
+.explanation {
   width: 259px;
   height: 98px;
   flex-shrink: 0;
 
-  color: #4E538A;
+  color: #4e538a;
   text-align: center;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
-  line-height: 20px; 
-  margin-top:73px;
-  margin-bottom:73px;
-
+  line-height: 20px;
 }

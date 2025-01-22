@@ -5,18 +5,29 @@ interface ChoicePageProps {
   question: string;
   choices: { text: string; onClick: () => void }[];
   explanation?: string; // optional
-
 }
 
-const ChoicePage: React.FC<ChoicePageProps> = ({ question, choices, explanation}) => {
+const ChoicePage: React.FC<ChoicePageProps> = ({
+  question,
+  choices,
+  explanation,
+}) => {
   const highlightWords = (text: string, wordsToHighlight: string[]) => {
-    const parts = text.split(new RegExp(`(${wordsToHighlight.join('|')})`, 'gi'));
+    const parts = text.split(
+      new RegExp(`(${wordsToHighlight.join("|")})`, "gi")
+    );
     return parts.map((part, index) =>
-      wordsToHighlight.includes(part.toLowerCase()) ? <strong key={index}>{part}</strong> : part
+      wordsToHighlight.includes(part.toLowerCase()) ? (
+        <strong key={index}>{part}</strong>
+      ) : (
+        part
+      )
     );
   };
   return (
     <div className={styles.container}>
+      <div style={{ height: "100px" }} />
+
       <div className={styles.graphicArea}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +65,11 @@ const ChoicePage: React.FC<ChoicePageProps> = ({ question, choices, explanation}
       {/* <div style={{ height: "25px" }} /> */}
       <div className={styles.buttonArea}>
         {choices.map((choice, index) => (
-          <button key={index} className={styles.multipleChoiceButton} onClick={choice.onClick}>
+          <button
+            key={index}
+            className={styles.multipleChoiceButton}
+            onClick={choice.onClick}
+          >
             {choice.text}
           </button>
         ))}

@@ -33,8 +33,6 @@
   flex-direction: column;
   min-height: 100vh;
   font-family: "SimplerProAlte", sans-serif; /* Apply the custom font here */
-  background-color: #F6FBFF;
-  
 }
 
 .content {
@@ -57,7 +55,7 @@
 
 .nav-item {
   font-size: 16px;
-  color: #4E538A; 
+  color: #4e538a;
   text-decoration: none;
   text-align: center;
   font-family: "SimplerProAlte", sans-serif; /* Use the custom font for nav items */

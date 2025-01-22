@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../page.module.css";
 
 interface InfoPageProps {
@@ -8,11 +8,26 @@ interface InfoPageProps {
 }
 
 const InfoPage: React.FC<InfoPageProps> = ({ title, info, infoOnClick }) => {
+  useEffect(() => {
+    document.body.style.backgroundColor = "#FE5068";
+
+    // Reset the body background color when the component unmounts
+    return () => {
+      document.body.style.backgroundColor = "";
+    };
+  }, []);
+
   const renderContent = (content: string) => {
     // Check if the content is an image path
     if (content.match(/\.(jpeg|jpg|png|gif|svg)$/)) {
       console.log(content);
-      return <img src={content} alt="Descriptive alt text" className={styles.image} />;
+      return (
+        <img
+          src={content}
+          alt="Descriptive alt text"
+          className={styles.image}
+        />
+      );
     }
     // Otherwise, render the content as a paragraph
     return <p>{content}</p>;
@@ -20,6 +35,8 @@ const InfoPage: React.FC<InfoPageProps> = ({ title, info, infoOnClick }) => {
 
   return (
     <div className={styles.infoContainer}>
+      <div style={{ height: "150px" }} />
+
       <div className={styles.graphicArea}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +65,7 @@ const InfoPage: React.FC<InfoPageProps> = ({ title, info, infoOnClick }) => {
 
       <div style={{ height: "50px" }} />
       <div className={styles.infoTitle}>{title}</div>
-      
+
       <div className={styles.info}>
         {info.map((text, index) => (
           <React.Fragment key={index}>{renderContent(text)}</React.Fragment>
