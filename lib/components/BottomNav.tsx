@@ -9,13 +9,24 @@ const BottomNav: React.FC = () => {
 
   return (
     <nav className="bottom-nav">
-      <Link href="/newsDynamic" className={`${"nav-item"} ${pathname === '/newsDynamic' ? "active" : ''}`}>
+      <Link
+        href="/newsDynamic"
+        className={`${"nav-item"} ${
+          pathname === "/newsDynamic" ? "active" : ""
+        }`}
+      >
         עדכונים
       </Link>
-      <Link href="/wizard" className={`${"nav-item"} ${pathname === '/wizard' ? "active" : ''}`}>
+      <Link
+        href="/"
+        className={`${"nav-item"} ${pathname === "/" ? "active" : ""}`}
+      >
         עזרה ראשונה
       </Link>
-      <Link href="/report" className={`${"nav-item"} ${pathname === '/report' ? "active" : ''}`}>
+      <Link
+        href="/report"
+        className={`${"nav-item"} ${pathname === "/report" ? "active" : ""}`}
+      >
         דיווח
       </Link>
     </nav>

@@ -58,48 +58,67 @@ export default function News() {
     fetchNewsData();
   }, []);
 
-  if (loading) {
-    return <p>Loading...</p>; // Loading state
-  }
-
   return (
     <main className={styles.mainContainer}>
-
-      <div className={styles.newsHeader}>
-        <div className={styles.newsPageTitle}>
-          חם ברשת
+      {loading ? (
+        <div>
+          <div style={{ height: "250px" }} />
+          <div className={styles.spinnerContainer}>
+            <div className={styles.spinner}></div>
+          </div>
         </div>
-        
+      ) : (
+        <div>
+          {/* Header Section */}
+          <div className={styles.newsHeader}>
+            <div className={styles.newsPageTitle}>חם ברשת</div>
+            <a href="../report" className={styles.newsLink}>
+              <svg
+                width="24"
+                height="16"
+                viewBox="0 0 24 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.292892 7.29289C-0.0976315 7.68342 -0.0976315 8.31658 0.292892 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292892 7.29289ZM24 7L1 7V9L24 9V7Z"
+                  fill="#F38F56"
+                />
+              </svg>
+              רוצה לעזור לנו להוסיף עדכון חם?
+            </a>
+          </div>
 
-        <a href="../report" className={styles.newsLink}>
-        <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0.292892 7.29289C-0.0976315 7.68342 -0.0976315 8.31658 0.292892 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292892 7.29289ZM24 7L1 7V9L24 9V7Z" fill="#F38F56"/>
-        </svg>
-        רוצה לעזור לנו להוסיף עדכון חם?</a>
-      </div>
+          {/* Error Handling */}
+          {error && <p className={styles.error}>{error}</p>}
 
-      {error && <p className="error">{error}</p>}
-
-      {newsData.map(({ title, date, content, image }: NewsItem, i: number) => (
-        <div className={styles.newsCard} key={i}>
-          <p className={styles.newsDate}>{date}</p>
-          <h2 className={styles.newsTitle}>{title}</h2>
-          {image && <img className={styles.newsImage} src={image} alt={title} />}
-          <p className={styles.newsContent}>
-            {expandedIndex === i
-              ? content
-              : `${content.slice(0, 100)}...`}{" "}
-            <span
-              className={styles.readMore}
-              onClick={() =>
-                setExpandedIndex(expandedIndex === i ? null : i)
-              }
-            >
-              {expandedIndex === i ? "הצג פחות" : "קרא עוד"}
-            </span>
-          </p>
+          {/* News List */}
+          {newsData.map(
+            ({ title, date, content, image }: NewsItem, i: number) => (
+              <div className={styles.newsCard} key={i}>
+                <p className={styles.newsDate}>{date}</p>
+                <h2 className={styles.newsTitle}>{title}</h2>
+                {image && (
+                  <img className={styles.newsImage} src={image} alt={title} />
+                )}
+                <p className={styles.newsContent}>
+                  {expandedIndex === i
+                    ? content
+                    : `${content.slice(0, 100)}...`}{" "}
+                  <span
+                    className={styles.readMore}
+                    onClick={() =>
+                      setExpandedIndex(expandedIndex === i ? null : i)
+                    }
+                  >
+                    {expandedIndex === i ? "הצג פחות" : "קרא עוד"}
+                  </span>
+                </p>
+              </div>
+            )
+          )}
         </div>
-      ))}
+      )}
     </main>
   );
 }

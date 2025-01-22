@@ -20,10 +20,10 @@ type InfoNode = {
   type: string;
   title: string;
   content: string[]; // Array of strings for content
-  next: string; 
+  next: string;
 };
 
-type Node = ChoiceNode | InfoNode; 
+type Node = ChoiceNode | InfoNode;
 type WizardData = {
   phishing: {
     [key: string]: Node; // The nodes are indexed by keys (e.g., q1, q2, etc.)
@@ -32,30 +32,31 @@ type WizardData = {
 
 const typedWizardData = wizardData as WizardData;
 
-
 export default function Wizard() {
   const [currentNode, setCurrentNode] = useState<Node>(wizardData.phishing.q1); // Start at the root node
-  const router = useRouter(); 
+  const router = useRouter();
 
   const handleChoice = (nextNodeKey: string) => {
     console.log("handleChoice called with key:", nextNodeKey);
-    
+
     if (nextNodeKey === "end") {
       console.log("Navigating to contact page");
       router.push("/contact");
       return;
     }
 
-    const nextNode = wizardData.phishing[nextNodeKey as keyof typeof wizardData.phishing];
-    console.log("Next node:", nextNode);
-  
+    const nextNode =
+      wizardData.phishing[nextNodeKey as keyof typeof wizardData.phishing];
+
     if (nextNode) {
       setCurrentNode(nextNode);
     } else {
-      console.error("Invalid nextNodeKey or missing node in JSON:", nextNodeKey);
+      console.error(
+        "Invalid nextNodeKey or missing node in JSON:",
+        nextNodeKey
+      );
     }
   };
-
 
   const renderNode = () => {
     console.log("Current Node Type:", currentNode.type);
@@ -64,30 +65,35 @@ export default function Wizard() {
       console.log("Rendering ChoicePage");
 
       const choiceNode = currentNode as ChoiceNode;
-      const choices = Object.entries(choiceNode.answers).map(([key, value]) => ({
-        text: key,
-        onClick: () => handleChoice(value),
-      }));
-
-      return <ChoicePage question={choiceNode.question} choices={choices} explanation={choiceNode.explanation}
-/>;
-    }
-
-
-    if (currentNode.type === "info") {
-      console.log("Rendering InfoPage");
+      const choices = Object.entries(choiceNode.answers).map(
+        ([key, value]) => ({
+          text: key,
+          onClick: () => handleChoice(value),
+        })
+      );
 
       return (
-        <InfoPage title={(currentNode as InfoNode).title} info={(currentNode as InfoNode).content} 
-      infoOnClick={() => {
-        const infoNode = currentNode as InfoNode;
-        if (infoNode.next) {
-          handleChoice(infoNode.next);
-        } else {
-          console.log("No next node defined for this step");
-        }
-      }}/>
-    );
+        <ChoicePage
+          question={choiceNode.question}
+          choices={choices}
+          explanation={choiceNode.explanation}
+        />
+      );
+    }
+
+    if (currentNode.type === "info") {
+      return (
+        <InfoPage
+          title={(currentNode as InfoNode).title}
+          info={(currentNode as InfoNode).content}
+          infoOnClick={() => {
+            const infoNode = currentNode as InfoNode;
+            if (infoNode.next) {
+              handleChoice(infoNode.next);
+            }
+          }}
+        />
+      );
     }
 
     return <div>Invalid Node</div>;
@@ -96,13 +102,10 @@ export default function Wizard() {
   return <div className={styles.container}>{renderNode()}</div>;
 }
 
-
-
-
-  // EXAMPLE OF USING INFO
-  // const title = "ריכזתי עבורך מידע שיעזור לך";
-  // const info =
-  //   "החליפו באופן מיידי את שם המשתמש והסיסמא של השירות אליו חשבתם שנכנסתם. שנו את שם המשתמש והסיסמה גם בשירותים הנוספים שבהם הפרטים משומשים.";
+// EXAMPLE OF USING INFO
+// const title = "ריכזתי עבורך מידע שיעזור לך";
+// const info =
+//   "החליפו באופן מיידי את שם המשתמש והסיסמא של השירות אליו חשבתם שנכנסתם. שנו את שם המשתמש והסיסמה גם בשירותים הנוספים שבהם הפרטים משומשים.";
 
 //   return (
 //     <div>
@@ -110,10 +113,8 @@ export default function Wizard() {
 //     </div>
 //   );
 
-
-
 // //  EXAMPLE OF USING CHOICE PAGE
- 
+
 //  export default function Wizard() {
 //   const router = useRouter();
 
@@ -139,4 +140,3 @@ export default function Wizard() {
 //     </div>
 //   );
 // }
-
