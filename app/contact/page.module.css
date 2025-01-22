@@ -140,6 +140,20 @@
 }
 .formCheckBox:checked {
   background-color: #fe5068; /* Pink background when checked */
+  position: relative;
+}
+
+.formCheckBox:checked::before {
+  content: " ";
+  border: 2px solid white;
+  border-top: none;
+  border-left: none;
+  width: 23%;
+  height: 50%;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .checkboxText {
