@@ -140,3 +140,9 @@
   font-size: 16px;
   color: #ffa54f; /* Subtle color for date */
 }
+
+.svgStyle {
+  display: flex;
+  justify-content: left;
+  padding: 10px 0 0 10px;
+}
