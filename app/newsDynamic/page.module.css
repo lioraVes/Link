@@ -47,7 +47,7 @@
   flex-direction: column;
   gap: 10px;
   position: relative; /* Allow positioning for the date */
-  margin-bottom: 15px;
+  margin: 18px 10px;
 }
 
 /* Date */
@@ -65,7 +65,7 @@
 .newsTitle {
   font-size: 28px;
   color: #2d2d2d; /* Dark gray */
-  font-weight: bold;
+  font-weight: 600;
   margin: 0;
   line-height: 1.4;
   padding-top: 40px; /* Add space to avoid overlap with the date */
@@ -151,4 +151,10 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.svgStyle {
+  display: flex;
+  justify-content: left;
+  padding: 10px 0 0 10px;
 }
