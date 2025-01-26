@@ -106,25 +106,27 @@ export default function Wizard() {
         />
       );
     }
+ 
+    if (currentNode.type === "info") {
+      const infoNode = currentNode as InfoNode;
+      const buttons = Object.entries(infoNode.buttons).map(
+        ([key, value]) => ({
+          text: key,
+          onClick: () => handleChoice(value),
+        })
+      );
+      return (
+        <InfoPage
+          title={(currentNode as InfoNode).title}
+          icon={(currentNode as InfoNode).icon}
+          info={(currentNode as InfoNode).content}
+          buttons={buttons}
+        />
+      );
+    };
+
+    return <div>Invalid Node</div>;
   };
-
-  //   if (currentNode.type === "info") {
-  //     return (
-  //       <InfoPage
-  //         title={(currentNode as InfoNode).title}
-  //         info={(currentNode as InfoNode).content}
-  //         infoOnClick={() => {
-  //           const infoNode = currentNode as InfoNode;
-  //           if (infoNode.next) {
-  //             handleChoice(infoNode.next);
-  //           }
-  //         }}
-  //       />
-  //     );
-  //   }
-
-  //   return <div>Invalid Node</div>;
-  // };
 
   return (
     <div className={styles.container}>
