@@ -20,7 +20,7 @@ const BottomNav: React.FC = () => {
     </svg>
 );
 
-const helpSVG = pathname === "/wizard" ? (
+const helpSVG = pathname === "/wizard"  || pathname === "/contact" ? (
   <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle opacity="0.25" cx="23.5" cy="23.5" r="23.5" fill="#FE3C57"/>
           <path d="M11.8999 35C5.70344 30 7.91985 19.0333 11.4709 15L17 19.2333C15.2602 21.2111 14.009 27.8889 16.5829 29.9667L11.8999 35Z" fill="#FE5068"/>
