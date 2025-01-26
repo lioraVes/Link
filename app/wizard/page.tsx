@@ -9,6 +9,7 @@ import InfoPage from "./components/InfoPage";
 import ChoicePage from "./components/ChoicePage";
 import TopNav from "@/lib/components/TopNav";
 import GuidePage from "./components/GuidePage";
+import MultiPage from "./components/MultiPage";
 
 type ChoiceNode = {
   type: "choice";
@@ -143,8 +144,27 @@ export default function Wizard() {
         />
       );
     }
- 
+    if (currentNode.type === "multi") {
+      const multiNode = currentNode as MultiNode;
+      const buttons = Object.entries(multiNode.buttons).map(
+        ([key, value]) => ({
+          text: key,
+          onClick: () => handleChoice(value),
+        })
+      );
 
+      return (
+        <MultiPage
+          title={multiNode.title}
+          icon={multiNode.icon}
+          sub={multiNode.sub}
+          checkboxHeader={multiNode.checkboxHeader}
+          checkboxes={multiNode.checkboxes}
+          buttons={buttons} 
+        />
+      );
+    }
+ 
     return <div>Invalid Node</div>;
   };
 
