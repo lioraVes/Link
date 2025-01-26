@@ -6,9 +6,11 @@
   height: 80vh;
   padding: 30px;
   text-align: center;
+  background-color: #F6FBFF;
 }
 
 .graphicArea {
+  margin-top: 150px;
   margin-bottom: 30px;
 }
 
@@ -26,28 +28,68 @@
 
 .textArea {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 19px;
   color: #4e538a;
-  line-height: 1;
+  line-height: 20px;
   direction: rtl;
   text-align: center;
+  color: #4E538A;
+  font-style: normal;
+  font-weight: 400;
+  width: 263px;
 }
+.starting{
+  font-size: 17px;
+font-weight: 600;
+line-height: 19px; /* 111.765% */
+}
+
 
 .buttonArea {
   margin-top: 20px;
 }
-
-.startButton {
+.buttonStyle{
+  display: flex;
+  justify-content: center; /* Centers items horizontally */
+  align-items: center; /* Centers items vertically */
+  width: 300px;
+  padding: 13px ;
+  gap: 10px;
+  border-radius: 8px; 
+  cursor: pointer;
+  margin-top: 10px;
+}
+.helpButton {
   background-color: #fe5068;
   color: #fff;
-  font-size: 25px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  color: #F6FBFF;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
   transition: background-color 0.3s ease;
 }
+.newsButton {
+  background-color: #7B61FF;
+  color: #fff;
+  color: #F6FBFF;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  transition: background-color 0.3s ease;
 
+}.reportButton {
+  background-color: #F38A56;
+  color: #fff;
+  color: #F6FBFF;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  transition: background-color 0.3s ease;
+
+}
 .multipleChoiceButton {
   width: 300px;
   background-color: #fe5068;
@@ -64,10 +106,10 @@
 .title {
   color: #4e538a;
   text-align: center;
-  font-size: 21px;
+  font-size: 25px;
   font-style: normal;
   font-weight: 600;
-  line-height: 24px;
+  line-height: 38px;
   width: 220px;
 }
 

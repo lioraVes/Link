@@ -113,7 +113,7 @@ export default function News() {
         <div>
           {/* Header Section */}
           <div className={styles.newsHeader}>
-            <div className={styles.newsPageTitle}>חם ברשת</div>
+            <div className={styles.newsPageTitle}>עדכונים חמים</div>
             <a href="../report" className={styles.newsLink}>
               <svg
                 width="24"

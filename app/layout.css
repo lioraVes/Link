@@ -37,10 +37,11 @@
 
 .content {
   flex: 1;
-  padding-bottom: 60px; /* Reserve space for the bottom nav */
+  /* padding-bottom: 60px; Reserve space for the bottom nav */
 }
 
 .bottom-nav {
+  width:100%;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -51,24 +52,35 @@
   justify-content: space-around;
   align-items: center;
   border-top: 1px solid #ddd; /* Optional: Top border for separation */
+  border: 1px solid #E9F2F8;
+  background: #FFF;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.nav-item {
+.bottom-nav a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Make sure the entire link area is clickable */
+  width: 100%;  /* Make sure the entire link area is clickable */
+}
+
+/* .nav-item {
   font-size: 16px;
   color: #4e538a;
   text-decoration: none;
   text-align: center;
   font-family: "SimplerProAlte", sans-serif; /* Use the custom font for nav items */
-  font-size: 21px;
+  /* font-size: 21px;
   font-weight: 400;
-}
+} */ 
 
-.nav-item.active {
+/* .nav-item.active {
   font-weight: 900;
-}
-.nav-item:hover {
+} */
+/* .nav-item:hover {
   color: #0070f3; /* Optional: Change color on hover */
-}
+/* } */ 
 
 /* Apply custom font to buttons */
 button {

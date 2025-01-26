@@ -64,11 +64,14 @@
 /* Title */
 .newsTitle {
   font-size: 28px;
-  color: #2d2d2d; /* Dark gray */
+  color: #4E538A; /* Dark gray */
   font-weight: 600;
   margin: 0;
-  line-height: 1.4;
   padding-top: 40px; /* Add space to avoid overlap with the date */
+  text-align: right;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 /* News content */
