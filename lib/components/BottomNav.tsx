@@ -7,8 +7,6 @@ import { usePathname } from "next/navigation";
 const BottomNav: React.FC = () => {
   const pathname = usePathname();
 
-  const isRoot = pathname === "/";
-
   const newsDynamicSVG = pathname === "/newsDynamic" ? (
     <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle opacity="0.25" cx="23.5" cy="23.5" r="23.5" fill="#7B61FF"/>
@@ -57,7 +55,7 @@ const reportSVG = pathname === "/report" ? (
       <Link href="/newsDynamic">
           {newsDynamicSVG}
       </Link>
-      <Link href="/" >
+      <Link href="/wizard" >
         {helpSVG}
       </Link>
       <Link href="/report" >
