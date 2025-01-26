@@ -3,8 +3,8 @@ import styles from "../page.module.css";
 
 interface InfoPageProps {
   title: string;
-  info: string[];
-  infoOnClick: () => void; // Fix: Correctly refer to the passed function
+  info: string;
+  infoOnClick: { text: string; onClick: () => void }[];
 }
 
 const InfoPage: React.FC<InfoPageProps> = ({ title, info, infoOnClick }) => {

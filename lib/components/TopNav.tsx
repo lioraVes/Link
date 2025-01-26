@@ -40,7 +40,7 @@ const TopNav: React.FC<TopNavProps> = ({ theme }) => {
       </div>
 
       {/* Center Icon */}
-      <div style={{ marginLeft: "20px" }}>
+      {/* <div style={{ marginLeft: "20px" }}>
         <svg
           width="44"
           height="44"
@@ -53,7 +53,7 @@ const TopNav: React.FC<TopNavProps> = ({ theme }) => {
             fill={elementsColor}
           />
         </svg>
-      </div>
+      </div> */}
     </div>
   );
 };
