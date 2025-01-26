@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import InfoPage from "./components/InfoPage";
 import ChoicePage from "./components/ChoicePage";
 import TopNav from "@/lib/components/TopNav";
+import GuidePage from "./components/GuidePage";
 
 type ChoiceNode = {
   type: "choice";
@@ -54,7 +55,7 @@ type WizardData = {
 const typedWizardData = wizardData as WizardData;
 
 export default function Wizard() {
-  const [currentNode, setCurrentNode] = useState<Node>(typedWizardData.flow.what_happend);
+  const [currentNode, setCurrentNode] = useState<Node>(typedWizardData.flow.start);
   const router = useRouter();
   const [theme, setTheme] = useState("white");
   console.log(currentNode);
@@ -124,6 +125,25 @@ export default function Wizard() {
         />
       );
     };
+    if (currentNode.type === "guide") {
+      const guideNode = currentNode as GuideNode;
+      const buttons = Object.entries(guideNode.buttons).map(
+        ([key, value]) => ({
+          text: key,
+          onClick: () => handleChoice(value),
+        })
+      );
+
+      return (
+        <GuidePage
+          title={guideNode.title}
+          icon={guideNode.icon}
+          contents={guideNode.content} // Contents array
+          buttons={buttons} // Map buttons to choices
+        />
+      );
+    }
+ 
 
     return <div>Invalid Node</div>;
   };
