@@ -15,12 +15,20 @@ const GuidePage: React.FC<GuidePageProps> = ({
   buttons
 }) => {
 
-    const renderContent = (content: string) => {
-        return (
-          <div className={styles.content} key={content}>
-            <p>{content}</p>
-          </div>
-        );
+      const renderContent = (content: string) => {
+        // Check if the content is an image path
+        if (content.match(/\.(jpeg|jpg|png|gif|svg)$/)) {
+          console.log(content);
+          return (
+            <img
+              src={content}
+              alt="Descriptive alt text"
+              className={styles.image}
+            />
+          );
+        }
+        // Otherwise, render the content as a paragraph
+        return <p>{content}</p>;
       };
 
   return (
