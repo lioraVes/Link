@@ -13,8 +13,15 @@
   padding: 20px;
   color: #ffffff;
   text-align: right;
+  width:319px;
+  margin-top: 55px;
 }
 
+.titleWithArrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .newsPageTitle {
   font-size: 36px; /* Adjust font size as needed */
   font-weight: bold;
@@ -24,7 +31,7 @@
 .newsLink {
   color: #ffffff; /* Link color */
   text-decoration: none; /* Removes underline */
-  font-size: 16px; /* Ensures font size matches the date */
+  font-size: 18px; /* Ensures font size matches the date */
   display: block; /* New line */
 }
 /* Feed container */
@@ -42,7 +49,7 @@
   background: #fff; /* White background */
   border-radius: 15px; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  padding: 15px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -50,24 +57,39 @@
   margin: 18px 10px;
 }
 
-/* Date */
 .newsDate {
-  font-size: 12px;
-  color: #f38f56; /* Orange color for the date */
+  font-size: 13px;
+  color: #A6B5C0; /* Color for the date */
   font-weight: bold;
-  margin-bottom: 15px; /* Increased space below the date */
-  position: absolute; /* Absolute positioning for the date */
-  top: 15px;
-  left: 15px; /* Align to the left */
+  margin-right: 16px; /* Space between the date and "Published by" text */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: right; /* Ensure it's aligned right */
+}
+
+.newsDateWrapper {
+  display: flex;
+  justify-content: flex-start; /* Align content to the right */
+  align-items: center;
+}
+
+.publishedBy {
+  color: #A6B5C0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px; /* 150% */
+  margin-right:16px;
+  margin-left:42px;
 }
 
 /* Title */
 .newsTitle {
-  font-size: 28px;
+  font-size: 21px;
   color: #4E538A; /* Dark gray */
   font-weight: 600;
   margin: 0;
-  padding-top: 40px; /* Add space to avoid overlap with the date */
   text-align: right;
   font-style: normal;
   font-weight: 600;
@@ -77,23 +99,29 @@
 /* News content */
 .newsContent {
   font-size: 18px;
-  color: #555; /* Gray text */
-  line-height: 1.6;
+  color: #4E538A; /* Gray text */
+  line-height: 21px;
   text-align: right;
   overflow: hidden;
   white-space: pre-wrap;
   display: inline;
+  text-align: right;
+  font-style: normal;
+  font-weight: 400;
 }
 
 /* Action link (Read More / Show Less) */
 .readMore {
   font-size: 18px;
-  color: #f38f56; /* Orange color */
+  color: #7B61FF; 
   text-decoration: none;
   font-weight: bold;
   cursor: pointer;
   display: inline; /* Same line as the text */
   margin-left: 5px; /* Space between text and the link */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
 }
 
 /* Image */
