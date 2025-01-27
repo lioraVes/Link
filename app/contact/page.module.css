@@ -6,7 +6,7 @@
   align-items: center; /* Center items horizontally */
   text-align: center; /* Ensure text stays centered */
   box-sizing: border-box; /* Include padding in width/height calculation */
-  margin-top: 60px;
+  margin-top: 150px;
 }
 
 .logoStep1 {
@@ -62,12 +62,11 @@
   justify-content: center; /* Center items vertically */
   align-items: center; /* Center items horizontally */
   text-align: center; /* Ensure text stays centered */
-  box-sizing: border-box; /* Include padding in width/height calculation */
-  margin-bottom: 44px;
+  margin-top: 150px;
 }
 
 .logoStep2 {
-  margin-top: 80px;
+  margin-top: 75px;
   margin-bottom: 102px;
 }
 
@@ -404,5 +403,37 @@
   flex-direction: column; /* Stack buttons vertically */
   justify-content: center; /* Center the button horizontally */
   align-items: center; /* Center the button vertically */
-  margin-top: 20px; /* Optional: Add margin for spacing */
+  margin-top: 20px; /*Optional: Add margin for spacing */
+}
+
+.paragraphStep3 {
+  width: 281px;
+  flex-shrink: 0;
+
+  color: #4e538a;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px; /* 123.529% */
+  margin-bottom: 38px;
+}
+.reportButton {
+  width: 300px;
+  height: 45px;
+  padding: 10px;
+  gap: 10px;
+  flex-shrink: 0;
+
+  border-radius: 8px;
+  background-color: #F38A56;
+  color: #f6fbff;
+
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 11px;
+
+  transition: background-color 0.3s ease;
+
 }
