@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import styles from "../page.module.css";
 
 interface GuidePageProps {
@@ -8,28 +8,28 @@ interface GuidePageProps {
   buttons: { text: string; onClick: () => void }[]; 
 }
 
-const GuidePage: React.FC<GuidePageProps> = ({
-  title,
-  icon,
-  contents,
-  buttons
-}) => {
-
-      const renderContent = (content: string) => {
-        // Check if the content is an image path
-        if (content.match(/\.(jpeg|jpg|png|gif|svg)$/)) {
-          console.log(content);
-          return (
-            <img
-              src={content}
-              alt="Descriptive alt text"
-              className={styles.image}
-            />
-          );
-        }
-        // Otherwise, render the content as a paragraph
-        return <p>{content}</p>;
+const GuidePage: React.FC<GuidePageProps> = ({title, icon, contents, buttons}) => {
+  
+  useEffect(() => {
+      document.body.style.backgroundColor = "#F6FBFF";
+  
+      // Reset the body background color when the component unmounts
+      return () => {
+        document.body.style.backgroundColor = "";
       };
+    }, []);
+  
+    const renderContent = (content: string) => {
+      // Check if the content is an image path
+      if (content.match(/\.(jpeg|jpg|png|gif|svg)$/)) {
+        console.log(content);
+        return (
+          <img src={content}  alt="Descriptive alt text"  className={styles.image} />
+        );
+      }
+      // Otherwise, render the content as a paragraph
+      return <p className={styles.explanation}>{content}</p>;
+    };
 
   return (
     <div className={styles.container}>

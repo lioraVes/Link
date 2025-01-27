@@ -19,18 +19,6 @@ const InfoPage: React.FC<InfoPageProps> = ({ title,icon, info, buttons }) => {
   }, []);
 
   const renderContent = (content: string) => {
-    // // Check if the content is an image path
-    // if (content.match(/\.(jpeg|jpg|png|gif|svg)$/)) {
-    //   console.log(content);
-    //   return (
-    //     <img
-    //       src={content}
-    //       alt="Descriptive alt text"
-    //       className={styles.image}
-    //     />
-    //   );
-    // }
-    // Otherwise, render the content as a paragraph
     return <p>{content}</p>;
   };
 

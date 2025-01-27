@@ -3,11 +3,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  /* height: 80vh; */
   text-align: center;
 }
 
 .graphicArea {
+  margin-top: 150px;
   margin-bottom: 30px;
 }
 
@@ -83,7 +84,7 @@
 
 .title {
   width: 299px;
-  height: 75px;
+  /* height: 75px; */
   color: #4e538a;
   text-align: center;
   font-size: 21px;
@@ -153,6 +154,7 @@
   font-weight: 400;
   line-height: 21px;
 }
+
 .link{
   color: #4E538A;
   text-align: center;
@@ -166,4 +168,86 @@
   text-decoration-thickness: auto;
   text-underline-offset: auto;
   text-underline-position: from-font;
+}
+.sub{
+  width: 272px;
+  height: 37px;
+  flex-shrink: 0;
+  color: #4E538A;
+  text-align: right;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px; /* 111.765% */
+  /* margin-top:25px; */
+  margin-bottom: 10px;
+}
+
+.checkboxHeader{
+  font-weight: 600;
+  text-align: right;
+
+}
+
+.checkboxContainer{
+  width: 300px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 2px solid #FE5068;
+}
+.formCheckboxContainer {
+  display: flex;
+  align-items: right;
+  border: 2px solid #FE5068;
+}
+.formCheckBox {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  border: 2px solid #fe5068 !important;
+  cursor: pointer;
+  appearance: none;
+  margin-right: 14px;
+  margin-top: 19px;
+
+}
+.formCheckBox:checked {
+  background-color: #fe5068; /* Pink background when checked */
+  position: relative;
+}
+
+.formCheckBox:checked::before {
+  content: " ";
+  border: 2px solid white;
+  border-top: none;
+  border-left: none;
+  width: 23%;
+  height: 50%;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.checkboxText {
+  width: 223px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #FE5068;
+
+  text-align: right;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 19px; /* 111.765% */
+  margin-top: 16px;
+  margin-bottom:16px;
+
+  margin-right: 16px;
+}
+
+.bottomButton{
+  margin-bottom:80px
 }

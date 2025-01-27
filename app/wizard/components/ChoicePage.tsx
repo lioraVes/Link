@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import styles from "../page.module.css";
 
 interface ChoicePageProps {
@@ -9,14 +9,16 @@ interface ChoicePageProps {
   explanation_bottom?:string; // optional
 }
 
-const ChoicePage: React.FC<ChoicePageProps> = ({
-  question,
-  icon,
-  choices,
-  explanation_top,
-  explanation_bottom
-}) => {
-
+const ChoicePage: React.FC<ChoicePageProps> = ({question, icon, choices, explanation_top, explanation_bottom}) => {
+useEffect(() => {
+      document.body.style.backgroundColor = "#F6FBFF";
+  
+      // Reset the body background color when the component unmounts
+      return () => {
+        document.body.style.backgroundColor = "";
+      };
+    }, []);
+    
   const [showExplanationBottom, setShowExplanationBottom] = useState(false);
 
   const handleLinkClick = () => {
