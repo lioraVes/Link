@@ -45,8 +45,8 @@ export default function News() {
             image: row[3] || "",
           }));
           formattedData.sort((a: NewsItem, b: NewsItem) => {
-            const [dayA, monthA, yearA] = a.date.split("-").map(Number); // Split and parse the date
-            const [dayB, monthB, yearB] = b.date.split("-").map(Number);
+            const [dayA, monthA, yearA] = a.date.split("/").map(Number); // Split and parse the date
+            const [dayB, monthB, yearB] = b.date.split("/").map(Number);
 
             const dateA = new Date(yearA, monthA - 1, dayA).getTime(); // Create a Date object
             const dateB = new Date(yearB, monthB - 1, dayB).getTime();
