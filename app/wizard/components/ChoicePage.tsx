@@ -60,7 +60,7 @@ useEffect(() => {
 
   return (
     <div className={styles.container}>
-      <div style={{ height: "200px" }} />
+      {/* <div style={{ height: "200px" }} /> */}
 
       <div className={styles.graphicArea}>
       <img src={icon} alt="Icon" className={styles.icon} />

@@ -28,12 +28,16 @@ const GuidePage: React.FC<GuidePageProps> = ({title, icon, contents, buttons}) =
         );
       }
       // Otherwise, render the content as a paragraph
-      return <p className={styles.explanation}>{content}</p>;
+      return <div>
+          <p className={styles.explanation}>{content}</p>      
+          <div style={{ height: "10px" }} />
+        </div>
+      ;
     };
 
   return (
     <div className={styles.container}>
-      <div style={{ height: "200px" }} />
+      {/* <div style={{ height: "200px" }} /> */}
 
       <div className={styles.graphicArea}>
       <img src={icon} alt="Icon" className={styles.icon} />
@@ -46,7 +50,7 @@ const GuidePage: React.FC<GuidePageProps> = ({title, icon, contents, buttons}) =
     {/* Contents */}
     {contents.map((content) => renderContent(content))}
 
-      {/* <div style={{ height: "25px" }} /> */}
+      <div style={{ height: "70px" }} />
       {/* Buttons */}
       <div className={styles.buttonArea}>
         {buttons.map((button, index) => (
@@ -59,6 +63,8 @@ const GuidePage: React.FC<GuidePageProps> = ({title, icon, contents, buttons}) =
           </button>
         ))}
       </div>
+      <div style={{ height: "70px" }} />
+
     </div>
   );
 };
