@@ -9,11 +9,17 @@ const ShareButton = ({ title, content, newsLink }: { title: string; content: str
         const message = `*_איגוד האינטרנט הישראלי מזהיר:_*%0A${encodedTitle}%0A${encodedContent}%0Aלעוד עדכונים: ${encodedLink}`;
         
         // Constructing the WhatsApp URL
-        const whatsappUrl = `https://api.whatsapp.com/send?text=${message}`;
-
-        // Open WhatsApp Web on Desktop and WhatsApp App on Mobile
-        window.open(whatsappUrl, "_blank");
-    };
+        const whatsappUrl = `whatsapp://send?text=${message}`;
+  
+        // Try to open the WhatsApp app
+        const opened = window.open(whatsappUrl, "_blank");
+      
+        // If it fails to open (on desktop), fall back to WhatsApp Web
+        if (!opened || opened.closed || typeof opened.closed === 'undefined') {
+          const whatsappWebUrl = `https://api.whatsapp.com/send?text=${message}`;
+          window.open(whatsappWebUrl, "_blank");
+        }
+      };
 
     return (
         <button className="shareButton" onClick={handleShareOnWhatsApp}>
