@@ -16,7 +16,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <link rel="icon" href="/images/LinkLogo.svg" />
       </head>
 
-      <body>
+      <body style={{ margin: "0" }}>
         <div className="app-container">
           <main className="content">{children}</main>
           <BottomNav />
