@@ -5,7 +5,7 @@ interface InfoPageProps {
   title: string;
   icon: string;
   info: string;
-  buttons: { text: string; onClick: () => void }[];
+  buttons: { text: string; onClick: () => void; state: string }[]; // Add state property for pressed or not
 }
 
 const InfoPage: React.FC<InfoPageProps> = ({ title, icon, info, buttons }) => {
@@ -36,13 +36,19 @@ const InfoPage: React.FC<InfoPageProps> = ({ title, icon, info, buttons }) => {
         {buttons.map((button, index) => (
           <button
             key={index}
-            className={styles.infoButton}
+            className={
+              button.state === "pressed"
+                ? `${styles.pressedButton}` // Apply pressed class
+                : `${styles.infoButton}` // Apply not-pressed class
+            }
             onClick={button.onClick}
           >
             {button.text}
           </button>
         ))}
       </div>
+      <div style={{ marginBottom: "70px" }} />
+
     </div>
   );
 };

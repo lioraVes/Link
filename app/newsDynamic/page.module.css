@@ -54,7 +54,7 @@
   flex-direction: column;
   gap: 10px;
   position: relative; /* Allow positioning for the date */
-  margin: 18px 10px;
+  margin: 18px 18px;
 }
 
 .newsDate {

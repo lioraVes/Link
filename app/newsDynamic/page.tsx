@@ -182,13 +182,8 @@ export default function News() {
                     <span className={styles.publishedBy}>
                       פורסם על ידי: מערכת האיגוד
                     </span>
-                    <ShareButton
-                      title={title}
-                      content={content}
-                      newsLink={
-                        "https://product-jam-final-project.vercel.app/newsDynamic"
-                      }
-                    />
+                    <ShareButton title={title}  content={content} newsLink={"https://product-jam-final-project.vercel.app/newsDynamic"} />
+
                   </div>
                 )}
               </div>

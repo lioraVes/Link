@@ -236,3 +236,26 @@
 .bottomButton {
   margin-bottom: 80px;
 }
+
+.pressedButton {
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.50);
+  display: flex;
+  width: 300px;
+  height: 45px;
+ 
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+
+
+  font-size: 17px;
+  padding: 10px 20px;
+ 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.50);
+
+}
