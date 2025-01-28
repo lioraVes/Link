@@ -59,6 +59,8 @@ export default function Wizard() {
   const [currentNode, setCurrentNode] = useState<Node>(typedWizardData.flow.start);
   const router = useRouter();
   const [theme, setTheme] = useState("white");
+  const [history, setHistory] = useState<Node[]>([]); // Add history state
+
   console.log(currentNode);
   // Update theme when currentNode changes
   useEffect(() => {
@@ -79,15 +81,24 @@ export default function Wizard() {
     typedWizardData.flow[nextNodeKey as keyof typeof wizardData.flow];
 
     if (nextNode) {
+      setHistory((prev) => [...prev, currentNode]); // Add current node to history
       setCurrentNode(nextNode);
     } else {
       console.error(
-        "Invalid nextNodeKey or missing node in JSON:",
-        nextNodeKey
+        "Invalid nextNodeKey or missing node in JSON:", nextNodeKey
       );
     }
   };
 
+  const handleBack = () => {
+    if (history.length > 0) {
+      const previousNode = history[history.length - 1];
+      setHistory((prev) => prev.slice(0, -1)); // Remove the last node from history
+      setCurrentNode(previousNode);
+    } else {
+      router.back(); // Navigate back to the previous page
+    }
+  };
   const renderNode = () => {
     if (currentNode.type === "choice") {
       const choiceNode = currentNode as ChoiceNode;
@@ -170,7 +181,7 @@ export default function Wizard() {
 
   return (
     <div className={styles.container}>
-      <TopNav theme={theme} />
+      <TopNav theme={theme} onBack={handleBack} />
       {renderNode()}
     </div>
   );

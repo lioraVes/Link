@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
+import TopNav from "@/lib/components/TopNav";
 
 export default function Contact() {
   const router = useRouter();
@@ -13,6 +14,7 @@ export default function Contact() {
   const [additionalInput, setAdditionalInput] = useState("");
   const [answers, setAnswers] = useState({});
   const [showPopup, setShowPopup] = useState(false);
+  const [history, setHistory] = useState<number[]>([]); // History stack
 
   // Extract answers from query parameters when the component mounts
   useEffect(() => {
@@ -33,16 +35,6 @@ export default function Contact() {
       };
     }, []);
   
-  //step1+3 functions
-  const handleContactButton = () => {
-    setStep(2); 
-    console.log(step);
-  };
-  const handleAnonimusButton  = () => {
-    setStep(4); 
-    console.log(step);
-  };
-
   //step2 functions
   const handlePhoneInputChange = (event) => {
     setPhoneNumber(event.target.value);
@@ -79,7 +71,8 @@ export default function Contact() {
       });
 
       if (response.ok) {
-        setStep(3);
+        navigateToStep(3);
+        // setStep(3);
       } else {
         const error = await response.json();
         alert("Failed to send email: " + error.message);
@@ -102,10 +95,33 @@ export default function Contact() {
     handleSubmit();
   }
 
+  // Handles navigation and saves the current step to the history
+  const navigateToStep = (newStep: number) => {
+    setHistory((prevHistory) => [...prevHistory, step]); // Save current step to history
+    setStep(newStep);
+  };
+  // Handle other step-based logic
+  const handleContactButton = () => navigateToStep(2);
+  const handleAnonimusButton = () => navigateToStep(4);
+
+  // Handles the back button logic
+  const handleBackButton = () => {
+    if (history.length > 0) {
+      const lastStep = history[history.length - 1]; // Get the last step from history
+      setHistory((prevHistory) => prevHistory.slice(0, -1)); // Remove the last step from history
+      setStep(lastStep); // Navigate to the previous step
+    } else {
+      // Default back navigation (e.g., go to a previous page)
+      router.back();
+    }
+  };
+
+
 
   if (step === 1) {
     return (
         <div className={styles.step1Container}>
+          <TopNav theme={"white"} onBack={handleBackButton} />
           <div className={styles.logoStep1}> 
             <svg width="108" height="115" viewBox="0 0 108 115" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_1125_124)">
@@ -144,6 +160,8 @@ export default function Contact() {
   if (step === 2) {
     return (
       <div className={styles.step2Container}>
+        <TopNav theme={"white"} onBack={handleBackButton} />
+
         <div className={styles.logoStep2}> 
           <svg width="163" height="66" viewBox="0 0 163 66" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_1125_182)">
@@ -195,6 +213,8 @@ export default function Contact() {
   if(step === 3){
     return (
       <div className={`${styles.step1Container} `}>
+        <TopNav theme={"white"} onBack={handleBackButton} />
+
         <div className={styles.logoStep1}> 
         <svg width="109" height="109" viewBox="0 0 109 109" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#clip0_1794_1125)">
@@ -233,6 +253,7 @@ export default function Contact() {
   //step 4:
   return (
       <div className={styles.step1Container}>
+        <TopNav theme={"white"} onBack={handleBackButton} /> 
         <div className={styles.logoStep1}> 
         <svg width="109" height="109" viewBox="0 0 109 109" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#clip0_1794_1125)">
