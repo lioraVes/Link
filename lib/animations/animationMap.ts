@@ -6,9 +6,10 @@ const animationMap: { [key: string]: any } = {
   "/images/questionIcon.svg": require("./questionAnimation.json"),
   "/images/warningIcon.svg": require("./warningAnimation.json"),
   "/images/doneIcon.svg": require("./doneAnimation.json"),
-  "/images/helpIcon.svg": require("./helpAnimation.json"),
+  "/images/helpIcon.svg": require("./newHelpAnimation.json"),
   "/images/lockIcon.svg": require("./lockAnimation.json"),
   "/images/faceIcon.svg": require("./faceAnimation.json"),
+  "/contact/hand": require("./hand.json"),
 };
 
 export default animationMap;

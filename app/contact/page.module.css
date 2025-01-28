@@ -6,7 +6,6 @@
   align-items: center; /* Center items horizontally */
   text-align: center; /* Ensure text stays centered */
   box-sizing: border-box; /* Include padding in width/height calculation */
-  margin-top: 150px;
 }
 
 .logoStep1 {
@@ -94,11 +93,10 @@
 
 .formInput {
   width: 301px;
-  height: 39px;
-  flex-shrink: 0;
-  border-radius: 9px;
+  height: 30px;
+  border-radius: 5px;
   border: 2px solid #fe5068;
-
+  padding: 5px;
   background: #fff;
   margin-bottom: 15px;
   -moz-appearance: textfield; /* Firefox */
@@ -113,10 +111,11 @@
 }
 
 .formTextArea {
+  padding: 5px;
   width: 301px;
-  height: 71px;
+  height: 70px;
   flex-shrink: 0;
-  border-radius: 9px;
+  border-radius: 5px;
   border: 2px solid #fe5068;
   background: #fff;
   margin-bottom: 16px;
@@ -131,7 +130,7 @@
   width: 23px;
   height: 23px;
   flex-shrink: 0;
-  border-radius: 9px;
+  border-radius: 5px;
   border: 2px solid #fe5068 !important;
   background: #fff;
   cursor: pointer;
@@ -425,7 +424,7 @@
   flex-shrink: 0;
 
   border-radius: 8px;
-  background-color: #F38A56;
+  background-color: #f38a56;
   color: #f6fbff;
 
   font-size: 17px;
@@ -435,5 +434,12 @@
   margin-bottom: 11px;
 
   transition: background-color 0.3s ease;
+}
 
+.info {
+  width: 301px;
+  height: 22px;
+  flex-shrink: 0;
+  color: #4e538a;
+  text-align: right;
 }

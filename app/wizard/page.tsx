@@ -10,7 +10,7 @@ import ChoicePage from "./components/ChoicePage";
 import TopNav from "@/lib/components/TopNav";
 import GuidePage from "./components/GuidePage";
 import MultiPage from "./components/MultiPage";
-import AnimatedIcon from "./components/AnimatedIcon"; // Updated component
+import AnimatedIcon from "../../lib/animatedIcons/AnimatedIcon"; // Updated component
 
 type ChoiceNode = {
   type: "choice";
