@@ -34,14 +34,18 @@ export async function sendEmail(msg: string) {
   return success;
 }
 
-export async function sendEmailWithAttachment(msg: string, attachment: File | null) {
+export async function sendEmailWithAttachment(
+  content: string,
+  attachment: File | null,
+  format: "text" | "html" = "text"
+) {
   const transport = getEmailTransport();
   const message = {
     from: EMAIL_ADDRESS,
     to: EMAIL_ADDRESS,
     subject: "פניית פגיעה ברשת לטיפול",
-    text: msg,
-    html: `<p>${msg}</p>`,
+    text: format === "text" ? content : "", // Plain text fallback
+    html: format === "html" ? content : "", // HTML content
     attachments: attachment
       ? [
           {
@@ -51,12 +55,13 @@ export async function sendEmailWithAttachment(msg: string, attachment: File | nu
         ]
       : [],
   };
+
   let success = false;
   try {
     await transport.sendMail(message);
     success = true;
   } catch (error) {
-    console.log(error);
+    console.error("Error sending email:", error);
   }
   return success;
 }
