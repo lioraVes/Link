@@ -39,10 +39,6 @@ const MultiPage: React.FC<MultiPageProps> = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.graphicArea}>
-        <img src={icon} alt="Icon" className={styles.icon} />
-      </div>
-
       <div className={styles.title}>{title}</div>
       <div className={styles.sub}>{sub}</div>
       <div className={`${styles.sub} ${styles.checkboxHeader}`}>

@@ -3,12 +3,12 @@ import styles from "../page.module.css";
 
 interface InfoPageProps {
   title: string;
-  icon:string;
+  icon: string;
   info: string;
   buttons: { text: string; onClick: () => void }[];
 }
 
-const InfoPage: React.FC<InfoPageProps> = ({ title,icon, info, buttons }) => {
+const InfoPage: React.FC<InfoPageProps> = ({ title, icon, info, buttons }) => {
   useEffect(() => {
     document.body.style.backgroundColor = "#FE5068";
 
@@ -26,21 +26,14 @@ const InfoPage: React.FC<InfoPageProps> = ({ title,icon, info, buttons }) => {
     <div className={styles.infoContainer}>
       <div style={{ height: "150px" }} />
 
-      <div className={styles.graphicArea}>
-      <img src={icon} alt="Icon" className={styles.icon} />
-
-      </div>
-
       <div style={{ height: "50px" }} />
       <div className={styles.infoTitle}>{title}</div>
 
-      <div className={styles.info}>
-      {renderContent(info)}
-      </div>
+      <div className={styles.info}>{renderContent(info)}</div>
 
       <div style={{ height: "150px" }} />
       <div className={styles.buttonArea}>
-      {buttons.map((button, index) => (
+        {buttons.map((button, index) => (
           <button
             key={index}
             className={styles.infoButton}
