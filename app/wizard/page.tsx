@@ -69,6 +69,7 @@ export default function Wizard() {
   const router = useRouter();
   const [theme, setTheme] = useState("white");
   const [history, setHistory] = useState<Node[]>([]); // Add history state
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
   // Update theme when currentNode changes
   useEffect(() => {
@@ -84,10 +85,14 @@ export default function Wizard() {
   }, [currentNode]);
 
   // Update animation state only if the icon changes
+
   useEffect(() => {
-    if (currentNode.icon !== currentIcon) {
-      setAnimationState("playing"); // Play animation from start
-      setCurrentIcon(currentNode.icon); // Update current icon
+    if (isFirstRender) {
+      setAnimationState("playing"); // Ensure the first animation plays
+      setIsFirstRender(false);
+    } else if (currentNode.icon !== currentIcon) {
+      setAnimationState("playing"); // Play animation from start on icon change
+      setCurrentIcon(currentNode.icon);
     } else {
       setAnimationState("stopped"); // Keep it at frame 50 if icon is unchanged
     }
