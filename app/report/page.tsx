@@ -105,7 +105,7 @@ export default function ContactForm() {
         ) : showAdditionalDetails ? (
           <div className={styles.contactForm}>
             <div className={styles.additionalFormGroup}>
-              <a className={styles.newsLink}
+              <a className={styles.addInfoLink}
                   onClick={() => setShowAdditionalDetails(false)}>
                 הוספת פרטים אישיים
               <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -232,8 +232,8 @@ export default function ContactForm() {
               </div>
               
               <div className={styles.formSection}>
-                <a className={styles.newsLink} onClick={() => setShowAdditionalDetails(true)}>
-                  <span className={styles.newsText}>
+                <a className={styles.addInfoLink} onClick={() => setShowAdditionalDetails(true)}>
+                  <span className={styles.addInfoText}>
                     הוספת פרטים אישיים <span className={styles.optionalText}>(אופציונלי)</span>
                   </span>
                   <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">

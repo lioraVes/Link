@@ -32,7 +32,7 @@
   height: 85%;
   align-items: center;
 }
-.label, .newsLink {
+.label, .addInfoLink {
   width: 100%;
   font-size: 17px;
   color: #4E538A;
@@ -83,7 +83,7 @@
   height: 75%;
 }
 
-.additionalFormGroup .newsLink{
+.additionalFormGroup .addInfoLink{
   color: #F38F56;
   width: 100%;
 }
@@ -223,14 +223,14 @@
 }
 
 /* Container to align text and icon */
-.newsLink {
+.addInfoLink {
   display: flex;
   align-items: center;
   justify-content: space-between; /* Pushes text and icon apart */
 }
 
 /* Text section */
-.newsText {
+.addInfoText {
   flex-grow: 1; /* Makes text take up remaining space */
   text-align: right; /* Ensures text is right-aligned */
   font-size: 17px;
@@ -246,8 +246,4 @@
 .emailText{
   direction: ltr;
   padding-left: 10px;
-}
-/* SVG icon */
-.newsIcon {
-  flex-shrink: 0; /* Prevents resizing */
 }
