@@ -24,9 +24,6 @@ const InfoPage: React.FC<InfoPageProps> = ({ title, icon, info, buttons }) => {
 
   return (
     <div className={styles.infoContainer}>
-      <div style={{ height: "150px" }} />
-
-      <div style={{ height: "50px" }} />
       <div className={styles.infoTitle}>{title}</div>
 
       <div className={styles.info}>{renderContent(info)}</div>
@@ -47,8 +44,6 @@ const InfoPage: React.FC<InfoPageProps> = ({ title, icon, info, buttons }) => {
           </button>
         ))}
       </div>
-      <div style={{ marginBottom: "70px" }} />
-
     </div>
   );
 };
