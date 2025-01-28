@@ -13,7 +13,7 @@
   padding: 20px;
   color: #ffffff;
   text-align: right;
-  width:319px;
+  width: 319px;
   margin-top: 55px;
 }
 
@@ -59,7 +59,7 @@
 
 .newsDate {
   font-size: 13px;
-  color: #A6B5C0; /* Color for the date */
+  color: #a6b5c0; /* Color for the date */
   font-weight: bold;
   margin-right: 16px; /* Space between the date and "Published by" text */
   font-style: normal;
@@ -75,19 +75,19 @@
 }
 
 .publishedBy {
-  color: #A6B5C0;
+  color: #a6b5c0;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 21px; /* 150% */
-  margin-right:16px;
-  margin-left:42px;
+  margin-right: 16px;
+  margin-left: 42px;
 }
 
 /* Title */
 .newsTitle {
   font-size: 21px;
-  color: #4E538A; /* Dark gray */
+  color: #4e538a; /* Dark gray */
   font-weight: 600;
   margin: 0;
   text-align: right;
@@ -99,7 +99,7 @@
 /* News content */
 .newsContent {
   font-size: 18px;
-  color: #4E538A; /* Gray text */
+  color: #4e538a; /* Gray text */
   line-height: 21px;
   text-align: right;
   overflow: hidden;
@@ -113,7 +113,7 @@
 /* Action link (Read More / Show Less) */
 .readMore {
   font-size: 18px;
-  color: #7B61FF; 
+  color: #7b61ff;
   text-decoration: none;
   font-weight: bold;
   cursor: pointer;
@@ -182,4 +182,22 @@
   display: flex;
   justify-content: left;
   padding: 10px 0 0 10px;
+}
+
+/* Apply animation when the page loads */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly lower */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Move to normal position */
+  }
+}
+
+/* Apply the animation to the main container */
+.newsContainer {
+  /* Animation */
+  animation: fadeInUp 0.6s ease-out;
 }

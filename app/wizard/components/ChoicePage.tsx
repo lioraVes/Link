@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../page.module.css";
 
 interface ChoicePageProps {
@@ -6,19 +6,25 @@ interface ChoicePageProps {
   icon: string;
   choices: { text: string; onClick: () => void }[];
   explanation_top?: string; // optional
-  explanation_bottom?:string; // optional
+  explanation_bottom?: string; // optional
 }
 
-const ChoicePage: React.FC<ChoicePageProps> = ({question, icon, choices, explanation_top, explanation_bottom}) => {
-useEffect(() => {
-      document.body.style.backgroundColor = "#F6FBFF";
-  
-      // Reset the body background color when the component unmounts
-      return () => {
-        document.body.style.backgroundColor = "";
-      };
-    }, []);
-    
+const ChoicePage: React.FC<ChoicePageProps> = ({
+  question,
+  icon,
+  choices,
+  explanation_top,
+  explanation_bottom,
+}) => {
+  useEffect(() => {
+    document.body.style.backgroundColor = "#F6FBFF";
+
+    // Reset the body background color when the component unmounts
+    return () => {
+      document.body.style.backgroundColor = "";
+    };
+  }, []);
+
   const [showExplanationBottom, setShowExplanationBottom] = useState(false);
 
   const handleLinkClick = () => {
@@ -36,12 +42,14 @@ useEffect(() => {
         <div className={styles.explanation}>
           <p>
             {parts[0]}
-            <a href="#" 
-            onClick={(e) => {
-                      e.preventDefault();
-                      handleLinkClick();
-                    }}
-            className={styles.link}>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick();
+              }}
+              className={styles.link}
+            >
               מה זה?
             </a>
             {parts[1]}
@@ -61,11 +69,6 @@ useEffect(() => {
   return (
     <div className={styles.container}>
       {/* <div style={{ height: "200px" }} /> */}
-
-      <div className={styles.graphicArea}>
-      <img src={icon} alt="Icon" className={styles.icon} />
-      </div>
-
       <div style={{ height: "50px" }} />
 
       <div className={styles.title}>{question}</div>
@@ -84,13 +87,12 @@ useEffect(() => {
           </button>
         ))}
       </div>
-         {/* Explanation Bottom */}
-         {showExplanationBottom && explanation_bottom && (
+      {/* Explanation Bottom */}
+      {showExplanationBottom && explanation_bottom && (
         <div className={styles.explanation}>
           <p>{explanation_bottom}</p>
         </div>
       )}
-     
     </div>
   );
 };
