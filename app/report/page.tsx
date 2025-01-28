@@ -9,25 +9,26 @@ const formHandlerUrl = "/report/api";
 
 export default function ContactForm() {
   useEffect(() => {
-    document.body.style.backgroundColor = "#ffa54f";
+    document.body.style.backgroundColor = "#F38F56";
 
     // Reset the body background color when the component unmounts
     return () => {
       document.body.style.backgroundColor = "";
     };
   }, []);
-
-  const [formData, setFormData] = useState({
+  const initialFormState = {
     image: null as File | null,
     link: "",
     text: "",
+    platform: "",
     personalDetails: {
       firstName: "",
       lastName: "",
       phone: "",
       email: "",
     },
-  });
+  };
+  const [formData, setFormData] = useState(initialFormState);
 
   const [submissionResponse, setSubmissionResponse] = useState<
     ContactFormResponse | undefined
@@ -35,7 +36,7 @@ export default function ContactForm() {
   const [showAdditionalDetails, setShowAdditionalDetails] = useState(false);
 
   function handleChange(
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) {
     const { name, value, files } = event.target as HTMLInputElement;
 
@@ -60,179 +61,194 @@ export default function ContactForm() {
 
   return (
     <main>
-      <div className={styles.svgStyle}>
-        <svg
-          width="33"
-          height="36"
-          viewBox="0 0 33 36"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g clip-path="url(#clip0_1438_244)">
-            <path
-              d="M19.0576 35.9999C18.0894 35.9999 17.1316 35.8512 16.2204 35.5432C13.316 34.5715 11.2036 32.2777 9.1586 30.0583C7.52258 28.2795 5.97457 26.6016 4.14699 25.6937C3.97097 25.6034 3.78976 25.5237 3.60338 25.4388C2.66111 25.0034 1.48587 24.4671 0.709278 23.2512C-0.34171 21.6158 -0.207101 19.1627 1.01992 17.5485C2.13821 16.0777 3.97614 15.3768 5.81408 15.7167C7.27407 15.9875 8.69265 16.9167 9.81612 18.3237L7.40868 20.3361C6.75634 19.5131 5.99011 18.9875 5.26011 18.8494C4.57153 18.722 3.86742 18.9768 3.46877 19.5025C3.05976 20.0441 2.98211 20.9945 3.3031 21.499C3.58267 21.9397 4.18323 22.2105 4.87181 22.5291C5.08408 22.6246 5.29635 22.7255 5.50344 22.8264C7.84357 23.9945 9.6608 25.9645 11.4159 27.8706C13.2745 29.8883 15.0296 31.7945 17.1834 32.5167C19.2491 33.2069 21.698 32.6866 23.7327 31.1255C25.6586 29.6494 27.2221 27.3184 28.2576 24.3822C29.1274 21.9291 29.6399 19.0034 29.8367 15.4512C29.9506 13.3114 29.9713 10.8317 29.205 8.68658L32.1199 7.59277C33.0777 10.2795 33.0725 13.168 32.9379 15.6317C32.7256 19.5025 32.1509 22.7202 31.1776 25.4706C29.935 28.991 28.0039 31.8264 25.5913 33.6795C23.6084 35.2034 21.2993 35.9999 19.0576 35.9999Z"
-              fill="#4E538A"
-            />
-            <path
-              d="M13.6991 20.0762C12.995 14.5169 9.81612 9.40889 5.19281 6.4142L6.84954 3.72217C12.2443 7.21597 15.9564 13.1788 16.7796 19.6673L13.6991 20.0762Z"
-              fill="#4E538A"
-            />
-            <path
-              d="M18.4104 18.0106C17.2714 12.085 14.5585 6.6 10.5616 2.16106L12.8448 0C17.23 4.87434 20.2069 10.8903 21.4546 17.3947L18.4052 18.0106H18.4104Z"
-              fill="#4E538A"
-            />
-            <path
-              d="M23.2356 16.6248C22.9353 11.9734 21.6669 7.33273 19.5598 3.20706L22.3141 1.73096C24.618 6.24954 26.0106 11.3256 26.3368 16.4124L23.2356 16.6248Z"
-              fill="#4E538A"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_1438_244">
-              <rect width="33" height="36" fill="white" />
-            </clipPath>
-          </defs>
-        </svg>
-      </div>
+
       <div className={styles.container}>
         <div className={styles.reportHeader}>
           <h1 className={styles.reportPageTitle}>דיווח</h1>
-          <p className={styles.reportPageSubtitle}>דווחו והצטרפו לרשת!</p>
+          <p className={styles.reportPageSubtitle}>נתקלת בבעיה במשהו מוזר? דווח לנו, ונוכל לטפל<br/> בבעיה, ולעדכן אחרים שיזהרו</p>
         </div>
 
         {submissionResponse ? (
-          <div className="center">{submissionResponse.message}</div>
+          <div className={styles.contactForm}>
+          <div className={styles.finishIcon}>
+          <svg width="109" height="109" viewBox="0 0 109 109" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1817_22)">
+              <path d="M53.2618 77.0474L48.2441 68.9515C47.4771 67.7059 44.9043 64.7678 42.8269 62.4204C40.1742 59.3864 37.6653 56.5281 36.4668 54.6119L44.6166 49.5659C45.3837 50.8114 47.9565 53.7496 50.0339 56.0969C50.3854 56.4962 50.721 56.8794 51.0566 57.2626C54.764 49.3743 59.2703 41.8691 64.4958 34.875L72.1822 40.6076C65.8541 49.0868 60.6766 58.3645 56.7775 68.185L53.2618 77.0474Z" fill="#F38F56"/>
+              <path d="M55.4507 109C41.3563 109 27.1979 103.667 16.9707 93.8624C2.62058 80.1296 -3.41988 57.9815 1.91746 38.7556L11.1539 41.3265C6.72746 57.2469 11.7292 75.5946 23.6024 86.9481C35.5715 98.4133 54.0764 102.485 69.641 97.088C85.3334 91.6427 97.1906 76.9678 99.1402 60.5843C101.281 42.4921 90.7346 23.1864 74.0515 14.6912C57.56 6.27592 36.2267 8.35181 21.0136 19.8331L15.2288 12.1842C33.3183 -1.46873 58.7106 -3.89592 78.414 6.14817C98.5489 16.3999 111.269 39.7775 108.664 61.7021C106.299 81.6466 91.8852 99.4992 72.789 106.126C67.228 108.058 61.3473 108.984 55.4666 108.984L55.4507 109Z" fill="#F38F56"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_1817_22">
+               <rect width="109" height="109" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+
+          </div>
+          <div className={styles.finishText}>
+            <h1>הדיווח שלך נשלח!</h1>
+            <p>תודה רבה שדיווחת, הדיווח שלך<br/>עוזר לנו להפוך את האינטרנט למקום <br/>טוב יותר. נעדכן אותך בהקדם<br/> בטיפולנו במקרה.</p>
+          </div>
+          <div className={styles.buttons}>
+              <button
+                type="button"
+                className={styles.submitButton}
+                onClick={() => {
+                  setFormData(initialFormState); // Reset form fields
+                  setSubmissionResponse(undefined); // Hide success message
+                  setShowAdditionalDetails(false); // Hide additional details
+                }}
+              >
+                שלח דיווח נוסף
+              </button>
+            </div>
+          </div>
         ) : showAdditionalDetails ? (
           <div className={styles.contactForm}>
-            <h2>הוספת פרטים אישיים</h2>
-            <label htmlFor="firstName" className={styles.label}>
-              שם פרטי
-            </label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              value={formData.personalDetails.firstName}
-              onChange={handleChange}
-              className={styles.input}
-            />
-            <label htmlFor="lastName" className={styles.label}>
-              שם משפחה
-            </label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={formData.personalDetails.lastName}
-              onChange={handleChange}
-              className={styles.input}
-            />
-            <label htmlFor="phone" className={styles.label}>
-              טלפון
-            </label>
-            <input
-              type="text"
-              id="phone"
-              name="phone"
-              value={formData.personalDetails.phone}
-              onChange={handleChange}
-              className={styles.input}
-            />
-            <label htmlFor="email" className={styles.label}>
-              כתובת מייל
-            </label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              value={formData.personalDetails.email}
-              onChange={handleChange}
-              className={styles.input}
-            />
+            <div className={styles.additionalFormGroup}>
+              <a className={styles.newsLink}
+                  onClick={() => setShowAdditionalDetails(false)}>
+                הוספת פרטים אישיים
+              <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="11.5" cy="11.5" r="11.5" fill="#F38F56"/>
+                <path d="M8.15727 16.484L8.04709 16.3423L7.5434 15.8386C7.35452 15.6498 7.11841 15.4136 7.14989 15.2248C7.18138 14.9414 7.40174 14.7526 7.66932 14.485L9.99887 12.1554C10.1563 11.998 10.1563 11.7777 9.99887 11.6203L7.26008 8.88147C7.08693 8.70832 7.00823 8.56666 7.1499 8.33056C7.19712 8.28334 7.2286 8.22038 7.29156 8.15742L7.43322 8.04724L7.93691 7.54355C8.12579 7.35467 8.36189 7.11856 8.55077 7.15004C8.8341 7.18153 9.02298 7.40189 9.29056 7.66947L11.6201 9.99902C11.7775 10.1564 11.9979 10.1564 12.1553 9.99902L14.8154 7.33893C15.0357 7.11856 15.2718 7.07134 15.5552 7.26023C15.6024 7.27597 15.6339 7.30745 15.6968 7.37041C15.7126 7.41763 15.7283 7.43337 15.7755 7.44911L16.4681 8.14168L16.6255 8.39352C16.7199 8.51944 16.6727 8.69258 16.4838 8.91295L13.7765 11.6203C13.6191 11.7777 13.6191 11.998 13.7765 12.1554L16.4366 14.8155C16.657 15.0359 16.7042 15.272 16.5153 15.5553C16.4996 15.6025 16.4681 15.634 16.4051 15.697C16.3579 15.7127 16.3422 15.7285 16.3264 15.7757L15.6339 16.4682L15.382 16.6256C15.2561 16.7201 15.083 16.6729 14.8626 16.484L12.1553 13.7767C11.9979 13.6193 11.7775 13.6193 11.6201 13.7767L8.88132 16.5155C8.70818 16.6886 8.56651 16.7673 8.33041 16.6256C8.28319 16.5784 8.22023 16.5469 8.15727 16.484Z" fill="white"/>
+              </svg>
+              </a>
+              
+
+              <div className={styles.formSection}>
+                
+                <label htmlFor="firstName" className={styles.label}>
+                  שם פרטי
+                </label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  value={formData.personalDetails.firstName}
+                  onChange={handleChange}
+                  className={styles.input}
+                />
+              </div>
+              <div className={styles.formSection}>
+                <label htmlFor="lastName" className={styles.label}>
+                  שם משפחה
+                </label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  value={formData.personalDetails.lastName}
+                  onChange={handleChange}
+                  className={styles.input}
+                />
+              </div>
+              <div className={styles.formSection}>
+                <label htmlFor="phone" className={styles.label}>
+                  טלפון
+                </label>
+                <input
+                  type="text"
+                  id="phone"
+                  name="phone"
+                  value={formData.personalDetails.phone}
+                  onChange={handleChange}
+                  className={styles.input}
+                />
+              </div>
+              <div className={styles.formSection}>
+                <label htmlFor="email" className={styles.label}>
+                  כתובת מייל
+                </label>
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  value={formData.personalDetails.email}
+                  onChange={handleChange}
+                  className={styles.input}
+                />
+                <div className={styles.emailText}> 
+                  <p>aaa@gmail.com</p>
+                  </div>
+              </div>
+            </div>
             <div className={styles.buttons}>
               <button
                 type="button"
-                className={styles.cancelButton}
+                className={styles.submitButton}
                 onClick={() => setShowAdditionalDetails(false)}
               >
-                ביטול
-              </button>
-              <button
-                type="button"
-                className={styles.saveButton}
-                onClick={() => setShowAdditionalDetails(false)}
-              >
-                שמור שינויים
+                הוסף פרטים אישיים
               </button>
             </div>
           </div>
         ) : (
           <form className={styles.contactForm} onSubmit={handleSubmit}>
-            <p className={styles.reportPageDate}>היום: 2024-01-22</p>
             <div className={styles.formGroup}>
-              <label htmlFor="image" className={styles.label}>
-                העלאת תמונה
-              </label>
-              <input
-                type="file"
-                id="image"
-                name="image"
-                onChange={handleChange}
-                className={styles.input}
-              />
-            </div>
+              <div className={styles.formSection}>
+                <label htmlFor="text" className={styles.label}>
+                  טקסט חופשי
+                </label>
+                <textarea
+                  id="text"
+                  name="text"
+                  value={formData.text}
+                  onChange={handleChange}
+                  className={styles.textarea}
+                ></textarea>
+              </div>
+              <div className={styles.formSection}>
+                <label className={styles.label} htmlFor="platform">פלטפורמה</label>
+                <select id="platform" name="platform" value={formData.platform} onChange={handleChange} className={styles.select}>
+                  <option value="">בחר</option>
+                  <option value="facebook">Facebook</option>
+                  <option value="twitter">Twitter</option>
+                  <option value="instagram">Instagram</option>
+                  <option value="whatsapp">WhatsApp</option>
+                </select>
+              </div>
 
-            <div className={styles.formGroup}>
-              <label htmlFor="link" className={styles.label}>
-                הוספת קישור
-              </label>
-              <input
-                type="text"
-                id="link"
-                name="link"
-                value={formData.link}
-                onChange={handleChange}
-                className={styles.input}
-              />
-            </div>
 
-            <div className={styles.textareaGroup}>
-              <label htmlFor="text" className={styles.textareaLabel}>
-                טקסט חופשי
-              </label>
-              <textarea
-                id="text"
-                name="text"
-                value={formData.text}
-                onChange={handleChange}
-                className={styles.textarea}
-              ></textarea>
-            </div>
+              <div className={styles.formSection}>
+                <label htmlFor="link" className={styles.label}>
+                  הוספת קישור
+                </label>
+                <input
+                  type="text"
+                  id="link"
+                  name="link"
+                  value={formData.link}
+                  onChange={handleChange}
+                  className={styles.input}
+                />
+              </div>
+              <div className={styles.fileUploadContainer}>
+                <label className={styles.label} htmlFor="image">העלאת תיעוד</label>
+                <div className={styles.fileUploadBox}>
+                  <span className={styles.fileUploadPlaceholder}>צירף קובץ</span>
+                  <span className={styles.fileUploadIcon}>+</span>
+                  <input type="file" id="image" name="image" onChange={handleChange} className={styles.fileInput} />
+                </div>
+              </div>
+              
+              <div className={styles.formSection}>
+                <a className={styles.newsLink} onClick={() => setShowAdditionalDetails(true)}>
+                  <span className={styles.newsText}>
+                    הוספת פרטים אישיים <span className={styles.optionalText}>(אופציונלי)</span>
+                  </span>
+                  <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11.5" cy="11.5" r="11.5" fill="#F38F56"/>
+                    <path d="M12.4999 17.7755L12.3218 17.7533H11.6095C11.3424 17.7533 11.0085 17.7533 10.8972 17.5975C10.7191 17.3749 10.7414 17.0855 10.7414 16.7071V13.4126C10.7414 13.19 10.5856 13.0342 10.363 13.0342H6.48972C6.24486 13.0342 6.08904 12.9896 6.02226 12.7225C6.02226 12.6557 6 12.589 6 12.4999L6.02226 12.3218V11.6095C6.02226 11.3424 6.02226 11.0085 6.17808 10.8972C6.40068 10.7191 6.69006 10.7414 7.06848 10.7414H10.363C10.5856 10.7414 10.7414 10.5856 10.7414 10.363V6.60102C10.7414 6.28938 10.8749 6.08904 11.2088 6.02226C11.2534 6 11.2979 6 11.3869 6C11.4314 6.02226 11.4537 6.02226 11.4982 6H12.4777L12.767 6.06678C12.9229 6.08904 13.0119 6.24486 13.0342 6.53424V10.363C13.0342 10.5856 13.19 10.7414 13.4126 10.7414H17.1745C17.4862 10.7414 17.6865 10.8749 17.7533 11.2088C17.7755 11.2534 17.7755 11.2979 17.7755 11.3869C17.7533 11.4314 17.7533 11.4537 17.7755 11.4982V12.4777L17.7088 12.767C17.6865 12.9229 17.5307 13.0119 17.2413 13.0342H13.4126C13.19 13.0342 13.0342 13.19 13.0342 13.4126V17.2858C13.0342 17.5307 12.9896 17.6865 12.7225 17.7533C12.6557 17.7533 12.589 17.7755 12.4999 17.7755Z" fill="white"/>
+                  </svg>
+                </a>
+              </div>
 
-            <div className={styles.formGroup}>
-              <a
-                className={styles.newsLink}
-                onClick={() => setShowAdditionalDetails(true)}
-              >
-                הוספת פרטים אישיים (אופציונלי)
-                <svg
-                  width="27"
-                  height="27"
-                  viewBox="0 0 27 27"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="13.5" cy="13.5" r="13.5" fill="#F38F56" />
-                  <path
-                    d="M13.1232 19.424C13.0272 19.424 12.9552 19.376 12.8592 19.376C12.6912 19.328 12.5712 19.232 12.5712 18.968V14.36C12.5712 14.264 12.5232 14.192 12.4512 14.144C12.4032 14.12 12.3552 14.072 12.2832 14.072H7.72319C7.43519 14.072 7.31519 13.952 7.26719 13.784C7.26719 13.688 7.21919 13.616 7.21919 13.52V12.824C7.31519 12.464 7.48319 12.344 7.79519 12.344H12.1632C12.4032 12.296 12.4752 12.224 12.5472 12.056C12.5712 12.008 12.5712 11.96 12.5712 11.912V7.496C12.5712 7.208 12.6912 7.088 12.8592 7.04C12.9552 7.04 13.0272 6.992 13.1232 6.992H13.8192C14.1792 7.088 14.2992 7.256 14.2992 7.568V12.056C14.2992 12.128 14.3472 12.2 14.3952 12.248C14.4432 12.32 14.4912 12.344 14.5872 12.344H19.1232C19.4352 12.344 19.5552 12.416 19.6512 12.776V13.52C19.6512 13.616 19.6032 13.688 19.6032 13.784C19.5552 13.952 19.4592 14.072 19.1952 14.072H14.7072C14.4672 14.12 14.3952 14.192 14.3232 14.36C14.2992 14.408 14.2992 14.456 14.2992 14.504V18.896C14.2992 19.208 14.2272 19.328 13.8672 19.424H13.1232Z"
-                    fill="white"
-                  />
-                </svg>
-              </a>
             </div>
-
-            <button type="submit" className={styles.submitButton}>
-              שלח
-            </button>
+            <div className={styles.buttons}>
+              <button type="submit" className={styles.submitButton}>
+                שלח
+              </button>
+            </div>
           </form>
         )}
       </div>

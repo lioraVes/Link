@@ -6,9 +6,10 @@ export async function POST(request: NextRequest) {
   const image = formData.get("image");
   const link = formData.get("link");
   const text = formData.get("text");
+  const platform = formData.get("platform");
   const personalDetails = formData.get("personalDetails");
 
-  const fullMessage = `Link: ${link}\n\nText: ${text}\n\nPersonal Details: ${personalDetails}`;
+  const fullMessage = `Platforn: ${platform} \n\tLink: ${link}\n\nText: ${text}\n\nPersonal Details: ${personalDetails}`;
 
   const success = await sendEmailWithAttachment(fullMessage, image as File | null);
 

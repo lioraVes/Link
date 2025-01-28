@@ -1,69 +1,92 @@
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 80vh; /* Explicit height */
+  height: 90vh; /* Explicit height */
   padding: 20px;
-  background-color: #ffa54f;
+  background-color: #F38F56;
+  box-sizing: border-box;
 }
 
 .contactForm {
-  width: 100%;
+  width: 90%;
   max-width: 400px;
   height: 80%;
-  background: #ffffff;
+  background: #F6FBFF;
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center; 
 }
 
-.label {
-  font-size: 14px;
-  color: #4d4d4d;
-  margin-bottom: 4px; /* Consistent spacing for all labels */
-}
-
-.input {
+.formGroup, .buttons, .additionalFormGroup, .finishIcon, .finishText {
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 85%;
+  align-items: center;
+}
+.label, .newsLink {
+  width: 100%;
+  font-size: 17px;
+  color: #4E538A;
+  font-weight: bold;
+  margin-bottom: 10px; /* Consistent spacing for all labels */
+}
+.finishText{
+  height: 35%;
+  text-align: center;
+  font-size: 17px;
+  justify-content: center;
+  color: #4E538A;
+  line-height: 1.5; 
+}
+.finishText >*{
+  margin: 5px;
+}
+.finishIcon{
+  height: 50%;
+}
+.input,
+.select,
+.textarea {
+  width: 100%; /* Takes full width of parent */
   padding: 10px;
   border: 1px solid #d9d9d9;
   border-radius: 6px;
-  margin-bottom: 12px;
   font-size: 14px;
+  box-sizing: border-box; /* Ensures padding doesn’t increase size */
+  background-color: #E9F2F8;
+  margin-top: 10px; /* Consistent spacing for all inputs */
 }
-
-.textareaGroup {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 12px; /* Reduce space after free text field */
-}
-
-.textareaLabel {
-  font-size: 14px;
-  color: #4d4d4d;
-  margin-bottom: 4px; /* Reduce space between label and textarea */
+.formSection, .fileUploadContainer{
+  width: 100%;
 }
 
 .textarea {
-  width: 90%;
-  padding: 10px;
-  border: 1px solid #d9d9d9;
-  border-radius: 6px;
-  font-size: 14px;
   resize: none; /* Prevent resizing */
   min-height: 80px; /* Set a standard height */
 }
 
 .buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 16px;
+  height: 15%;
+  width: 95%;
 }
 
+.additionalFormGroup{
+  height: 75%;
+}
+
+.additionalFormGroup .newsLink{
+  color: #F38F56;
+  width: 100%;
+}
 .cancelButton,
 .saveButton {
   width: 48%;
@@ -85,16 +108,16 @@
 }
 
 .saveButton {
-  background-color: #4c68ff;
+  background-color: #F38F56;
 }
 
 .saveButton:hover {
-  background-color: #3956cc;
+  background-color: #F38F56;
 }
 
 .toggleButton {
   font-size: 24px;
-  background-color: #4c68ff;
+  background-color: #F38F56;
   color: white;
   border: none;
   border-radius: 50%;
@@ -105,7 +128,7 @@
 }
 
 .toggleButton:hover {
-  background-color: #3956cc;
+  background-color: #F38F56;
 }
 
 .submitButton {
@@ -114,14 +137,14 @@
   font-size: 16px;
   font-weight: bold;
   color: white;
-  background-color: #4c68ff;
+  background-color: #F38A56;
   border: none;
   border-radius: 8px;
   cursor: pointer;
 }
 
 .submitButton:hover {
-  background-color: #3956cc;
+  background-color: #F38F56;
 }
 
 .reportHeader {
@@ -134,8 +157,12 @@
 .reportPageTitle {
   font-size: 36px; /* Adjust font size as needed */
   font-weight: bold;
+  margin-bottom: 10px; /* Consistent spacing for all titles */
 }
 
+.reportPageSubtitle{
+  margin-top: 0%;
+}
 .reportPageDate {
   font-size: 16px;
   color: #ffa54f; /* Subtle color for date */
@@ -145,4 +172,82 @@
   display: flex;
   justify-content: left;
   padding: 10px 0 0 10px;
+}
+/* File Upload Container */
+.fileUploadContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label Styling */
+.fileUploadLabel {
+  font-size: 14px;
+  font-weight: bold;
+  color: #2d2d2d;
+  text-align: right;
+}
+
+/* Box that looks like the input field */
+.fileUploadBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #E9F2F8;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  padding: 12px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Placeholder Text */
+.fileUploadPlaceholder {
+  font-size: 14px;
+  color: #b0b0b0;
+}
+
+/* Plus Icon */
+.fileUploadIcon {
+  color: #f38f56;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Hide Default File Input */
+.fileInput {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Container to align text and icon */
+.newsLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pushes text and icon apart */
+}
+
+/* Text section */
+.newsText {
+  flex-grow: 1; /* Makes text take up remaining space */
+  text-align: right; /* Ensures text is right-aligned */
+  font-size: 17px;
+  color: #4E538A;
+  font-weight: bold;
+}
+
+/* Optional (לא חובה) text */
+.optionalText, .emailText {
+  font-size: 17px;
+  color: #BBCBD7;
+}
+.emailText{
+  direction: ltr;
+  padding-left: 10px;
+}
+/* SVG icon */
+.newsIcon {
+  flex-shrink: 0; /* Prevents resizing */
 }
