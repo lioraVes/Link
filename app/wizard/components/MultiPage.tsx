@@ -20,16 +20,6 @@ const MultiPage: React.FC<MultiPageProps> = ({
   checkboxes,
   buttons,
 }) => {
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.body.style.backgroundColor = "#F6FBFF";
-
-      return () => {
-        document.body.style.backgroundColor = "";
-      };
-    }
-  }, []);
-
   const [checkedState, setCheckedState] = useState<boolean[]>(
     Array(checkboxes.length).fill(false)
   );

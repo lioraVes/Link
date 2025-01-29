@@ -18,15 +18,6 @@ const ChoicePage: React.FC<ChoicePageProps> = ({
   explanation_top,
   explanation_bottom,
 }) => {
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.body.style.backgroundColor = "#F6FBFF";
-
-      return () => {
-        document.body.style.backgroundColor = "";
-      };
-    }
-  }, []);
   const [showExplanationBottom, setShowExplanationBottom] = useState(false);
 
   const handleLinkClick = () => {

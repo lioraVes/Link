@@ -8,16 +8,6 @@ import { ContactFormResponse } from "./types";
 const formHandlerUrl = "/report/api";
 
 export default function ContactForm() {
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.body.style.backgroundColor = "#F38F56";
-
-      return () => {
-        document.body.style.backgroundColor = "";
-      };
-    }
-  }, []);
-
   const initialFormState = {
     image: null as File | null,
     link: "",
