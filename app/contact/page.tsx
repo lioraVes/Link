@@ -20,11 +20,15 @@ export default function Contact() {
   >("playing");
 
   useEffect(() => {
-    document.body.style.backgroundColor = "#F6FBFF";
-    return () => {
-      document.body.style.backgroundColor = "";
-    };
+    if (typeof document !== "undefined") {
+      document.body.style.backgroundColor = "#F6FBFF";
+
+      return () => {
+        document.body.style.backgroundColor = "";
+      };
+    }
   }, []);
+
   useEffect(() => {
     if (step === 4) {
       setAnimationState("playing");
@@ -161,7 +165,6 @@ export default function Contact() {
             שלח
           </button>
           <div style={{ marginBottom: "70px" }} />
-
         </>
       )}
 
