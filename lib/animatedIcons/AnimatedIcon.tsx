@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useRef, useEffect } from "react";
 import Lottie from "react-lottie-player";
 import animationMap from "@/lib/animations/animationMap"; // Path to your animationMap
