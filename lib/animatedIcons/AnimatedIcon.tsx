@@ -2,7 +2,6 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
-import Lottie from "react-lottie-player";
 import animationMap from "@/lib/animations/animationMap"; // Path to your animationMap
 
 const AnimatedIcon = ({
@@ -16,41 +15,46 @@ const AnimatedIcon = ({
   const animationRef = useRef<any>(null);
 
   useEffect(() => {
-    if (animationRef.current) {
+    async function loadAnimation() {
+      const lottie = await import("lottie-web");
+
+      const animationInstance = lottie.default.loadAnimation({
+        container: animationRef.current,
+        animationData: animationData,
+        renderer: "svg",
+        loop: state === "playing" || state === "continue",
+        autoplay: state === "playing" || state === "continue",
+      });
+
       if (state === "playing") {
-        animationRef.current.goToAndPlay(0, true);
+        animationInstance.goToAndPlay(0, true);
 
         // Stop at frame 50
         const stopAtFrame50 = setInterval(() => {
-          if (animationRef.current && animationRef.current.currentFrame >= 50) {
-            animationRef.current.pause();
+          if (animationInstance.currentFrame >= 50) {
+            animationInstance.pause();
             clearInterval(stopAtFrame50);
           }
         }, 16); // 60fps
       } else if (state === "stopped") {
-        animationRef.current.goToAndStop(50, true);
+        animationInstance.goToAndStop(50, true);
       } else if (state === "continue") {
-        animationRef.current.goToAndPlay(50, true);
+        animationInstance.goToAndPlay(50, true);
       }
     }
+
+    loadAnimation();
   }, [state, animationData]);
 
   return (
     <div
+      ref={animationRef}
       style={{
         width: "100%",
         height: "300px",
         overflow: "hidden",
       }}
-    >
-      <Lottie
-        ref={animationRef}
-        animationData={animationData}
-        loop={false}
-        play={state === "playing" || state === "continue"}
-        style={{ width: "100%", height: "100%" }}
-      />
-    </div>
+    ></div>
   );
 };
 

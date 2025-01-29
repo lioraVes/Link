@@ -4,7 +4,11 @@ import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import TopNav from "@/lib/components/TopNav";
-import AnimatedIcon from "./AnimatedIcon";
+// import AnimatedIcon from "./AnimatedIcon";
+import dynamic from "next/dynamic";
+
+const AnimatedIcon = dynamic(() => import("./AnimatedIcon"), { ssr: false });
+
 
 export default function Contact() {
   const router = useRouter();
@@ -18,6 +22,7 @@ export default function Contact() {
   const [animationState, setAnimationState] = useState<
     "playing" | "stopped" | "continue"
   >("playing");
+
 
   useEffect(() => {
     if (step === 4) {

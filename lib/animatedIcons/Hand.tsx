@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
-import Lottie from "react-lottie-player";
+import React, { useRef, useEffect, useState } from "react";
 import hand from "@/lib/animations/hand.json";
 
 const HandAnimation = ({
@@ -11,45 +10,60 @@ const HandAnimation = ({
   state: "playing" | "stopped" | "continue";
   onComplete: () => void;
 }) => {
+  const [isClient, setIsClient] = useState(false);
   const handAnimationRef = useRef<any>(null);
 
   useEffect(() => {
-    if (handAnimationRef.current) {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    async function loadAnimation() {
+      const lottie = await import("lottie-web");
+
+      const animationInstance = lottie.default.loadAnimation({
+        container: handAnimationRef.current,
+        animationData: hand,
+        renderer: "svg",
+        loop: state === "playing" || state === "continue",
+        autoplay: state === "playing" || state === "continue",
+      });
+
       if (state === "playing") {
-        // Play from the beginning to frame 50
-        handAnimationRef.current.goToAndPlay(0, true);
+        animationInstance.goToAndPlay(0, true);
 
         // Stop at frame 50
         const stopAtFrame50 = setInterval(() => {
-          if (
-            handAnimationRef.current &&
-            handAnimationRef.current.currentFrame >= 50
-          ) {
-            handAnimationRef.current.pause();
+          if (animationInstance.currentFrame >= 50) {
+            animationInstance.pause();
             clearInterval(stopAtFrame50);
           }
         }, 16); // Check every 16ms (~60fps)
       } else if (state === "stopped") {
-        // Keep the animation stopped at frame 50
-        handAnimationRef.current.goToAndStop(50, true);
+        animationInstance.goToAndStop(50, true);
       } else if (state === "continue") {
-        // Resume animation from frame 50 to the end
-        handAnimationRef.current.goToAndPlay(50, true);
+        animationInstance.goToAndPlay(50, true);
       }
+
+      animationInstance.addEventListener("complete", onComplete);
+
+      return () => {
+        animationInstance.removeEventListener("complete", onComplete);
+        animationInstance.destroy();
+      };
     }
-  }, [state]);
+
+    if (isClient) {
+      loadAnimation();
+    }
+  }, [state, isClient, onComplete]);
+
+  if (!isClient) {
+    return null;
+  }
 
   return (
-    <div style={{ width: "100%", height: "300px", overflow: "hidden" }}>
-      <Lottie
-        ref={handAnimationRef}
-        animationData={hand}
-        loop={false}
-        play={state === "playing" || state === "continue"}
-        onComplete={onComplete}
-        style={{ width: "100%", height: "100%" }}
-      />
-    </div>
+    <div style={{ width: "100%", height: "300px", overflow: "hidden" }} ref={handAnimationRef}></div>
   );
 };
 

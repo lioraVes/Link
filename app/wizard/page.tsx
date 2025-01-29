@@ -10,7 +10,11 @@ import ChoicePage from "./components/ChoicePage";
 import TopNav from "@/lib/components/TopNav";
 import GuidePage from "./components/GuidePage";
 import MultiPage from "./components/MultiPage";
-import AnimatedIcon from "../../lib/animatedIcons/AnimatedIcon"; // Updated component
+// import AnimatedIcon from "../../lib/animatedIcons/AnimatedIcon"; // Updated component
+import dynamic from "next/dynamic";
+
+const AnimatedIcon = dynamic(() => import("../../lib/animatedIcons/AnimatedIcon"), { ssr: false });
+
 
 type ChoiceNode = {
   type: "choice";

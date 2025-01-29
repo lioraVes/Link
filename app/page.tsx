@@ -4,9 +4,12 @@ import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 // import OpeningAnimation from "./Opening";
-import HandAnimation from "../lib/animatedIcons/Hand";
+// import HandAnimation from "../lib/animatedIcons/Hand";
 import dynamic from "next/dynamic";
+
 const OpeningAnimation = dynamic(() => import("./Opening"), { ssr: false });
+const HandAnimation = dynamic(() => import("../lib/animatedIcons/Hand"), { ssr: false });
+
 
 export default function HomePage() {
   const [openingFinished, setOpeningFinished] = useState(false);
