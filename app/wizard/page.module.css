@@ -129,6 +129,7 @@
 .infoContainer {
   width: auto;
   margin: 0 auto; /* Centers the container horizontally */
+  height: 50vh;
 
   display: flex;
   flex-direction: column;
@@ -274,10 +275,10 @@
   color: rgba(255, 255, 255, 0.8); /* Brighter text */
   transform: scale(0.98); /* Subtle press effect */
 }
-.guideContent{
+.guideContent {
   width: 309px;
   flex-shrink: 0;
-  color: #4E538A;
+  color: #4e538a;
   text-align: right;
   font-size: 17px;
   font-style: normal;

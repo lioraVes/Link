@@ -3,8 +3,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
-import OpeningAnimation from "./Opening";
+// import OpeningAnimation from "./Opening";
 import HandAnimation from "../lib/animatedIcons/Hand";
+import dynamic from "next/dynamic";
+const OpeningAnimation = dynamic(() => import("./Opening"), { ssr: false });
 
 export default function HomePage() {
   const [openingFinished, setOpeningFinished] = useState(false);
@@ -13,15 +15,6 @@ export default function HomePage() {
     "playing" | "stopped" | "continue"
   >("playing");
   const router = useRouter();
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.body.style.backgroundColor = "#F6FBFF";
-
-      return () => {
-        document.body.style.backgroundColor = "";
-      };
-    }
-  }, []);
 
   const handleHelpClick = () => {
     setHandState("continue"); // Resume animation from frame 50

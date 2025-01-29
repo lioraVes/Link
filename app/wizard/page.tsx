@@ -33,7 +33,7 @@ type GuideNode = {
   type: "guide";
   icon: string;
   title: string;
-  content: { text: string; marginTop: string; marginBottom: string; }[];
+  content: { text: string; marginTop: string; marginBottom: string }[];
   buttons: { [key: string]: string };
 };
 
@@ -57,6 +57,7 @@ type WizardData = {
 const typedWizardData = wizardData as WizardData;
 
 export default function Wizard() {
+  const [bgColor, setBgColor] = useState("#F6FBFF");
   const [currentNode, setCurrentNode] = useState<Node>(
     typedWizardData.flow.what_happend
   );
@@ -70,7 +71,17 @@ export default function Wizard() {
   const [theme, setTheme] = useState("white");
   const [history, setHistory] = useState<Node[]>([]); // Add history state
   const [isFirstRender, setIsFirstRender] = useState(true);
-
+  useEffect(() => {
+    if (
+      currentNode.type === "choice" ||
+      currentNode.type === "multi" ||
+      currentNode.type === "guide"
+    ) {
+      setBgColor("#F6FBFF");
+    } else if (currentNode.type === "info") {
+      setBgColor("#fe5068");
+    }
+  }, [currentNode]);
   // Update theme when currentNode changes
   useEffect(() => {
     if (
@@ -216,7 +227,7 @@ export default function Wizard() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{ backgroundColor: bgColor }}>
       <TopNav theme={theme} onBack={handleBack} />
       <div style={{ height: "50px" }} />
       <AnimatedIcon icon={currentIcon} state={animationState} />

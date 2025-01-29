@@ -21,15 +21,6 @@ const GuidePage: React.FC<GuidePageProps> = ({
   contents,
   buttons,
 }) => {
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.body.style.backgroundColor = "#F6FBFF";
-
-      return () => {
-        document.body.style.backgroundColor = "";
-      };
-    }
-  }, []);
   const parseBoldText = (text: string) => {
     const parts = text.split(/(\*\*.*?\*\*|##.*?##)/); // Split by **bold text** or ##link text##
 
