@@ -31,6 +31,7 @@ export default function ContactForm() {
   }, []);
 
   const [formData, setFormData] = useState(initialFormState);
+  const [imageFileName, setImageFileName] = useState<string | null>(null);
 
   const [submissionResponse, setSubmissionResponse] = useState<
     ContactFormResponse | undefined
@@ -45,7 +46,10 @@ export default function ContactForm() {
     const { name, value, files } = event.target as HTMLInputElement;
 
     if (files) {
+      const file = files[0];
       setFormData({ ...formData, image: files[0] });
+      setImageFileName(file.name); // Store the file name
+
     } else if (name in formData.personalDetails) {
       setFormData({
         ...formData,
@@ -277,6 +281,12 @@ export default function ContactForm() {
                     onChange={handleChange}
                     className={styles.fileInput}
                   />
+                   {imageFileName && (
+
+            <span className={styles.fileUploadPlaceholder}>
+{imageFileName}
+          </span>
+          )}
                 </div>
               </div>
 

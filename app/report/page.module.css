@@ -271,3 +271,10 @@
   /* Animation */
   animation: fadeInUp 0.6s ease-out;
 }
+.imageFileName {
+  font-size: 14px;
+}
+
+.chosenImage{
+  color: #b0b0b0;
+}
