@@ -68,6 +68,7 @@ const ChoicePage: React.FC<ChoicePageProps> = ({
       </div>
     );
   };
+  const uniqueKey = `${question}-${explanation_top}-${explanation_bottom}`;
 
   return (
     <div className={styles.container}>
@@ -80,8 +81,8 @@ const ChoicePage: React.FC<ChoicePageProps> = ({
       <div className={styles.buttonArea}>
         {choices.map((choice, index) => (
           <button
-            key={index}
-            className={`${styles.multipleChoiceButton} ${styles.fadeIn}`}
+          key={`${choice.text}-${index}-${uniqueKey}`} // Unique key to re-trigger animation
+          className={`${styles.multipleChoiceButton} ${styles.fadeIn}`}
             onClick={choice.onClick}
           >
             {choice.text}
