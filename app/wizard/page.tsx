@@ -26,7 +26,7 @@ type InfoNode = {
   icon: string;
   title: string;
   content: string;
-  buttons: { [key: string]: string[]};
+  buttons: { [key: string]: string[] };
 };
 
 type GuideNode = {
@@ -159,12 +159,13 @@ export default function Wizard() {
 
     if (currentNode.type === "info") {
       const infoNode = currentNode as InfoNode;
-      const buttons = Object.entries(infoNode.buttons).map(([key, value],index) => ({
-        text: key,
-        onClick: () => handleChoice(value[0]),
-        state: value[1],
-
-      }));
+      const buttons = Object.entries(infoNode.buttons).map(
+        ([key, value], index) => ({
+          text: key,
+          onClick: () => handleChoice(value[0]),
+          state: value[1],
+        })
+      );
       return (
         <InfoPage
           title={infoNode.title}
@@ -174,7 +175,6 @@ export default function Wizard() {
         />
       );
     }
-
 
     if (currentNode.type === "guide") {
       const guideNode = currentNode as GuideNode;
@@ -218,6 +218,7 @@ export default function Wizard() {
   return (
     <div className={styles.container}>
       <TopNav theme={theme} onBack={handleBack} />
+      <div style={{ height: "50px" }} />
       <AnimatedIcon icon={currentIcon} state={animationState} />
       {renderNode()}
     </div>

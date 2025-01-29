@@ -443,3 +443,9 @@
   color: #4e538a;
   text-align: right;
 }
+
+.disabledButton {
+  background-color: #989898 !important; /* Greyed-out button */
+  cursor: not-allowed !important;
+  opacity: 0.6;
+}

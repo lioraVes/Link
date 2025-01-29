@@ -19,7 +19,10 @@ const HandAnimation = ({
 
         // Stop at frame 50
         const stopAtFrame50 = setInterval(() => {
-          if (handAnimationRef.current.currentFrame >= 50) {
+          if (
+            handAnimationRef.current &&
+            handAnimationRef.current.currentFrame >= 50
+          ) {
             handAnimationRef.current.pause();
             clearInterval(stopAtFrame50);
           }

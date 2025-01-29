@@ -20,7 +20,7 @@ const AnimatedIcon = ({
 
         // Stop at frame 50
         const stopAtFrame50 = setInterval(() => {
-          if (animationRef.current.currentFrame >= 50) {
+          if (animationRef.current && animationRef.current.currentFrame >= 50) {
             animationRef.current.pause();
             clearInterval(stopAtFrame50);
           }

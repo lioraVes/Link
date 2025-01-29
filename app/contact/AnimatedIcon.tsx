@@ -29,7 +29,7 @@ const AnimatedIcon = ({
 
         // Stop at frame 50
         setTimeout(() => {
-          if (animationRef.current.currentFrame < 50) {
+          if (animationRef.current && animationRef.current.currentFrame < 50) {
             animationRef.current.pause();
           }
         }, 2000); // Adjust based on animation timing

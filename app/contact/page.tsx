@@ -58,28 +58,24 @@ export default function Contact() {
       alert("Please enter your phone number and agree to send the details.");
       return;
     }
-  
-    const data = {
-        phone: phoneNumber,
-        message: additionalInput,
-      };
-  
-    try {
-      const response = await fetch("/api",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      ); // Ensure this matches your Next.js API route
-      if(response.ok) {
 
+    const data = {
+      phone: phoneNumber,
+      message: additionalInput,
+    };
+
+    try {
+      const response = await fetch("/api", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }); // Ensure this matches your Next.js API route
+      if (response.ok) {
         console.log("Response:", response);
         navigateToStep(3); // Move to the next step on success
-      }
-      else {
+      } else {
         const error = await response.json();
         alert("Failed to send email: " + error.message);
       }
@@ -92,6 +88,7 @@ export default function Contact() {
   return (
     <div className={styles.step1Container}>
       <TopNav theme={"white"} onBack={handleBackButton} />
+      <div style={{ height: "50px" }} />
       {step === 1 && (
         <>
           <AnimatedIcon animation="hand" state={animationState} />
@@ -121,6 +118,7 @@ export default function Contact() {
 
       {step === 2 && (
         <>
+          <div style={{ height: "50px" }} />
           <AnimatedIcon animation="password" state={animationState} />
           <div className={styles.headerStep2}>מלא את הפרטים, ואחבר אותך</div>
           <div className={styles.info}>מספר טלפון</div>
@@ -152,8 +150,11 @@ export default function Contact() {
           </div>
 
           <button
-            className={styles.buttonStep2}
+            className={`${styles.buttonStep2} ${
+              !isAgree ? styles.disabledButton : ""
+            }`}
             onClick={() => handleSendForm()}
+            disabled={!isAgree}
           >
             שלח
           </button>
