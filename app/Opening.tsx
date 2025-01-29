@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import Lottie from "react-lottie-player";
 import openingData from "@/lib/animations/opening_screen.json";
