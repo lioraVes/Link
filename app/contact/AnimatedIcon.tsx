@@ -1,4 +1,5 @@
 //@ts-nocheck
+"use client";
 
 import React, { useRef, useEffect } from "react";
 import Lottie from "react-lottie-player";

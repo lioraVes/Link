@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useEffect } from "react";
 import Lottie from "react-lottie-player";
 import hand from "@/lib/animations/hand.json";
