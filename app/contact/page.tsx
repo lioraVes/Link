@@ -53,6 +53,42 @@ export default function Contact() {
     }
   };
 
+  const handleSendForm = async () => {
+    if (!isAgree || !phoneNumber) {
+      alert("Please enter your phone number and agree to send the details.");
+      return;
+    }
+  
+    const data = {
+        phone: phoneNumber,
+        message: additionalInput,
+      };
+  
+    try {
+      const response = await fetch("/api",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      ); // Ensure this matches your Next.js API route
+      if(response.ok) {
+
+        console.log("Response:", response);
+        navigateToStep(3); // Move to the next step on success
+      }
+      else {
+        const error = await response.json();
+        alert("Failed to send email: " + error.message);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to send details.");
+    }
+  };
+
   return (
     <div className={styles.step1Container}>
       <TopNav theme={"white"} onBack={handleBackButton} />
@@ -117,7 +153,7 @@ export default function Contact() {
 
           <button
             className={styles.buttonStep2}
-            onClick={() => navigateToStep(3)}
+            onClick={() => handleSendForm()}
           >
             שלח
           </button>

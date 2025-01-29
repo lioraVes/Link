@@ -2,12 +2,20 @@ import { sendEmail } from "@/lib/email";
 import { type NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
-  const { subject, phoneNumber, additionalInput } = await request.json();
-  const fullMessage = `Subject: ${JSON.stringify(
-    subject
-  )}\nPhone Number: ${phoneNumber}\nAdditional Input: ${additionalInput}`;
+  const { phone, message } = await request.json();
 
-  const success = await sendEmail(fullMessage);
+  const fullMessage = `
+    <html>
+      <body>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Message:</strong> ${message}</p>
+      </body>
+    </html>
+  `;
+  const success = await sendEmail(fullMessage, "html").catch((err) => {
+    console.error("Email sending failed:", err);
+    return false;
+  });
 
   const response = {
     success,
