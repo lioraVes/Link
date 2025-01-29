@@ -15,14 +15,14 @@ export function getEmailTransport() {
   return transport;
 }
 
-export async function sendEmail(msg: string) {
+export async function sendEmail(msg: string, format: "text" | "html" = "text") {
   const transport = getEmailTransport();
   const message = {
     from: EMAIL_ADDRESS,
     to: EMAIL_ADDRESS,
     subject: "פניית פגיעה ברשת לטיפול",
-    text: msg,
-    html: `<p>${msg}</p>`,
+    text: format === "text" ? msg : "", // Plain text fallback
+    html: format === "html" ? msg : "", // HTML content
   };
   let success = false;
   try {
