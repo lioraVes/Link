@@ -4,20 +4,46 @@ import { type NextRequest } from "next/server";
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
   const image = formData.get("image") as File | null;
-  const link = formData.get("link") || "N/A";
-  const text = formData.get("text") || "N/A";
-  const platform = formData.get("platform") || "N/A";
-  const personalDetails = formData.get("personalDetails") || "N/A";
+  const link = formData.get("link") || "לא סופק";
+  const text = (formData.get("text") as string) || "לא סופק";
+  const platform = formData.get("platform") || "לא ידוע";
+  const personalDetails = formData.get("personalDetails") || "לא סופקו פרטים";
 
   const fullMessage = `
-    <html>
+    <html lang="he" dir="rtl">
+      <head>
+        <meta charset="UTF-8">
+        <style>
+          div {
+            direction: rtl;
+            text-align: right;
+            font-family: Arial, sans-serif;
+          }
+          p {
+            margin: 10px 0;
+          }
+          .highlight {
+            font-weight: bold;
+            color: #F38F56;
+          }
+          .box {
+            background-color: #f6f6f6;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+          }
+        </style>
+      </head>
       <body>
-        <p><strong>Platform:</strong> ${platform}</p>
-        <p><strong>Link:</strong> ${link}</p>
-        <p><strong>Text:</strong><br>${text}</p>
-        <p><strong>Personal Details:</strong><br>
-          ${(personalDetails as string).replace(/\n/g, "<br>")}
-        </p>
+        <p><strong>📢 פלטפורמה:</strong> ${platform}</p>
+        <p><strong>🔗 קישור:</strong> ${link}</p>
+        <p><strong>📝 תוכן ההודעה:</strong></p>
+        <p>${(text as string).replace(/\n/g, "<br>")}</p>
+
+        <p class="highlight">📌 פרטים אישיים:</p>
+        <div class="box">
+          <p>${(personalDetails as string).replace(/\n/g, "<br>")}</p>
+        </div>
       </body>
     </html>
   `;
@@ -27,8 +53,8 @@ export async function POST(request: NextRequest) {
   const response = {
     success,
     message: success
-      ? "Thank you for your message. We will get back to you soon."
-      : "Oops. Something went wrong.",
+      ? "תודה רבה על פנייתך. נחזור אליך בהקדם."
+      : "אופס! משהו השתבש. נסה שוב מאוחר יותר.",
   };
 
   console.log(response);
