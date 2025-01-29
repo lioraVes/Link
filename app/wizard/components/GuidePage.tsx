@@ -30,35 +30,36 @@ const GuidePage: React.FC<GuidePageProps> = ({
   }, []);
 
   const parseBoldText = (text: string) => {
-
-    //handle bold or link text
-    const parts = text.split(/(\*\*.*?\*\*|##.*?##)/); // Split by **bold text or ##link text##
-    
+    const parts = text.split(/(\*\*.*?\*\*|##.*?##)/); // Split by **bold text** or ##link text##
+  
     return parts.map((part, index) => {
-      // Check if part is bold (starts and ends with **)
+      // Detect numbered lists with bold formatting (handles both "1.טקסט" and "1. טקסט")
+      const match = part.match(/^\*\*(\d+)\.?\s*(.*?)\*\*$/);
+      if (match) {
+        return (
+          <div key={index} style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
+            <span style={{ fontWeight: 600, minWidth: "20px", textAlign: "right" }}>
+              {match[1]}.
+            </span>
+            <span style={{ fontWeight: 600 }}>{match[2]}</span>
+          </div>
+        );
+      }
+  
+      // Bold text handling (not part of a numbered list)
       if (part.startsWith("**") && part.endsWith("**")) {
-        const boldText = part.slice(2, -2);
-        return (
-          <span key={index} style={{ fontWeight: 600 }}>
-            {boldText}
-          </span>
-        );
+        return <span key={index} style={{ fontWeight: 600 }}>{part.slice(2, -2)}</span>;
       }
   
-      // Check if part is a link (starts and ends with ##)
+      // Link text handling
       if (part.startsWith("##") && part.endsWith("##")) {
-        const linkText = part.slice(2, -2);
-        return (
-          <a key={index} href="https://www.youtube.com/watch?v=TwIOazT1BxU" style={{ color: '#FE5068' , textDecoration: 'none'}}>
-            {linkText}
-          </a>
-        );
+        return <a key={index} href="https://www.youtube.com/watch?v=TwIOazT1BxU" style={{ color: '#FE5068', textDecoration: 'none' }}>{part.slice(2, -2)}</a>;
       }
   
-      // Return the part as is if it's neither bold nor a link
       return part;
     });
   };
+
   const renderContent = (content: GuideContent) => {
     // Check if the content is an image path
     if (content.text.match(/\.(jpeg|jpg|png|gif|svg)$/)) {

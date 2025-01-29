@@ -1,4 +1,3 @@
-//@ts-nocheck
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -34,7 +33,7 @@ type GuideNode = {
   type: "guide";
   icon: string;
   title: string;
-  content: string[];
+  content: { text: string; marginTop: string; marginBottom: string; }[];
   buttons: { [key: string]: string };
 };
 
