@@ -55,6 +55,8 @@
   border: 1px solid #E9F2F8;
   background: #FFF;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  -webkit-tap-highlight-color: transparent;
+  outline: none; /* To prevent the outline for keyboard navigation as well */
 }
 
 .bottom-nav a {

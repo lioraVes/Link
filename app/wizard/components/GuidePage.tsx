@@ -85,16 +85,12 @@ const GuidePage: React.FC<GuidePageProps> = ({
 
   return (
     <div className={styles.container}>
-      {/* <div style={{ height: "200px" }} /> */}
-
-      {/* <div style={{ height: "50px" }} /> */}
-
+  
       <div className={styles.guideTitle}>{title}</div>
 
       {/* Contents */}
       {contents.map((content) => renderContent(content))}
 
-      {/* <div style={{ height: "70px" }} /> */}
       {/* Buttons */}
       <div className={styles.buttonArea}>
         {buttons.map((button, index) => (

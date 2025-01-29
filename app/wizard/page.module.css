@@ -67,6 +67,12 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-bottom: 10px;
+  -webkit-tap-highlight-color: transparent; /* Removes blue highlight */
+}
+
+.multipleChoiceButton:active {
+  background-color: #e4354c;
+  transform: scale(0.97); /* Slight press effect */
 }
 
 .title {
@@ -113,8 +119,13 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-bottom: 10px;
+  -webkit-tap-highlight-color: transparent; /* Removes blue highlight */
 }
-
+.infoButton:active {
+  background-color: #ffe5e9; /* Light pink to match the red theme */
+  color: #e4354c; /* Slightly darker red for contrast */
+  transform: scale(0.98); /* Subtle press effect */
+}
 .infoContainer {
   width: auto;
   margin: 0 auto; /* Centers the container horizontally */
@@ -255,8 +266,14 @@
   transition: background-color 0.3s ease;
   margin-bottom: 10px;
   color: rgba(255, 255, 255, 0.5);
+  -webkit-tap-highlight-color: transparent; /* Removes blue highlight */
 }
-
+.pressedButton:active {
+  background-color: rgba(255, 255, 255, 0.2); /* Soft white overlay */
+  border-color: rgba(255, 255, 255, 0.7); /* Slightly stronger border */
+  color: rgba(255, 255, 255, 0.8); /* Brighter text */
+  transform: scale(0.98); /* Subtle press effect */
+}
 .guideContent{
   width: 309px;
   flex-shrink: 0;

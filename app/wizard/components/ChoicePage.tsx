@@ -68,14 +68,13 @@ const ChoicePage: React.FC<ChoicePageProps> = ({
 
   return (
     <div className={styles.container}>
-      {/* <div style={{ height: "200px" }} /> */}
+
       <div style={{ height: "50px" }} />
 
       <div className={styles.title}>{question}</div>
       {/* Explanation Top */}
       {renderExplanationTop()}
 
-      {/* <div style={{ height: "25px" }} /> */}
       <div className={styles.buttonArea}>
         {choices.map((choice, index) => (
           <button
@@ -87,6 +86,7 @@ const ChoicePage: React.FC<ChoicePageProps> = ({
           </button>
         ))}
       </div>
+      
       {/* Explanation Bottom */}
       {showExplanationBottom && explanation_bottom && (
         <div className={`${styles.explanation} ${styles.fadeIn}`}>

@@ -108,12 +108,13 @@ export default function Contact() {
               אשמח שיצרו איתי קשר
             </button>
             <button
-              className={styles.buttonStep1}
+              className={`${styles.buttonStep1} ${styles.fadeIn}`}
               onClick={() => navigateToStep(4)}
             >
               תודה, מעדיף להישאר אנונימי
             </button>
           </div>
+          <div style={{ marginBottom: "70px" }} />
         </>
       )}
 
@@ -159,6 +160,8 @@ export default function Contact() {
           >
             שלח
           </button>
+          <div style={{ marginBottom: "70px" }} />
+
         </>
       )}
 
@@ -192,6 +195,7 @@ export default function Contact() {
               תודה רבה, אפשר לסיים
             </button>
           </div>
+          <div style={{ marginBottom: "70px" }} />
         </>
       )}
 
