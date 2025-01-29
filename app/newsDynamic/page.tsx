@@ -18,6 +18,16 @@ export default function News() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.body.style.backgroundColor = "#7b61ff";
+
+      return () => {
+        document.body.style.backgroundColor = "";
+      };
+    }
+  }, []);
+
+  useEffect(() => {
     async function fetchNewsData() {
       try {
         const response = await fetch(

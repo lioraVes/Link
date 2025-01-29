@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 95vh; /* Explicit height */
+  height: 90vh; /* Explicit height */
   padding: 20px;
   background-color: #f38f56;
   box-sizing: border-box;

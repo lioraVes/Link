@@ -57,7 +57,6 @@ type WizardData = {
 const typedWizardData = wizardData as WizardData;
 
 export default function Wizard() {
-  const [bgColor, setBgColor] = useState("#F6FBFF");
   const [currentNode, setCurrentNode] = useState<Node>(
     typedWizardData.flow.what_happend
   );
@@ -71,17 +70,17 @@ export default function Wizard() {
   const [theme, setTheme] = useState("white");
   const [history, setHistory] = useState<Node[]>([]); // Add history state
   const [isFirstRender, setIsFirstRender] = useState(true);
+
   useEffect(() => {
-    if (
-      currentNode.type === "choice" ||
-      currentNode.type === "multi" ||
-      currentNode.type === "guide"
-    ) {
-      setBgColor("#F6FBFF");
-    } else if (currentNode.type === "info") {
-      setBgColor("#fe5068");
+    if (typeof document !== "undefined") {
+      document.body.style.backgroundColor = "#F6FBFF";
+
+      return () => {
+        document.body.style.backgroundColor = "";
+      };
     }
-  }, [currentNode]);
+  }, []);
+
   // Update theme when currentNode changes
   useEffect(() => {
     if (
@@ -227,7 +226,7 @@ export default function Wizard() {
   };
 
   return (
-    <div className={styles.container} style={{ backgroundColor: bgColor }}>
+    <div className={styles.container}>
       <TopNav theme={theme} onBack={handleBack} />
       <div style={{ height: "50px" }} />
       <AnimatedIcon icon={currentIcon} state={animationState} />

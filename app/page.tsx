@@ -15,6 +15,15 @@ export default function HomePage() {
     "playing" | "stopped" | "continue"
   >("playing");
   const router = useRouter();
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.body.style.backgroundColor = "#F6FBFF";
+
+      return () => {
+        document.body.style.backgroundColor = "";
+      };
+    }
+  }, []);
 
   const handleHelpClick = () => {
     setHandState("continue"); // Resume animation from frame 50

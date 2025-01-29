@@ -20,6 +20,16 @@ export default function ContactForm() {
       email: "",
     },
   };
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.body.style.backgroundColor = "#F38F56";
+
+      return () => {
+        document.body.style.backgroundColor = "";
+      };
+    }
+  }, []);
+
   const [formData, setFormData] = useState(initialFormState);
 
   const [submissionResponse, setSubmissionResponse] = useState<

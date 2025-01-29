@@ -11,6 +11,16 @@ interface InfoPageProps {
 }
 
 const InfoPage: React.FC<InfoPageProps> = ({ title, icon, info, buttons }) => {
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.body.style.backgroundColor = "#FE5068";
+
+      return () => {
+        document.body.style.backgroundColor = "";
+      };
+    }
+  }, []);
+
   const renderContent = (content: string) => {
     return <p>{content}</p>;
   };

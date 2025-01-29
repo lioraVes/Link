@@ -129,7 +129,6 @@
 .infoContainer {
   width: auto;
   margin: 0 auto; /* Centers the container horizontally */
-  height: 50vh;
 
   display: flex;
   flex-direction: column;
