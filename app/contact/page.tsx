@@ -96,7 +96,8 @@ export default function Contact() {
           <p className={styles.paragraphStep1}>
             לפני שנסיים, חשוב לי לספר לך שאיגוד האינטרנט הישראלי מפעיל גם{" "}
             <strong>קו סיוע</strong>, ואם תרצה, אני יכול להעביר את הפרטים שלך
-            לנציג אנושי.
+            לנציג אנושי. הנציג ייצור איתך קשר בוואטסאפ בזמן הקרוב וימשיך לטפל
+            בך.
           </p>
 
           <div className={styles.buttonContainer}>
@@ -165,13 +166,18 @@ export default function Contact() {
         <>
           <AnimatedIcon animation="finish" state={animationState} />
           <div className={styles.headerStep1}>
-            העברתי את המספר שלך, בקרוב יחזרו אליך
+            העברתי את המספר שלך,
+            <br />
+            בקרוב יחזרו אליך
           </div>
           <p className={styles.paragraphStep3}>
-            אני מקווה שהצלחתי לעזור לך להרגיש יותר בטוח. תוכל גם לדווח על פעילות
-            חשודה שזיהית ולעזור לאחרים לשמור על עצמם.
+            בינתיים, אני מקווה שהצלחתי לעזור לך להרגיש בטוח יותר ומוכן להתמודד
+            עם המצב. שמחתי להעניק לך את הכלים והידע כדי לפעול בצורה הטובה
+            והבטוחה ביותר מעכשיו והלאה.
           </p>
-
+          <p className={styles.paragraphStep3}>
+            תוכל גם לדווח על פעילות חשודה שזיהית וכך לעזור לאחרים לשמור על עצמם.
+          </p>
           <div className={styles.buttonContainer}>
             <button
               className={styles.reportButton}
