@@ -89,7 +89,7 @@ const ChoicePage: React.FC<ChoicePageProps> = ({
       </div>
       {/* Explanation Bottom */}
       {showExplanationBottom && explanation_bottom && (
-        <div className={styles.explanation}>
+        <div className={`${styles.explanation} ${styles.fadeIn}`}>
           <p>{explanation_bottom}</p>
         </div>
       )}

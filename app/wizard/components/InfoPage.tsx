@@ -44,6 +44,8 @@ const InfoPage: React.FC<InfoPageProps> = ({ title, icon, info, buttons }) => {
           </button>
         ))}
       </div>
+      <div style={{ marginBottom: "70px" }} />
+
     </div>
   );
 };

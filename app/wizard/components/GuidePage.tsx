@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styles from "../page.module.css";
+interface GuideContent {
+  text: string;
+  marginTop: string;
+  marginBottom: string;
+
+}
 
 interface GuidePageProps {
   title: string;
   icon: string;
-  contents: string[];
+  contents: GuideContent[];
   buttons: { text: string; onClick: () => void }[];
 }
 
@@ -23,23 +29,55 @@ const GuidePage: React.FC<GuidePageProps> = ({
     };
   }, []);
 
-  const renderContent = (content: string) => {
+  const parseBoldText = (text: string) => {
+
+    //handle bold or link text
+    const parts = text.split(/(\*\*.*?\*\*|##.*?##)/); // Split by **bold text or ##link text##
+    
+    return parts.map((part, index) => {
+      // Check if part is bold (starts and ends with **)
+      if (part.startsWith("**") && part.endsWith("**")) {
+        const boldText = part.slice(2, -2);
+        return (
+          <span key={index} style={{ fontWeight: 600 }}>
+            {boldText}
+          </span>
+        );
+      }
+  
+      // Check if part is a link (starts and ends with ##)
+      if (part.startsWith("##") && part.endsWith("##")) {
+        const linkText = part.slice(2, -2);
+        return (
+          <a key={index} href="https://www.youtube.com/watch?v=TwIOazT1BxU" style={{ color: '#FE5068' , textDecoration: 'none'}}>
+            {linkText}
+          </a>
+        );
+      }
+  
+      // Return the part as is if it's neither bold nor a link
+      return part;
+    });
+  };
+  const renderContent = (content: GuideContent) => {
     // Check if the content is an image path
-    if (content.match(/\.(jpeg|jpg|png|gif|svg)$/)) {
+    if (content.text.match(/\.(jpeg|jpg|png|gif|svg)$/)) {
       console.log(content);
       return (
         <img
-          src={content}
+          src={content.text}
           alt="Descriptive alt text"
           className={styles.image}
+          style={{ marginTop: content.marginTop, marginBottom: content.marginBottom }}
         />
       );
     }
+    
     // Otherwise, render the content as a paragraph
     return (
-      <div>
-        <p className={styles.explanation}>{content}</p>
-        <div style={{ height: "10px" }} />
+      <div style={{ marginTop: content.marginTop ,marginBottom: content.marginBottom}}>
+        <p className={styles.guideContent}>{parseBoldText(content.text)}</p>
+        {/* <div style={{ height: "10px" }} /> */}
       </div>
     );
   };
@@ -48,14 +86,14 @@ const GuidePage: React.FC<GuidePageProps> = ({
     <div className={styles.container}>
       {/* <div style={{ height: "200px" }} /> */}
 
-      <div style={{ height: "50px" }} />
+      {/* <div style={{ height: "50px" }} /> */}
 
-      <div className={styles.title}>{title}</div>
+      <div className={styles.guideTitle}>{title}</div>
 
       {/* Contents */}
       {contents.map((content) => renderContent(content))}
 
-      <div style={{ height: "70px" }} />
+      {/* <div style={{ height: "70px" }} /> */}
       {/* Buttons */}
       <div className={styles.buttonArea}>
         {buttons.map((button, index) => (

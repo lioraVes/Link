@@ -88,7 +88,7 @@ export default function News() {
             href={part.startsWith("http") ? part : `https://${part}`}
             target="_blank"
             rel="noopener noreferrer"
-          >
+            style={{ color: '#7b61ff' , textDecoration: 'none'}}>
             {part}
           </a>
         );
