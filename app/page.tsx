@@ -13,12 +13,14 @@ export default function HomePage() {
     "playing" | "stopped" | "continue"
   >("playing");
   const router = useRouter();
-
   useEffect(() => {
-    document.body.style.backgroundColor = "#F6FBFF";
-    return () => {
-      document.body.style.backgroundColor = "";
-    };
+    if (typeof document !== "undefined") {
+      document.body.style.backgroundColor = "#F6FBFF";
+
+      return () => {
+        document.body.style.backgroundColor = "";
+      };
+    }
   }, []);
 
   const handleHelpClick = () => {

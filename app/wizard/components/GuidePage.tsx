@@ -4,7 +4,6 @@ interface GuideContent {
   text: string;
   marginTop: string;
   marginBottom: string;
-
 }
 
 interface GuidePageProps {
@@ -21,41 +20,58 @@ const GuidePage: React.FC<GuidePageProps> = ({
   buttons,
 }) => {
   useEffect(() => {
-    document.body.style.backgroundColor = "#F6FBFF";
+    if (typeof document !== "undefined") {
+      document.body.style.backgroundColor = "#F6FBFF";
 
-    // Reset the body background color when the component unmounts
-    return () => {
-      document.body.style.backgroundColor = "";
-    };
+      return () => {
+        document.body.style.backgroundColor = "";
+      };
+    }
   }, []);
-
   const parseBoldText = (text: string) => {
     const parts = text.split(/(\*\*.*?\*\*|##.*?##)/); // Split by **bold text** or ##link text##
-  
+
     return parts.map((part, index) => {
       // Detect numbered lists with bold formatting (handles both "1.טקסט" and "1. טקסט")
       const match = part.match(/^\*\*(\d+)\.?\s*(.*?)\*\*$/);
       if (match) {
         return (
-          <div key={index} style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
-            <span style={{ fontWeight: 600, minWidth: "20px", textAlign: "right" }}>
+          <div
+            key={index}
+            style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}
+          >
+            <span
+              style={{ fontWeight: 600, minWidth: "20px", textAlign: "right" }}
+            >
               {match[1]}.
             </span>
             <span style={{ fontWeight: 600 }}>{match[2]}</span>
           </div>
         );
       }
-  
+
       // Bold text handling (not part of a numbered list)
       if (part.startsWith("**") && part.endsWith("**")) {
-        return <span key={index} style={{ fontWeight: 600 }}>{part.slice(2, -2)}</span>;
+        return (
+          <span key={index} style={{ fontWeight: 600 }}>
+            {part.slice(2, -2)}
+          </span>
+        );
       }
-  
+
       // Link text handling
       if (part.startsWith("##") && part.endsWith("##")) {
-        return <a key={index} href="https://www.youtube.com/watch?v=TwIOazT1BxU" style={{ color: '#FE5068', textDecoration: 'none' }}>{part.slice(2, -2)}</a>;
+        return (
+          <a
+            key={index}
+            href="https://www.youtube.com/watch?v=TwIOazT1BxU"
+            style={{ color: "#FE5068", textDecoration: "none" }}
+          >
+            {part.slice(2, -2)}
+          </a>
+        );
       }
-  
+
       return part;
     });
   };
@@ -69,14 +85,22 @@ const GuidePage: React.FC<GuidePageProps> = ({
           src={content.text}
           alt="Descriptive alt text"
           className={styles.image}
-          style={{ marginTop: content.marginTop, marginBottom: content.marginBottom }}
+          style={{
+            marginTop: content.marginTop,
+            marginBottom: content.marginBottom,
+          }}
         />
       );
     }
-    
+
     // Otherwise, render the content as a paragraph
     return (
-      <div style={{ marginTop: content.marginTop ,marginBottom: content.marginBottom}}>
+      <div
+        style={{
+          marginTop: content.marginTop,
+          marginBottom: content.marginBottom,
+        }}
+      >
         <p className={styles.guideContent}>{parseBoldText(content.text)}</p>
         {/* <div style={{ height: "10px" }} /> */}
       </div>
@@ -85,7 +109,6 @@ const GuidePage: React.FC<GuidePageProps> = ({
 
   return (
     <div className={styles.container}>
-  
       <div className={styles.guideTitle}>{title}</div>
 
       {/* Contents */}

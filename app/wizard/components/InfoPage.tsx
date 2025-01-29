@@ -10,14 +10,14 @@ interface InfoPageProps {
 
 const InfoPage: React.FC<InfoPageProps> = ({ title, icon, info, buttons }) => {
   useEffect(() => {
-    document.body.style.backgroundColor = "#FE5068";
+    if (typeof document !== "undefined") {
+      document.body.style.backgroundColor = "#FE5068";
 
-    // Reset the body background color when the component unmounts
-    return () => {
-      document.body.style.backgroundColor = "";
-    };
+      return () => {
+        document.body.style.backgroundColor = "";
+      };
+    }
   }, []);
-
   const renderContent = (content: string) => {
     return <p>{content}</p>;
   };
@@ -45,7 +45,6 @@ const InfoPage: React.FC<InfoPageProps> = ({ title, icon, info, buttons }) => {
         ))}
       </div>
       <div style={{ marginBottom: "70px" }} />
-
     </div>
   );
 };

@@ -19,12 +19,13 @@ const MultiPage: React.FC<MultiPageProps> = ({
   buttons,
 }) => {
   useEffect(() => {
-    document.body.style.backgroundColor = "#F6FBFF";
+    if (typeof document !== "undefined") {
+      document.body.style.backgroundColor = "#F6FBFF";
 
-    // Reset the body background color when the component unmounts
-    return () => {
-      document.body.style.backgroundColor = "";
-    };
+      return () => {
+        document.body.style.backgroundColor = "";
+      };
+    }
   }, []);
 
   const [checkedState, setCheckedState] = useState<boolean[]>(

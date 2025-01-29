@@ -17,14 +17,14 @@ const ChoicePage: React.FC<ChoicePageProps> = ({
   explanation_bottom,
 }) => {
   useEffect(() => {
-    document.body.style.backgroundColor = "#F6FBFF";
+    if (typeof document !== "undefined") {
+      document.body.style.backgroundColor = "#F6FBFF";
 
-    // Reset the body background color when the component unmounts
-    return () => {
-      document.body.style.backgroundColor = "";
-    };
+      return () => {
+        document.body.style.backgroundColor = "";
+      };
+    }
   }, []);
-
   const [showExplanationBottom, setShowExplanationBottom] = useState(false);
 
   const handleLinkClick = () => {
@@ -68,7 +68,6 @@ const ChoicePage: React.FC<ChoicePageProps> = ({
 
   return (
     <div className={styles.container}>
-
       <div style={{ height: "50px" }} />
 
       <div className={styles.title}>{question}</div>
@@ -86,7 +85,7 @@ const ChoicePage: React.FC<ChoicePageProps> = ({
           </button>
         ))}
       </div>
-      
+
       {/* Explanation Bottom */}
       {showExplanationBottom && explanation_bottom && (
         <div className={`${styles.explanation} ${styles.fadeIn}`}>

@@ -18,12 +18,13 @@ export default function News() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    document.body.style.backgroundColor = "#7b61ff";
+    if (typeof document !== "undefined") {
+      document.body.style.backgroundColor = "#7b61ff";
 
-    // Reset the body background color when the component unmounts
-    return () => {
-      document.body.style.backgroundColor = "";
-    };
+      return () => {
+        document.body.style.backgroundColor = "";
+      };
+    }
   }, []);
 
   useEffect(() => {
@@ -88,7 +89,8 @@ export default function News() {
             href={part.startsWith("http") ? part : `https://${part}`}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: '#7b61ff' , textDecoration: 'none'}}>
+            style={{ color: "#7b61ff", textDecoration: "none" }}
+          >
             {part}
           </a>
         );
@@ -182,8 +184,13 @@ export default function News() {
                     <span className={styles.publishedBy}>
                       פורסם על ידי: מערכת האיגוד
                     </span>
-                    <ShareButton title={title}  content={content} newsLink={"https://product-jam-final-project.vercel.app/newsDynamic"} />
-
+                    <ShareButton
+                      title={title}
+                      content={content}
+                      newsLink={
+                        "https://product-jam-final-project.vercel.app/newsDynamic"
+                      }
+                    />
                   </div>
                 )}
               </div>
