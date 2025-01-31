@@ -1,5 +1,4 @@
-# Link ![image](https://github.com/user-attachments/assets/a113a928-0858-48bc-899d-d247de3e8a38)
-
+# Link
 
 
 Link is a mobile web app developed for the Israel Internet Association, designed to address the growing need for guidance and assistance in managing online dangers and emergencies.
@@ -9,7 +8,8 @@ This ensures users receive support and maintain calm during stressful situations
 The app also includes the ability to submit reports, view ongoing updates provided by the association and share them on whatsapp to raise awarness.
 
 ![image](https://github.com/user-attachments/assets/fccdc4d5-9af9-4e54-9eb4-fb9dee8b10f8)
-link to the deployed website: https://product-jam-final-project.vercel.app/
+You can view the deployed version of the website by visiting the following link (simulating a Samsung Galaxy S20 Ultra view in the browser’s inspection mode): 
+https://product-jam-final-project.vercel.app/
 ## Button Flow for Reporting
 
 Currently, the website features a specific sequence of buttons that interact with each other in a predefined order to help users navigate the process of reporting and resolving an online issue.
