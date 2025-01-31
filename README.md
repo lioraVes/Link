@@ -1,4 +1,5 @@
-# Link # Link ![image](https://github.com/user-attachments/assets/933dd378-586d-405d-b09b-4cb5f90b16cc =200x200)
+# Link ![image](https://github.com/user-attachments/assets/a113a928-0858-48bc-899d-d247de3e8a38)
+
 
 
 Link is a mobile web app developed for the Israel Internet Association, designed to address the growing need for guidance and assistance in managing online dangers and emergencies.
@@ -8,7 +9,7 @@ This ensures users receive support and maintain calm during stressful situations
 The app also includes the ability to submit reports, view ongoing updates provided by the association and share them on whatsapp to raise awarness.
 
 ![image](https://github.com/user-attachments/assets/fccdc4d5-9af9-4e54-9eb4-fb9dee8b10f8)
-
+link to the deployed website: https://product-jam-final-project.vercel.app/
 ## Button Flow for Reporting
 
 Currently, the website features a specific sequence of buttons that interact with each other in a predefined order to help users navigate the process of reporting and resolving an online issue.
@@ -27,10 +28,10 @@ To trigger the desired functionality, follow this sequence:
 11. **האם יש לך גיבוי למחשב?** אין לי גיבוי למחשב.
 12. **תודה על הסבלנות!** חבר אותי למידע.
 13. **ריכזתי עבורך את כל המידע שיסייע לך להתמודד** מדריך- תכנית ההגנה של פייפאל.
- -כפתורי סימתי אפשר להמשך--
-14. **ריכזתי עבורך את כל המידע שיסייע לך להתמודד** מדריך- פרצו לי למחשב.
--כפתורי סימתי אפשר להמשך--
-15. **האם יש לך גיבוי למחשב?** סיים כאן. 
+14.  -כפתורי סימתי אפשר להמשך--
+15. **ריכזתי עבורך את כל המידע שיסייע לך להתמודד** מדריך- פרצו לי למחשב.
+16. -כפתורי סימתי אפשר להמשך--
+17. **האם יש לך גיבוי למחשב?** סיים כאן. 
 
 ## To run locally:
 Ensure you have a local copy of the repository, and, in your terminal, navigate
