@@ -96,6 +96,7 @@ const ChoicePage: React.FC<ChoicePageProps> = ({
           <p>{explanation_bottom}</p>
         </div>
       )}
+      <div style={{height:"70px"}} />
     </div>
   );
 };

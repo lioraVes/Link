@@ -96,49 +96,53 @@ export default function Wizard() {
     } else if (currentNode.type === "info") {
       setTheme("pink");
     }
-  }, [currentNode]);
+  }, [currentNode, currentIcon, isFirstRender]);
 
   // Update animation state only if the icon changes
-
   useEffect(() => {
     if (isFirstRender) {
-      setAnimationState("playing"); // Ensure the first animation plays
+      setAnimationState("playing");
       setIsFirstRender(false);
     } else if (currentNode.icon !== currentIcon) {
-      setAnimationState("playing"); // Play animation from start on icon change
-      setCurrentIcon(currentNode.icon);
-    } else {
-      setAnimationState("stopped"); // Keep it at frame 50 if icon is unchanged
+      setAnimationState("playing"); // Start animation
+      setCurrentIcon(currentNode.icon); // Update icon immediately
+      setTimeout(() => {
+        setAnimationState("stopped"); // Stop after animation finishes
+      }, 2000); // Adjust this based on actual animation duration
     }
-  }, [currentNode]);
+  }, [currentNode]); // Only run when currentNode changes
+  useEffect(() => {
+    console.log("ICON CHANGED:", currentNode.icon);
+    console.log("Animation state:", animationState);
+  }, [currentNode, animationState]);
 
   const handleChoice = (nextNodeKey: string) => {
-    if (nextNodeKey === "end") {
-      router.push("/contact");
-      return;
-    }
+  if (nextNodeKey === "end") {
+    router.push("/contact");
+    return;
+  }
 
-    const nextNode =
-      typedWizardData.flow[nextNodeKey as keyof typeof wizardData.flow];
+  const nextNode = typedWizardData.flow[nextNodeKey as keyof typeof wizardData.flow];
 
-    if (nextNode) {
-      setHistory((prev) => [...prev, currentNode]); // Add current node to history
+  if (nextNode) {
+    setHistory((prev) => [...prev, currentNode]);
 
-      if (nextNode.icon !== currentIcon) {
-        setAnimationState("continue"); // Resume animation before switching screens
-        setTimeout(() => {
-          setCurrentNode(nextNode);
-        }, 2000); // Adjust timing to match animation duration
-      } else {
-        setCurrentNode(nextNode); // Instantly switch if icon is the same
-      }
+    if (nextNode.icon !== currentIcon) {
+      setAnimationState("continue"); // Small transition phase
+      setTimeout(() => {
+        setCurrentNode(nextNode);
+        setAnimationState("playing"); // Restart animation for new node
+      }, 2000); // Ensure delay matches animation duration
     } else {
-      console.error(
-        "Invalid nextNodeKey or missing node in JSON:",
-        nextNodeKey
-      );
+      setCurrentNode(nextNode); // Instantly switch if icon is same
     }
-  };
+  } else {
+    console.error("Invalid nextNodeKey or missing node in JSON:", nextNodeKey);
+  }
+  console.log("NEXT NODE CHOICE:", nextNodeKey);
+  console.log("CURRENT ICON:", currentIcon);
+  console.log("NEW ICON:", typedWizardData.flow[nextNodeKey].icon);
+};
 
   const handleBack = () => {
     if (history.length > 0) {

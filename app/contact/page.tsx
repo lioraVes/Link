@@ -23,21 +23,37 @@ export default function Contact() {
     "playing" | "stopped" | "continue"
   >("playing");
 
+  useEffect(()=>{
+    if (typeof document !=="undefined"){
+      document. body.style.background = "#F6FBFF";
+      return ()=>{
+        document.body.style.backgroundColor ="";
+      };
+    } 
+  },[]);
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
     if (step === 4) {
       setAnimationState("playing");
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         router.push("/wizard");
-      }, 2500); // Adjust timing to match animation duration
+      }, 2500);
     }
-  }, [step]);
+  
+    return () => clearTimeout(timeout); // Clean up timeout when component unmounts
+  }, [step, router]);
+
   const navigateToStep = (newStep: number) => {
-    setAnimationState("continue"); // Resume animation before transitioning
+    setAnimationState("continue");
+  
     setTimeout(() => {
       setHistory((prevHistory) => [...prevHistory, step]);
       setStep(newStep);
-      setAnimationState("playing"); // Ensure new step starts from beginning
+  
+      setTimeout(() => {
+        setAnimationState("playing"); // Ensure animation starts fresh
+      }, 100); // Short delay ensures state updates smoothly
     }, 2000);
   };
 
