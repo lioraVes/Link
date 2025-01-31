@@ -1,4 +1,4 @@
-# Link# Link ![image](https://github.com/user-attachments/assets/933dd378-586d-405d-b09b-4cb5f90b16cc =200x200)
+# Link ![image](https://github.com/user-attachments/assets/933dd378-586d-405d-b09b-4cb5f90b16cc =200x200)
 
 Link is a mobile web app developed for the Israel Internet Association, designed to address the growing need for guidance and assistance in managing online dangers and emergencies.
 The app offers a structured system for classifying, handling, and providing support for inquiries related to internet threats and online crises. It provides targeted instructions to prevent escalation in cyber incidents, tracks harmful trends, manages urgent reports, and delivers real-time updates on current online dangers.
